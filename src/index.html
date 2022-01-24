@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('html/_head.htm',{
+"title":"Главная"
+})
+
+<body>
+	<div class="wrapper">
+		@@include('html/_header.htm',{})
+		<main class="page">
+			<section class="page__first-screen first-screen">
+				<div class="first-screen__box">
+					<div class="first-screen__offer offer">
+						<h1 class="offer__title">Экспресс доставка <br> по Казахстану</h1>
+						<div class="offer__text">Закажи экспресс доставку документов <br> и посылок</div>
+					</div>
+					<form action="" class="first-screen__calc first-screen-calc">
+						<div class="first-screen-calc__type">
+							<button class="first-screen-calc__doc button calc-button active-btn-calc">Документ</button>
+							<button class="first-screen-calc__package button calc-button">Посылка</button>
+						</div>
+						<div class="first-screen-calc__params">
+							<div class="first-screen-calc__input-box">
+								<div class="first-screen-calc__input _icon-mapmark">
+									<input class="first-screen-calc__fromwhere" placeholder="Откуда">
+								</div>
+								<div class="first-screen-calc__favorite-distance-box">
+									<a href="" class="first-screen-calc__favorite-link">Алматы</a>
+									<a href="" class="first-screen-calc__favorite-link">Нур-Султан(Астана)</a>
+									<a href="" class="first-screen-calc__favorite-link">Шымкент</a>
+								</div>
+							</div>
+							<div class="first-screen-calc__input-box">
+								<div class="first-screen-calc__input _icon-location">
+									<input class="first-screen-calc__where" placeholder="Куда">
+								</div>
+								<div class="first-screen-calc__favorite-distance-box">
+									<a href="" class="first-screen-calc__favorite-link">Алматы</a>
+									<a href="" class="first-screen-calc__favorite-link">Нур-Султан(Астана)</a>
+									<a href="" class="first-screen-calc__favorite-link">Шымкент</a>
+								</div>
+							</div>
+							<div class="first-screen-calc__input-box">
+								<div class="first-screen-calc__input _icon-habdcart">
+									<input class="first-screen-calc__weight" type="number" placeholder="Вес (кг)">
+								</div>
+							</div>
+						</div>
+						<button type="submit" class="first-screen-calc__btn button calc-submit-button">
+							Расчитать стоимость
+						</button>
+					</form>
+				</div>
+			</section>
+		</main>
+		@@include('html/_footer.htm',{})
+	</div>
+	@@include('html/_popup.htm',{})
+	@@include('html/_js.htm',{})
+</body>
+
+</html>

@@ -1,0 +1,161 @@
+//====================================================================================================
+.header {
+	&__container {
+		display: flex;
+		align-items: center;
+		padding: rem(24) 0;
+	}
+	&__number {
+		color: #000;
+		font-weight: 500;
+		display: flex;
+		align-items: center;
+		font-size: rem(12);
+		line-height: rem(16);
+		&::before {
+			font-size: rem(24);
+			margin-right: rem(8);
+			color: rgb(197, 197, 197);
+		}
+	}
+	&__links {
+		color: #000;
+		display: flex;
+		flex: 0 0 rem(319);
+		justify-content: space-between;
+		font-weight: 500;
+		font-size: rem(12);
+		line-height: rem(16);
+	}
+
+	&__logo {
+	}
+	&__right-side {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		flex: 1 1 math.div(514, $maxWidthContainer) * 100%;
+		gap: rem(24);
+	}
+	&__search {
+		max-width: rem(274);
+		width: 100%;
+		margin: 0px rem(297) 0px rem(48);
+	}
+
+	&__questions-btn {
+		line-height: rem(16);
+	}
+
+	&__account {
+		@media (any-hover: hover) {
+			&:hover {
+				cursor: pointer;
+			}
+		}
+		width: 40px;
+		height: 40px;
+		background-color: #000;
+		background: #f2f4f5;
+		border-radius: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+.header-search {
+	&__form {
+		position: relative;
+	}
+
+	&__input {
+		width: 100%;
+		border: 1px solid #e3e5e6;
+		border-radius: 8px;
+		padding: 12px 0;
+		padding-left: 16px;
+		line-height: 114%;
+		color: #72777a;
+	}
+
+	&__btn {
+		width: 32px;
+		height: 32px;
+		position: absolute;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		right: 0;
+		top: 50%;
+		margin-top: -16px;
+		margin-right: 4px;
+		background: #23262f;
+		border-radius: 8px;
+		&::before {
+			content: "";
+			width: 16px;
+			height: 16px;
+			background: url("../img/icons/search.svg");
+		}
+	}
+}
+.header-account {
+	&__img {
+	}
+}
+.links-header {
+	&__link {
+	}
+}
+//====================================================================================================
+
+//Burger
+/*
+.icon-menu {
+	display: none;
+	@media (max-width: $mobile) {
+		display: block;
+		position: relative;
+		width: rem(30);
+		height: rem(18);
+		cursor: pointer;
+		z-index: 5;
+		span,
+		&::before,
+		&::after {
+			content: "";
+			transition: all 0.3s ease 0s;
+			right: 0;
+			position: absolute;
+			width: 100%;
+			height: rem(2);
+			background-color: #000;
+		}
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+		span {
+			top: calc(50% - rem(1));
+		}
+		.menu-open & {
+			span {
+				width: 0;
+			}
+			&::before,
+			&::after {
+			}
+			&::before {
+				top: calc(50% - rem(1));
+				transform: rotate(-45deg);
+			}
+			&::after {
+				bottom: calc(50% - rem(1));
+				transform: rotate(45deg);
+			}
+		}
+	}
+}
+*/

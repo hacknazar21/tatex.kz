@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('_head.html',{
+"title":"Главная"
+})
+
+<body>
+	<div class="wrapper">
+		@@include('_header.html',{})
+		<main class="page">
+			<section class="page__first-screen first-screen">
+				<div class="first-screen__box">
+					<div class="first-screen__offer offer _container">
+						<h1 class="offer__title">Экспресс доставка <br> по Казахстану</h1>
+						<div class="offer__text">Закажи экспресс доставку документов <br> и посылок</div>
+					</div>
+					<form action="#" class="first-screen__calc first-screen-calc">
+						<div class="first-screen-calc__type">
+							<div class="first-screen-calc__doc">Документ</div>
+							<div class="first-screen-calc__package">Посылка</div>
+						</div>
+						<div class="first-screen-calc__params">
+							<input class="first-screen-calc__fromwhere _icon-mapmark" placeholder="Откуда">
+							<input class="first-screen-calc__where _icon-location" placeholder="Куда">
+							<input class="first-screen-calc__weight _icon-habdcart" placeholder="Вес (кг)">
+						</div>
+						<button type="submit" class="first-screen-calc__btn">Расчитать стоимость</button>
+					</form>
+				</div>
+			</section>
+		</main>
+		@@include('_footer.html',{})
+	</div>
+	@@include('_popup.html',{})
+	@@include('_js.html',{})
+</body>
+
+</html>
