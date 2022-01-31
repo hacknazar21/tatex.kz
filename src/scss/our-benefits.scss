@@ -1,0 +1,82 @@
+.our-benefits {
+    &__container {
+        position: relative;
+        overflow-x: visible;
+    }
+
+    &__title {
+        font-weight: bold;
+        font-size: 32px;
+        line-height: 38px;
+        color: #23262f;
+        margin-bottom: rem(80);
+    }
+
+    &__slider {
+        width: 100vw;
+    }
+
+    &__wrapper {
+    }
+
+    &__slide {
+        max-width: rem(256);
+    }
+}
+.swiper {
+}
+.swiper-wrapper {
+}
+.swiper-slide {
+    &__img {
+        margin-bottom: rem(21);
+    }
+
+    &__title {
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 16px;
+
+        color: #23262f;
+        margin-bottom: rem(16);
+    }
+
+    &__text {
+        font-size: 14px;
+        line-height: 20px;
+
+        color: #72777a;
+    }
+}
+.swiper-button-prev {
+    margin-right: calc(rem(40) + rem(8));
+    &::before {
+        content: "<-";
+        color: #777e91;
+        width: rem(24);
+        height: rem(24);
+    }
+}
+.swiper-button-next {
+    &::before {
+        content: "->";
+        color: #777e91;
+        width: rem(24);
+        height: rem(24);
+    }
+}
+.swiper-button-prev,
+.swiper-button-next {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: rem(40);
+    height: rem(40);
+    border-radius: 50%;
+    transition: border 0.3s ease 0s;
+    @media (any-hover: hover) {
+        &:hover {
+            border: 2px solid #e6e8ec;
+        }
+    }
+}

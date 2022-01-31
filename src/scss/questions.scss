@@ -1,0 +1,106 @@
+.questions {
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__title {
+        font-weight: bold;
+        font-size: 32px;
+        line-height: 38px;
+        color: #23262f;
+        margin-bottom: rem(48);
+    }
+
+    &__type {
+    }
+
+    &__type-btn {
+        padding: 8px 16px;
+        color: #72777a;
+        &._active {
+            background: #353945;
+            border-radius: rem(100);
+            color: #fff;
+        }
+    }
+
+    &__box {
+        width: 100%;
+        margin-top: rem(64);
+    }
+
+    &__question {
+    }
+}
+.question {
+    &__box {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        max-width: rem(544);
+        &:not(:last-child) {
+            margin-bottom: rem(57);
+        }
+        &:after {
+            content: "";
+            height: 1px;
+            width: 100%;
+            position: absolute;
+            bottom: -24px;
+
+            background: #f2f4f5;
+        }
+    }
+}
+.question-box {
+    &__number {
+        position: absolute;
+        left: 0;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #72777a;
+        display: inline-block;
+    }
+
+    &__title {
+        color: #23262f;
+        font-weight: 500;
+        font-size: 16px;
+        margin-left: rem(44);
+        line-height: 24px;
+        position: relative;
+        .questions__question._spoller-init & {
+            &::after {
+                content: "";
+                color: #23262f;
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 10px;
+                height: 6px;
+                background: url("/img/questions/arrow.svg") 100% 100% no-repeat;
+                background-position: center;
+                transition: transform 0.3s ease 0s;
+            }
+        }
+        &._spoller-active {
+            &::after {
+                transform: rotate(180deg);
+            }
+        }
+        @media (any-hover: hover) {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+    &__text {
+        font-size: 14px;
+        line-height: 20px;
+        margin-top: rem(41);
+        color: #72777a;
+    }
+}

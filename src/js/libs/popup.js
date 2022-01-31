@@ -1,9 +1,5 @@
 // Модуль попапов
-// (c) Фрилансер по жизни, Хмурый Кот
-// Документация по работе в шаблоне: https://template.fls.guru/template-docs/funkcional-popup.html
-// Сниппет (HTML): pl
 
-// Подключение функционала "Чертогов Фрилансера"
 import { isMobile, bodyLockStatus, bodyLock, bodyUnlock, bodyLockToggle, FLS } from "../files/functions.js";
 import { flsModules } from "../files/modules.js";
 import 'intl-tel-input/build/css/intlTelInput.css';

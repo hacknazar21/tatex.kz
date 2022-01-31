@@ -1,0 +1,32 @@
+.main-menu {
+    &__body {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 16px;
+        color: #72777a;
+        max-width: 210px;
+        padding-top: rem(48);
+        background-color: #fff;
+        min-height: rem(668);
+    }
+
+    &__list {
+    }
+
+    &__item {
+        margin-left: rem(16);
+
+        &:not(:last-child) {
+            margin-bottom: rem(43);
+        }
+        &:last-child {
+            color: #cb0e16;
+        }
+    }
+
+    &__link {
+        &._active {
+            color: #23262f;
+        }
+    }
+}

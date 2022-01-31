@@ -1,0 +1,204 @@
+.first-screen {
+    &__box {
+        @include adaptiveValue("margin-left", 80, 40);
+        @include adaptiveValue("margin-right", 80, 40);
+        border-radius: rem(24);
+        padding: 64px 0;
+        display: flex;
+
+        justify-content: space-between;
+        background: url("../img/first_screen.png") 100% 100% no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+
+    &__offer {
+        margin-left: rem(80);
+        margin-top: math.div(360, 1280) * 100%;
+    }
+
+    &__calc {
+        flex: 0 0 rem(502);
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: #fff;
+        height: auto;
+        border-radius: rem(24);
+        margin: auto 0;
+        margin-right: rem(30);
+    }
+}
+.offer {
+    &__title {
+        font-weight: bold;
+        font-size: rem(48);
+        line-height: rem(60);
+    }
+
+    &__text {
+        font-size: rem(24);
+        line-height: rem(32);
+    }
+}
+
+.first-screen-calc {
+    &__type {
+        display: flex;
+        justify-content: space-around;
+        margin: 0px 0px rem(55) 0px;
+    }
+
+    &__input-box {
+    }
+    &__input {
+        display: flex;
+        position: relative;
+        color: #979c9e;
+        font-size: rem(24);
+        padding-bottom: 12px;
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            border-bottom: 1px solid #f2f4f5;
+        }
+        margin-bottom: rem(16);
+        &::before {
+            margin-right: rem(12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        & > input {
+            &::placeholder {
+                font-weight: bold;
+                font-size: rem(18);
+                color: #23262f;
+            }
+            font-weight: bold;
+            font-size: rem(18);
+            color: #23262f;
+            &:focus-visible {
+                outline-width: 0;
+            }
+        }
+        &:last-child {
+            margin: 0px 0px rem(32) 0px;
+        }
+    }
+    &__favorite-distance-box {
+        color: #979c9e;
+        display: flex;
+        justify-content: space-between;
+        width: rem(250);
+        font-weight: 500;
+        font-size: rem(12);
+        line-height: rem(14);
+        text-decoration-line: underline;
+        margin: 0px 0px rem(28) 0px;
+    }
+
+    &__favorite-link {
+        display: block;
+        @media (any-hover: hover) {
+            &:hover {
+                color: lightcoral;
+            }
+        }
+    }
+    &__info {
+        display: flex;
+        justify-content: space-between;
+        margin: 0px 0px rem(32) 0px;
+    }
+
+    &__info-box {
+    }
+    &__doc {
+    }
+
+    &__package {
+    }
+
+    &__params {
+    }
+
+    &__fromwhere {
+    }
+
+    &__where {
+    }
+
+    &__weight {
+    }
+
+    &__btn {
+    }
+
+    &__input-package {
+        @extend .first-screen-calc__input;
+        margin-top: 55px;
+        & > input {
+            max-width: rem(100);
+            text-align: center;
+            &:not(:last-child) {
+                border-right: 1px solid #979c9e;
+            }
+        }
+    }
+
+    &__height {
+    }
+
+    &__lebgth {
+    }
+
+    &__width {
+    }
+}
+.doc-summ {
+    &__title {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #979c9e;
+    }
+
+    &__value {
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 32px;
+        color: #23262f;
+        display: inline-block;
+    }
+
+    &__text {
+        color: #23262f;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 32px;
+        display: inline-block;
+    }
+}
+.doc-date {
+    &__title {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: #979c9e;
+    }
+
+    &__value {
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 32px;
+        color: #23262f;
+    }
+}
+.active-btn-calc {
+    background-color: #23262f;
+    color: #fff;
+}

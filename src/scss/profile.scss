@@ -1,0 +1,8 @@
+.page {
+    &__main-menu {
+        background: #fcfcfd;
+        padding-bottom: rem(168);
+    }
+}
+@import "profile/header-profile";
+@import "profile/main";

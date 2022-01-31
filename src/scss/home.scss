@@ -1,138 +1,48 @@
 //====================================================================================================
 .page {
+    &__about-us {
+        margin-bottom: rem(80);
+        margin-top: rem(240);
+    }
     &__first-screen {
-        margin: rem(14) 0px rem(160) 0px;
+        margin-top: rem(14);
     }
-}
-.first-screen {
-    &__box {
-        width: rem(1280);
-        height: rem(720);
-        margin: 0 auto;
-        border-radius: 24px;
-        display: flex;
-        justify-content: space-between;
-        background: url("../img/first_screen.png") 100% 100% no-repeat;
+    &__our-benefits {
+        margin-bottom: rem(80);
+        background: #fcfcfd;
+        padding: rem(80) 0;
     }
-
-    &__offer {
-        margin-left: rem(80);
-        margin-top: math.div(360, 1280) * 100%;
+    &__questions {
+        margin-bottom: rem(105);
     }
-
-    &__calc {
-        flex: 0 0 rem(502);
-        padding: 40px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        background-color: #fff;
-        max-height: rem(480);
-        border-radius: rem(24);
-        margin-top: math.div(120, 1280) * 100%;
-        margin-right: rem(30);
-        box-shadow: 0px rem(40) rem(64) rem(-32) rgba(15, 15, 15, 0.1);
-        backdrop-filter: blur(rem(32));
-    }
-}
-.offer {
-    &__title {
-        font-weight: bold;
-        font-size: rem(48);
-        line-height: rem(60);
-    }
-
-    &__text {
-        font-size: rem(24);
-        line-height: rem(32);
-    }
-}
-.first-screen-calc {
-    &__type {
-        display: flex;
-        justify-content: space-around;
-    }
-
-    &__input-box {
-    }
-    &__input {
-        display: flex;
+    &__reviews {
         position: relative;
-        color: #979c9e;
-        font-size: rem(24);
-        padding-bottom: 12px;
-        flex: 1 1 auto;
-        &::after {
+        padding: rem(90) 0;
+        margin-bottom: rem(80);
+        background-color: #fcfcfd;
+        &::before {
             content: "";
             position: absolute;
-            bottom: 0;
+            top: 10px;
+            left: 0;
             width: 100%;
-            border-bottom: 1px solid #f2f4f5;
-        }
-        margin-bottom: rem(16);
-        &::before {
-            margin-right: rem(12);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        & > input {
-            &::placeholder {
-                font-weight: bold;
-                font-size: rem(18);
-                color: #23262f;
-            }
-            font-weight: bold;
-            font-size: rem(18);
-            color: #23262f;
-            &:focus-visible {
-                outline-width: 0;
-            }
+            height: 110%;
+            background: url("/img/reviews/background.png") 100% 100% no-repeat;
+            background-position: left;
+            background-size: cover;
         }
     }
-    &__favorite-distance-box {
-        color: #979c9e;
-        display: flex;
-        justify-content: space-between;
-        width: rem(250);
-        font-weight: 500;
-        font-size: rem(12);
-        line-height: rem(14);
-        text-decoration-line: underline;
-        margin: 0px 0px rem(28) 0px;
-    }
-
-    &__favorite-link {
-        display: block;
-        @media (any-hover: hover) {
-            &:hover {
-                color: lightcoral;
-            }
-        }
-    }
-    &__doc {
-    }
-
-    &__package {
-    }
-
-    &__params {
-    }
-
-    &__fromwhere {
-    }
-
-    &__where {
-    }
-
-    &__weight {
-    }
-
-    &__btn {
+    &__contacts {
+        margin-bottom: rem(112);
     }
 }
-.active-btn-calc {
-    background-color: #23262f;
-    color: #fff;
+._hide {
+    display: none;
 }
 //====================================================================================================
+@import "first-screen";
+@import "about-us";
+@import "our-benefits";
+@import "questions";
+@import "reviews";
+@import "contacts";

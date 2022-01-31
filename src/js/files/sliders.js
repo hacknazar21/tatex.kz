@@ -22,7 +22,7 @@ import "../../scss/base/swiper.scss";
 // import "../../scss/libs/swiper.scss";
 // Полный набор стилей из node_modules
 // import 'swiper/css';
-
+Swiper.use([Navigation]);
 // Инициализация слайдеров
 function initSliders() {
 	// Перечень слайдеров
@@ -32,12 +32,11 @@ function initSliders() {
 		new Swiper('.swiper', { // Указываем скласс нужного слайдера
 			// Подключаем модули слайдера
 			// для конкретного случая
-			modules: [Navigation, Autoplay],
 
 			observer: true,
 			observeParents: true,
-			slidesPerView: 1,
-			spaceBetween: 0,
+			slidesPerView: 4.5,
+			spaceBetween: 32,
 			autoHeight: true,
 			speed: 800,
 

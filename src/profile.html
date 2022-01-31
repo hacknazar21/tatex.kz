@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('html/_head.htm',{
+"title":"Личный кабинет",
+"css_name": "css/style_profile.min.css"
+})
+
+<body>
+    <div class="wrapper">
+        @@include('html/profile/_header.htm',{})
+        <main class="page">
+            @@include('html/profile/_main.htm',{})
+
+
+        </main>
+        @@include('html/_footer.htm',{})
+    </div>
+    @@include('html/_popup.htm',{})
+    @@include('html/_js.htm',{})
+</body>
+
+</html>

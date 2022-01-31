@@ -3,7 +3,7 @@
 	&__container {
 		display: flex;
 		align-items: center;
-		padding: rem(24) 0;
+		padding: rem(24) rem(10);
 	}
 	&__number {
 		color: #000;
@@ -17,12 +17,18 @@
 			margin-right: rem(8);
 			color: rgb(197, 197, 197);
 		}
+		@media (any-hover: hover) {
+			& > span:hover {
+				text-decoration: underline;
+			}
+		}
 	}
 	&__links {
 		color: #000;
 		display: flex;
-		flex: 0 0 rem(319);
-		justify-content: space-between;
+		flex-wrap: wrap;
+		flex: 1 1 auto;
+		gap: rem(20);
 		font-weight: 500;
 		font-size: rem(12);
 		line-height: rem(16);
@@ -105,6 +111,11 @@
 }
 .links-header {
 	&__link {
+		@media (any-hover: hover) {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
 	}
 }
 //====================================================================================================
