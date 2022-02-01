@@ -6,7 +6,12 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin: 75px auto;
+        margin: 0 auto;
+        @include adaptiveValue("margin-top", 75, 30);
+        @include adaptiveValue("margin-bottom", 75, 30);
+        @media (max-width: $mobile) {
+            align-items: start;
+        }
         color: #ffffff;
     }
 
@@ -14,12 +19,15 @@
     }
 
     &__logo {
-        margin: 0px 0px 25px 0px;
+        margin: 0px 0px rem(25) 0px;
     }
 
     &__copyright {
         font-weight: 300;
         font-size: 12px;
+        @media (max-width: $mobile) {
+            margin-bottom: rem(30);
+        }
     }
 
     &__info-box {
@@ -28,12 +36,20 @@
     &__social-media {
         display: flex;
         justify-content: flex-end;
-        margin: 0px 0px 30px 0px;
+        margin: 0px 0px rem(30) 0px;
         gap: rem(12);
+        @media (max-width: $mobile) {
+            justify-content: flex-start;
+        }
     }
 
     &__links {
         display: flex;
+        @media (max-width: $mobile) {
+            flex-direction: column;
+            font-size: rem(15);
+            gap: rem(12);
+        }
     }
 }
 
@@ -59,6 +75,9 @@
         display: flex;
         &:not(:last-child) {
             &::after {
+                @media (max-width: $mobile) {
+                    display: none;
+                }
                 content: " |";
                 margin: 0 10px;
             }

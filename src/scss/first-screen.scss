@@ -1,24 +1,39 @@
 .first-screen {
     &__box {
-        @include adaptiveValue("margin-left", 80, 40);
-        @include adaptiveValue("margin-right", 80, 40);
-        border-radius: rem(24);
-        padding: 64px 0;
+        @include adaptiveValue("margin-left", 80, 0, 1440, 1200, 1);
+        @include adaptiveValue("margin-right", 80, 0, 1440, 1200, 1);
+        @include adaptiveValue("border-radius", 24, 0, 1440, 1200, 1);
+        min-height: rem(720);
         display: flex;
 
         justify-content: space-between;
         background: url("../img/first_screen.png") 100% 100% no-repeat;
         background-position: center;
         background-size: cover;
+        @media (max-width: $tablet) {
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+        }
     }
 
     &__offer {
         margin-left: rem(80);
         margin-top: math.div(360, 1280) * 100%;
+        @media (max-width: $tablet) {
+            & .offer__text {
+                display: none;
+            }
+            & {
+                margin: rem(0);
+                text-align: center;
+            }
+        }
     }
 
     &__calc {
         flex: 0 0 rem(502);
+        @include adaptiveValue("width", 502, 400);
         padding: 40px;
         display: flex;
         flex-direction: column;
@@ -28,13 +43,20 @@
         border-radius: rem(24);
         margin: auto 0;
         margin-right: rem(30);
+        @media (max-width: $tablet) {
+            margin: 0;
+        }
+        @media (max-width: $mobileSmall) {
+            width: 100%;
+            border-radius: rem(0);
+        }
     }
 }
 .offer {
     &__title {
         font-weight: bold;
-        font-size: rem(48);
-        line-height: rem(60);
+        @include adaptiveValue("font-size", 48, 25);
+        line-height: math.div(60, 48) * 100%;
     }
 
     &__text {
@@ -75,11 +97,11 @@
         & > input {
             &::placeholder {
                 font-weight: bold;
-                font-size: rem(18);
+                @include adaptiveValue("font-size", 18, 15);
                 color: #23262f;
             }
             font-weight: bold;
-            font-size: rem(18);
+            @include adaptiveValue("font-size", 18, 15);
             color: #23262f;
             &:focus-visible {
                 outline-width: 0;
@@ -124,6 +146,10 @@
     }
 
     &__params {
+        display: none;
+        &.active-tab {
+            display: block;
+        }
     }
 
     &__fromwhere {
@@ -162,15 +188,17 @@
 .doc-summ {
     &__title {
         font-weight: 500;
-        font-size: 16px;
-        line-height: 24px;
+        @include adaptiveValue("font-size", 16, 14);
+        line-height: math.div(24, 16) * 100%;
         color: #979c9e;
     }
 
     &__value {
         font-weight: bold;
         font-size: 24px;
-        line-height: 32px;
+        @include adaptiveValue("font-size", 24, 15);
+        line-height: math.div(32, 24) * 100%;
+
         color: #23262f;
         display: inline-block;
     }
@@ -178,27 +206,23 @@
     &__text {
         color: #23262f;
         font-weight: bold;
-        font-size: 24px;
-        line-height: 32px;
+        @include adaptiveValue("font-size", 24, 15);
+        line-height: math.div(32, 24) * 100%;
         display: inline-block;
     }
 }
 .doc-date {
     &__title {
         font-weight: 500;
-        font-size: 16px;
-        line-height: 24px;
+        @include adaptiveValue("font-size", 16, 14);
+        line-height: math.div(24, 16) * 100%;
         color: #979c9e;
     }
 
     &__value {
         font-weight: bold;
-        font-size: 24px;
-        line-height: 32px;
+        @include adaptiveValue("font-size", 24, 15);
+        line-height: math.div(32, 24) * 100%;
         color: #23262f;
     }
-}
-.active-btn-calc {
-    background-color: #23262f;
-    color: #fff;
 }

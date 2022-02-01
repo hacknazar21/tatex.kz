@@ -7,10 +7,11 @@
 
     &__title {
         font-weight: bold;
-        font-size: 32px;
-        line-height: 38px;
+        @include adaptiveValue("font-size", 32, 25);
+        line-height: math.div(38, 32) * 100%;
+
+        @include adaptiveValue("margin-bottom", 48, 30);
         color: #23262f;
-        margin-bottom: rem(48);
     }
 
     &__type {
@@ -18,10 +19,11 @@
 
     &__type-btn {
         padding: 8px 16px;
+        border-radius: rem(100);
         color: #72777a;
-        &._active {
+
+        &.active-btn {
             background: #353945;
-            border-radius: rem(100);
             color: #fff;
         }
     }
@@ -32,6 +34,15 @@
     }
 
     &__question {
+        transform: translateX(-200px);
+        opacity: 0;
+        transition: transform 0.4s ease 0s, opacity 0.3s ease 0s;
+        height: 0;
+        &.active-tab {
+            transform: translateX(0);
+            height: auto;
+            opacity: 1;
+        }
     }
 }
 .question {
@@ -68,17 +79,18 @@
     &__title {
         color: #23262f;
         font-weight: 500;
-        font-size: 16px;
+        font-size: rem(16);
+        line-height: math.div(24, 16) * 100%;
         margin-left: rem(44);
-        line-height: 24px;
         position: relative;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         .questions__question._spoller-init & {
             &::after {
                 content: "";
                 color: #23262f;
-                position: absolute;
-                top: 0;
-                right: 0;
                 width: 10px;
                 height: 6px;
                 background: url("/img/questions/arrow.svg") 100% 100% no-repeat;
@@ -98,8 +110,9 @@
         }
     }
     &__text {
-        font-size: 14px;
-        line-height: 20px;
+        font-size: rem(14);
+        line-height: math.div(20, 14) * 100%;
+
         margin-top: rem(41);
         color: #72777a;
     }

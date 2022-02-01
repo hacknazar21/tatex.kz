@@ -3,51 +3,46 @@ import { isMobile } from "./functions.js";
 // Подключение списка активных модулей
 import { flsModules } from "./modules.js";
 
-function calcBtn() {
-    const calc_btn = document.getElementsByClassName('active-btn-calc');
-    const input_calc = document.getElementsByClassName('first-screen-calc__params');
-    const calc_btns = document.getElementsByClassName('calc-button');
 
-    for (let btn of calc_btns) {
-        btn.addEventListener('click', (event) => {
-            event.preventDefault();
-            let el = event.target;
-            if (!el.classList.contains('active-btn-calc')) {
-                document.getElementsByClassName('active-btn-calc')[0].classList.remove('active-btn-calc');
-                el.classList.add('active-btn-calc');
-            }
-            switch (calc_btn[0].textContent) {
-                case 'Документ':
-                    for (let el of input_calc) {
-                        if (el.classList.contains('doc-params') && el.classList.contains('_hide')) {
-                            el.classList.remove('_hide');
-                        }
-                        else if (el.classList.contains('package-params') && !el.classList.contains('_hide')) {
-                            el.classList.add('_hide');
-                        }
+document.addEventListener('click', (event) => {
+    if (event.target.closest('[data-tabs]')) {
+        event.preventDefault();
+        const tabsBoxes = document.querySelectorAll('[data-tabsbox]');
+        for (let tabsBox of tabsBoxes) {
+            if (tabsBox.contains(event.target)) {
+                const tabId = event.target.dataset.tabs ? event.target.dataset.tabs : null;
+                const tab = tabsBox.querySelector(`[data-tab = "${tabId}"]`);
+                if (tab) {
+                    const activeBtn = tabsBox.querySelector('.active-btn');
+                    const activeTab = tabsBox.querySelector('.active-tab');
+
+                    if (activeBtn && activeBtn != event.target) {
+                        activeBtn.classList.remove('active-btn');
+                        activeTab.classList.remove('active-tab');
                     }
-                    break;
-                case 'Посылка':
-                    for (let el of input_calc) {
-                        if (el.classList.contains('package-params') && el.classList.contains('_hide')) {
-                            el.classList.remove('_hide');
-                        }
-                        else if (el.classList.contains('doc-params') && !el.classList.contains('_hide')) {
-                            el.classList.add('_hide');
-                        }
-                    }
-                    break;
-                default:
-                    break;
+                    event.target.classList.add('active-btn');
+                    tab.classList.add('active-tab');
+
+                }
+                else console.log("No Found :(");
             }
-        })
+        }
+
     }
-
-
-
-}
-calcBtn();
-
+    else if (event.target.classList.contains('header-search__btn')) {
+        const formInput = document.getElementsByClassName('header-search__form');
+        if (!formInput[0].classList.contains('_action-mobile')) {
+            event.preventDefault();
+            formInput[0].classList.add('_action-mobile');
+        }
+    }
+    else {
+        const formInput = document.getElementsByClassName('header-search__form');
+        if (formInput[0].classList.contains('_action-mobile') && !formInput[0].contains(event.target)) {
+            formInput[0].classList.remove('_action-mobile');
+        }
+    }
+});
 /*
 
                         */

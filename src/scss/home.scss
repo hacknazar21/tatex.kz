@@ -1,24 +1,29 @@
 //====================================================================================================
 .page {
     &__about-us {
-        margin-bottom: rem(80);
-        margin-top: rem(240);
+        @include adaptiveValue("margin-bottom", 80, 30);
+
+        @include adaptiveValue("margin-top", 240, 60);
     }
     &__first-screen {
-        margin-top: rem(14);
+        @include adaptiveValue("margin-top", 16, 60);
     }
     &__our-benefits {
-        margin-bottom: rem(80);
+        @include adaptiveValue("margin-bottom", 80, 30);
+
         background: #fcfcfd;
-        padding: rem(80) 0;
+        @include adaptiveValue("padding-top ", 80, 30);
+        @include adaptiveValue("padding-bottom ", 80, 30);
     }
     &__questions {
         margin-bottom: rem(105);
     }
     &__reviews {
         position: relative;
-        padding: rem(90) 0;
-        margin-bottom: rem(80);
+        @include adaptiveValue("padding-top ", 90, 30);
+        @include adaptiveValue("padding-bottom ", 90, 30);
+
+        @include adaptiveValue("margin-bottom", 80, 30);
         background-color: #fcfcfd;
         &::before {
             content: "";
@@ -33,7 +38,7 @@
         }
     }
     &__contacts {
-        margin-bottom: rem(112);
+        @include adaptiveValue("margin-bottom", 112, 60);
     }
 }
 ._hide {

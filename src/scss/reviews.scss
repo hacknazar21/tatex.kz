@@ -6,21 +6,28 @@
 
     &__title {
         font-weight: bold;
-        font-size: 32px;
-        line-height: 38px;
+        @include adaptiveValue("font-size", 32, 25);
+        line-height: math.div(38, 32) * 100%;
+        @include adaptiveValue("margin-bottom", 80, 30);
+
         color: #23262f;
         text-align: center;
-        margin-bottom: rem(80);
     }
 
     &__box {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
+        @media (max-width: $mobile) {
+            flex-direction: column;
+            align-items: center;
+            gap: rem(12);
+        }
     }
 
     &__card {
-        max-width: rem(352);
+        @include adaptiveValue("max-width", 352, 310);
+
         background-color: #ffffff;
         padding: rem(40);
         border: 1px solid #e3e5e6;
@@ -63,15 +70,16 @@
 .review {
     &__title {
         font-weight: 600;
-        font-size: 16px;
-        line-height: 20px;
+        font-size: rem(16);
+        line-height: math.div(20, 16) * 100%;
         color: #000000;
         margin-bottom: rem(8);
     }
 
     &__text {
-        font-size: 14px;
-        line-height: 18px;
+        font-size: rem(14);
+        line-height: math.div(18, 14) * 100%;
+
         color: #72777a;
     }
 }

@@ -9,15 +9,16 @@
 
     &__title {
         font-weight: bold;
-        font-size: 32px;
-        line-height: 38px;
+        @include adaptiveValue("font-size", 32, 25);
+        line-height: math.div(38, 32) * 100%;
         color: #23262f;
         margin-bottom: rem(32);
     }
 
     &__text {
-        font-size: 16px;
-        line-height: 24px;
+        @include adaptiveValue("font-size", 16, 14);
+        line-height: math.div(24, 16) * 100%;
+
         color: #72777a;
         & > p {
             &:not(:last-child) {
@@ -27,6 +28,9 @@
     }
 
     &__img-box {
+        @media (max-width: $tablet) {
+            display: none;
+        }
     }
 
     &__img {
