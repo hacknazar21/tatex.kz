@@ -49,7 +49,10 @@
 .header {
     &__right-side.user {
         display: flex;
-        gap: 0;
+        flex-direction: row;
+        margin-left: auto;
+        align-items: center;
+        gap: rem(0);
     }
 }
 .user {

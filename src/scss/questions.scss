@@ -89,12 +89,10 @@
         justify-content: space-between;
         .questions__question._spoller-init & {
             &::after {
-                content: "";
-                color: #23262f;
-                width: 10px;
-                height: 6px;
-                background: url("/img/questions/arrow.svg") 100% 100% no-repeat;
-                background-position: center;
+                @extend %ic;
+                @extend ._icon-arrow;
+                font-size: rem(10);
+                color: #72777a;
                 transition: transform 0.3s ease 0s;
             }
         }

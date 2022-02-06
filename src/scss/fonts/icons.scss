@@ -14,6 +14,40 @@
 		display: block;
 	}
 }
+._icon-eye:before {
+	content: "\e90f";
+	color: #777e91;
+}
+._icon-user:before {
+	content: "\e900";
+}
+._icon-arrow:before {
+	content: "\e904";
+}
+._icon-arrow:after {
+	content: "\e904";
+}
+._icon-history:before {
+	content: "\e905";
+}
+._icon-exit:before {
+	content: "\e906";
+}
+._icon-calendar:before {
+	content: "\e909";
+}
+._icon-weight:before {
+	content: "\e90a";
+}
+._icon-size:before {
+	content: "\e90b";
+}
+._icon-telephone:before {
+	content: "\e90c";
+}
+._icon-search:before {
+	content: "\e90e";
+}
 ._icon-habdcart:before {
 	content: "\e903";
 }
@@ -24,11 +58,11 @@
 	content: "\e908";
 }
 ._icon-instagram:before {
-	content: "\e900";
-}
-._icon-facebook:before {
 	content: "\e901";
 }
-._icon-telegram:before {
+._icon-facebook:before {
 	content: "\e902";
+}
+._icon-telegram:before {
+	content: "\e90d";
 }

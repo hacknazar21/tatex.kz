@@ -84,7 +84,7 @@ import * as flsForms from "./files/forms/forms.js";
 // flsForms.formQuantity();
 
 /* Модуль формы "показать пароль" */
-// flsForms.formViewpass();
+flsForms.formViewpass();
 
 /* Модуль звездного рейтинга */
 // flsForms.formRating();

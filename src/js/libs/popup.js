@@ -61,6 +61,8 @@ class Popup {
 		this._dataValue = false;
 		this.hash = false;
 
+		this.fromMenu = false;
+
 		this._reopen = false;
 		this._selectorOpen = false;
 
@@ -166,6 +168,11 @@ class Popup {
 		if (bodyLockStatus) {
 			// Если перед открытием попапа был режим lock
 			this.bodyLock = document.documentElement.classList.contains('lock') ? true : false;
+			this.fromMenu = document.documentElement.classList.contains("menu-open") ? true : false;
+			if (this.fromMenu) {
+				document.documentElement.classList.remove("menu-open");
+				document.documentElement.classList.remove("lock");
+			}
 
 			// Если ввести значение селектора (селектор настраивается в options)
 			if (selectorValue && typeof (selectorValue) === "string" && selectorValue.trim() !== "") {

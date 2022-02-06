@@ -9,11 +9,13 @@ textarea {
 	appearance: none;
 }
 .input {
-	border-radius: 0 !important;
 	width: 100%;
 	display: block;
-	padding: 0px 20px;
-	border: 1px solid #eee;
+	padding: 16px;
+	border: 1px solid #e3e5e6;
+	border-radius: 8px;
+	font-size: rem(16);
+	color: #090a0a;
 	&._focus {
 	}
 	&._error {

@@ -40,6 +40,12 @@
     &__contacts {
         @include adaptiveValue("margin-bottom", 112, 60);
     }
+    &__main {
+        display: flex;
+        background-color: #fcfcfd;
+    }
+    &__coop {
+    }
 }
 ._hide {
     display: none;

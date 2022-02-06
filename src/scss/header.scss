@@ -1,12 +1,12 @@
 //====================================================================================================
 .header {
-	@media (max-width: $mobileSmall) {
+	@media (max-width: $mobile) {
 		position: fixed;
 		top: 0;
 		right: 0;
 		width: 100%;
 		background-color: #fff;
-		z-index: 10000;
+		z-index: 140;
 		border: 1px solid rgba($color: #000000, $alpha: 0.1);
 	}
 	&__menu {
@@ -78,6 +78,8 @@
 	}
 
 	&__logo {
+		display: flex;
+		align-items: center;
 	}
 	&__right-side {
 		display: flex;
@@ -116,11 +118,28 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+
+		@media (any-hover: hover) {
+			&:hover {
+				&::before {
+					color: rgb(31, 167, 72);
+				}
+			}
+		}
+		&::before {
+			transition: color 0.3s ease 0s;
+			color: #23262f;
+
+			@extend %ic;
+			@extend ._icon-user;
+			font-size: rem(24);
+		}
 		@media (max-width: $mobile) {
 			min-width: rem(40);
 		}
 	}
 }
+
 .header-search {
 	&__form {
 		max-width: rem(274);
@@ -144,9 +163,10 @@
 		color: #72777a;
 		transition: visibility 0.5s ease 0s;
 		@media (max-width: rem(860)) {
-			visibility: hidden;
+			opacity: 0;
+			transition: opacity 0.5s ease 0s;
 			.header-search__form._action-mobile & {
-				visibility: visible;
+				opacity: 1;
 			}
 		}
 	}
@@ -164,12 +184,11 @@
 		margin-right: 4px;
 		background: #23262f;
 		border-radius: 8px;
-
+		color: #fff;
+		font-size: rem(16);
 		&::before {
-			content: "";
-			width: 16px;
-			height: 16px;
-			background: url("../img/icons/search.svg");
+			@extend %ic;
+			@extend ._icon-search;
 		}
 	}
 }
@@ -178,14 +197,18 @@
 	}
 	&__box {
 		min-width: rem(40);
+		color: #23262f;
+		font-weight: bold;
+		& > .header-account-name {
+			display: none;
+		}
 		@media (max-width: $mobile) {
 			display: flex;
 			align-items: center;
 			gap: rem(10);
-			&::after {
-				content: "Войти в аккаунт";
-				color: #23262f;
-				font-weight: bold;
+			max-width: 170px;
+			& > .header-account-name {
+				display: block;
 			}
 		}
 	}

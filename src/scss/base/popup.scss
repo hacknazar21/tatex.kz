@@ -32,7 +32,9 @@ body::after {
 		transform: scale(0);
 		transition: transform 0.3s ease 0s;
 		background-color: #fff;
-		padding: rem(72) rem(96);
+		padding: rem(72) 0;
+		@include adaptiveValue("padding-left", 96, 10);
+		@include adaptiveValue("padding-right", 96, 10);
 		width: 100%;
 		max-width: rem(544);
 		display: flex;
@@ -42,6 +44,9 @@ body::after {
 		border-top-right-radius: 0;
 		.lock & {
 			visibility: visible;
+		}
+		@media (max-width: $mobile) {
+			padding: rem(50) rem(20);
 		}
 	}
 
@@ -96,13 +101,19 @@ body::after {
 			background: #cb0e16;
 			border-radius: rem(48);
 			color: #ffffff;
-			padding: rem(16) rem(140);
+			padding: rem(16) 0;
+			width: 100%;
+			flex: 1 1 auto;
 		}
 	}
 
 	&__registration-box {
 		color: #23262f;
-		text-align: center;
+		display: flex;
+		flex-wrap: wrap;
+		gap: rem(5);
+		align-items: center;
+		justify-content: center;
 	}
 
 	&__registration-link {

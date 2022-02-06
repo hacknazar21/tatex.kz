@@ -1,23 +1,38 @@
 .main-menu {
     &__body {
+        display: inline-block;
         font-weight: 600;
-        font-size: 14px;
-        line-height: 16px;
+        font-size: rem(14);
+        line-height: math.div(16, 14) * 100%;
         color: #72777a;
-        max-width: 210px;
-        padding-top: rem(48);
+        padding: rem(48) rem(20);
+        @include adaptiveValue("padding-left ", 20, 5);
+        @include adaptiveValue("padding-right ", 20, 5);
         background-color: #fff;
         min-height: rem(668);
+        margin-bottom: rem(168);
+        flex: 1 1 auto;
+        & .header-search__btn {
+            margin-right: 0;
+        }
+        & ._action-mobile {
+            .header-search__btn {
+                margin-right: 4px;
+            }
+        }
     }
 
     &__list {
+        overflow: hidden;
+        @include adaptiveValue("margin-bottom ", 43, 25);
     }
 
+    & .header__search-box > div {
+        padding: 0;
+    }
     &__item {
-        margin-left: rem(16);
-
         &:not(:last-child) {
-            margin-bottom: rem(43);
+            @include adaptiveValue("margin-bottom ", 43, 25);
         }
         &:last-child {
             color: #cb0e16;
@@ -25,8 +40,305 @@
     }
 
     &__link {
-        &._active {
+        position: relative;
+        z-index: 5;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        gap: rem(16);
+        text-align: left;
+        @media (max-width: $mobile) {
+            gap: 0;
+            width: 32px;
+            transition: gap 0.5s ease-in 0s;
+            ._action-search & {
+                gap: rem(16);
+            }
+        }
+        &::before {
+            font-size: rem(20);
+            @media (max-width: $mobile) {
+                font-size: rem(32);
+            }
+        }
+        &.active-btn {
             color: #23262f;
         }
+    }
+}
+.main {
+    &__menu {
+    }
+    &__content {
+        padding: rem(40);
+        height: auto;
+        background-color: #fff;
+        margin: rem(32);
+        margin-bottom: auto;
+        @media (max-width: $mobile) {
+            padding: rem(30);
+            margin: rem(10);
+            margin-bottom: auto;
+        }
+        @media (max-width: $mobileSmall) {
+            margin: rem(0);
+            margin-bottom: auto;
+        }
+        width: 100%;
+        min-width: none;
+
+        display: none;
+        &.active-tab {
+            display: block;
+        }
+        transition: opacity 0.3s ease 0s;
+        ._action-search & {
+            opacity: 0;
+            width: 0;
+        }
+    }
+    &__content-history {
+    }
+}
+.profile {
+    &__title {
+        font-weight: bold;
+        @include adaptiveValue("font-size", 24, 16);
+        line-height: math.div(32, 24) * 100%;
+
+        color: #23262f;
+    }
+
+    &__form {
+        margin-top: rem(40);
+    }
+
+    &__input-grid {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: rem(32);
+        border-bottom: 1px solid #e6e8ec;
+        padding-bottom: rem(32);
+        margin-bottom: rem(32);
+        flex-wrap: wrap;
+        @media (max-width: $mobile) {
+            grid-template-rows: 1fr;
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__input-box {
+        position: relative;
+    }
+
+    &__input-title {
+        font-weight: 500;
+        font-size: rem(14);
+        line-height: math.div(20, 14) * 100%;
+        margin-bottom: rem(12);
+        color: #979c9e;
+    }
+
+    &__input {
+    }
+
+    &__form-submit {
+        background-color: #cb0e16;
+        border-radius: 90px;
+        padding: rem(16) rem(24);
+        font-weight: bold;
+        font-size: rem(16);
+        max-width: rem(200);
+        color: #fff;
+    }
+    &__input-show-btn {
+        color: #777e91;
+        position: absolute;
+        top: rem(45);
+        right: rem(12);
+        &.active {
+            &::before {
+                color: #d12121;
+            }
+        }
+        &::before {
+            @extend %ic;
+            @extend ._icon-eye;
+            font-size: rem(24);
+        }
+    }
+}
+.main {
+    &__content {
+    }
+}
+
+.history {
+    &__title {
+        font-weight: bold;
+        font-size: rem(24);
+        line-height: math.div(32, 24) * 100%;
+
+        color: #23262f;
+    }
+
+    &__category {
+    }
+
+    &__table-box {
+    }
+
+    &__table {
+        font-weight: 500;
+        margin-top: rem(48);
+        font-size: rem(12);
+        line-height: math.div(16, 12) * 100%;
+        color: #23262f;
+        display: grid;
+        grid-template-columns: repeat(6, auto);
+        justify-content: start;
+        column-gap: rem(32);
+        @media (max-width: $tablet) {
+            grid-template-columns: repeat(6, 120px);
+
+            width: 100%;
+            overflow-y: scroll;
+        }
+    }
+}
+.table-search {
+    margin: rem(24) 0;
+}
+
+.category-history {
+    &__button {
+        font-weight: 600;
+        font-size: rem(14);
+        line-height: math.div(16, 14) * 100%;
+        color: #23262f;
+        padding: rem(10) rem(14);
+        border: 2px solid #e6e8ec;
+        border-radius: rem(90);
+        &:not(:last-child) {
+            margin-right: rem(16);
+        }
+        &._red-btn {
+            border: 2px solid #fff0f1;
+            color: #cb0e16;
+            background-color: #fff0f1;
+        }
+        @media (max-width: 1305px) {
+            margin-bottom: rem(10);
+        }
+    }
+}
+.table-history {
+    &_status-icon {
+        position: relative;
+        &::before {
+            content: "";
+            min-width: rem(24);
+            min-height: rem(24);
+            border-radius: 8px;
+            margin-right: 8px;
+        }
+        &::after {
+            content: "";
+            min-width: rem(12);
+            min-height: rem(12);
+            position: absolute;
+            left: 6px;
+            border-radius: 50%;
+        }
+        &._status-icon-blue {
+            &::before {
+                background-color: #f0f4fd;
+            }
+            &::after {
+                background-color: #2a60f7;
+            }
+        }
+        &._status-icon-green {
+            &::before {
+                background-color: rgba(106, 199, 90, 0.16);
+            }
+            &::after {
+                background-color: #6ac75a;
+            }
+        }
+        &._status-icon-orange {
+            &::before {
+                background-color: #fffbe8;
+            }
+            &::after {
+                background-color: #f9c45c;
+            }
+        }
+        &._status-icon-red {
+            &::before {
+                background-color: rgba(255, 109, 67, 0.16);
+            }
+            &::after {
+                background-color: #ff6d43;
+            }
+        }
+    }
+
+    &__filter {
+        border-bottom: 2px solid #e8eaf2;
+        margin-right: -32px;
+        padding-right: 32px;
+        padding-bottom: rem(8);
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        & > span {
+            position: relative;
+            width: 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 10px;
+            text-align: center;
+            margin-left: 8px;
+            gap: 1px;
+            font-size: rem(7);
+        }
+
+        & > span::before {
+            @extend %ic;
+            @extend ._icon-arrow;
+            transform: rotate(180deg);
+            color: #252426;
+            opacity: 0.4;
+        }
+        &._filter-arrow-up {
+            & > span::before {
+                opacity: 1;
+            }
+        }
+        &._filter-arrow-down {
+            & > span::after {
+                opacity: 1;
+            }
+        }
+        & > span::after {
+            @extend %ic;
+            @extend ._icon-arrow;
+            color: #252426;
+            opacity: 0.4;
+        }
+    }
+
+    &__row-data {
+        border-bottom: 2px solid rgba($color: #e8eaf2, $alpha: 0.4);
+        margin-bottom: rem(8);
+        margin-right: -32px;
+        padding-right: 32px;
+        min-height: rem(48);
+        display: flex;
+        align-items: center;
     }
 }

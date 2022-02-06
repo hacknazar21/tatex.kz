@@ -222,11 +222,15 @@ export function formSubmit(validate) {
 /* Модуь формы "показать пароль" */
 export function formViewpass() {
 	document.addEventListener("click", function (e) {
+
 		let targetElement = e.target;
+
 		if (targetElement.closest('[class*="__viewpass"]')) {
+			e.preventDefault();
 			let inputType = targetElement.classList.contains('active') ? "password" : "text";
 			targetElement.parentElement.querySelector('input').setAttribute("type", inputType);
 			targetElement.classList.toggle('active');
+
 		}
 	});
 }
