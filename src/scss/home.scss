@@ -39,6 +39,12 @@
             background-position: left;
             background-size: cover;
         }
+        &.webp {
+            &::before {
+                background-position: left;
+                background-size: cover;
+            }
+        }
     }
     &__contacts {
         @include adaptiveValue("margin-bottom", 112, 60);

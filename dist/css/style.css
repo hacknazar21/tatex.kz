@@ -1255,6 +1255,10 @@ body::after {
   background-position: left;
   background-size: cover;
 }
+.page__reviews.webp::before {
+  background-position: left;
+  background-size: cover;
+}
 @media (min-width: 73.125em) {
   .page__contacts {
     margin-bottom: 7rem;
