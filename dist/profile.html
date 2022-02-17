@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Личный кабинет</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header _header-profile">
+			<div class="header__box">
+				<a href="/" class="header__logo">
+					<img src="img/logo.svg" alt="tatex">
+				</a>
+
+
+				<div class="header__right-side user">
+					<div data-da=".header__search-box, 767.98" class="header__search _search-profile header-search">
+						<form action="" class="header-search__form ">
+							<input type="text" class="header-search__input" placeholder="Введите трек-код">
+							<button class="header-search__btn"></button>
+						</form>
+					</div>
+					<div class="user__name">Пользователь</div>
+
+					<a href="/" class="header__account header-account"> </a>
+				</div>
+			</div>
+		</header>
+		<main class="page">
+			<section data-tabsbox class="page__main main">
+				<div class="main__menu main-menu">
+					<nav class="main-menu__body">
+						<ul class="main-menu__list">
+							<li class="main-menu__item ">
+								<a data-tabs="1" href="" class="main-menu__link active-btn _icon-user">Профиль
+								</a>
+							</li>
+							<li class="main-menu__item">
+								<a data-tabs="2" href="" class="main-menu__link _icon-history">История отправлений
+								</a>
+							</li>
+							<li class="main-menu__item"><a href="" class="main-menu__link _icon-exit">Выйти</a></li>
+						</ul>
+						<div class="header__search-box"></div>
+					</nav>
+				</div>
+				<div data-tab="1" class="main__content active-tab">
+					<div class="profile">
+						<div class="profile__title">Личная информация</div>
+						<form action="#" method="post" class="profile__form">
+							<div class="profile__input-grid">
+								<div class="profile__input-box">
+									<div class="profile__input-title">ФИО</div>
+									<input autocomplete="off" type="text" name="form[]" value="" data-error="Ошибка" placeholder="ФИО" class="input profile__input">
+								</div>
+								<div class="profile__input-box">
+									<div class="profile__input-title">E-mail</div>
+									<input autocomplete="off" type="email" name="form[]" value="" data-error="Ошибка" placeholder="E-mail" class="input profile__input">
+								</div>
+								<div class="profile__input-box">
+									<div class="profile__input-title">Номер телефона</div>
+									<input data-inputmask="'mask': '+7 (999) 999 99-99'" value="" autocomplete="off" type="tel" name="form[]" data-error="Ошибка" placeholder="Номер телефона" class="input profile__input">
+								</div>
+								<div class="profile__input-box">
+									<div class="profile__input-title">Пароль</div>
+									<input autocomplete="off" type="password" name="form[]" value="" data-error="Ошибка" placeholder="Пароль" class="input profile__input ">
+									<button class="profile__input-show-btn input__viewpass"></button>
+								</div>
+							</div>
+							<button class="profile__form-submit" type="submit">Обновить данные</button>
+						</form>
+					</div>
+				</div>
+				<div data-tab="2" class="main__content">
+					<div class="history">
+						<div class="history__title">История отправлений</div>
+						<div class="header-search__form table-search">
+							<input type="text" class="header-search__input" placeholder="Введите трек-код">
+							<button class="header-search__btn"></button>
+						</div>
+						<div class="history__category category-history">
+							<button class="category-history__button _red-btn">Новые (3)</button>
+							<button class="category-history__button">В процессе (10)</button>
+							<button class="category-history__button">Ожидает оплату (10)</button>
+							<button class="category-history__button">Готовы к доставке (20)</button>
+							<button class="category-history__button">В пути (20)</button>
+							<button class="category-history__button">Доставлено (20)</button>
+						</div>
+						<div class="history__table-box">
+							<div class="history__table table-history">
+								<a href="" class="table-history__filter">Номер заказа<span></span></a>
+								<a href="" class="table-history__filter">Статус<span></span></a>
+								<a href="" class="table-history__filter">Адрес доставки<span></span></a>
+								<a href="" class="table-history__filter">Тип доставки<span></span></a>
+								<a href="" class="table-history__filter">Дата отправки<span></span></a>
+								<a href="" class="table-history__filter">Трек-номер<span></span></a>
+
+								<div class="table-history__row-data">3242342</div>
+								<div class="table-history__row-data table-history_status-icon _status-icon-blue">Заказ подтвержден
+								</div>
+								<div class="table-history__row-data">Казахстан, г. Кызылорда, Абая 21</div>
+								<div class="table-history__row-data">До пункта выдачи</div>
+								<div class="table-history__row-data">21.12.2021</div>
+								<div class="table-history__row-data">NHJ78652365</div>
+
+								<div class="table-history__row-data">3242343</div>
+								<div class="table-history__row-data table-history_status-icon _status-icon-green">Заказ доставлен
+								</div>
+								<div class="table-history__row-data">Казахстан, г. Кызылорда, Абая 21</div>
+								<div class="table-history__row-data">До пункта выдачи</div>
+								<div class="table-history__row-data">21.12.2021</div>
+								<div class="table-history__row-data">NHJ78652365</div>
+
+								<div class="table-history__row-data">1231313</div>
+								<div class="table-history__row-data table-history_status-icon _status-icon-orange">Ожидает оплату
+								</div>
+								<div class="table-history__row-data">Казахстан, г. Кызылорда, Абая 21</div>
+								<div class="table-history__row-data">До пункта выдачи</div>
+								<div class="table-history__row-data">21.12.2021</div>
+								<div class="table-history__row-data">NHJ78652365</div>
+
+								<div class="table-history__row-data">1231313</div>
+								<div class="table-history__row-data table-history_status-icon _status-icon-red">Заказ отменен</div>
+								<div class="table-history__row-data">Казахстан, г. Кызылорда, Абая 21</div>
+								<div class="table-history__row-data">До пункта выдачи</div>
+								<div class="table-history__row-data">21.12.2021</div>
+								<div class="table-history__row-data">NHJ78652365</div>
+
+								<div class="table-history__row-data">1231313</div>
+								<div class="table-history__row-data table-history_status-icon _status-icon-red">Заказ отменен</div>
+								<div class="table-history__row-data">Казахстан, г. Кызылорда, Абая 21</div>
+								<div class="table-history__row-data">До пункта выдачи</div>
+								<div class="table-history__row-data">21.12.2021</div>
+								<div class="table-history__row-data">NHJ78652365</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+		</main>
+		<footer class="footer">
+			<div class="footer__container">
+				<div class="footer__logo-box">
+					<div class="footer__logo">
+						<img src="img/logo.svg" alt="tatex">
+					</div>
+					<div class="footer__copyright">
+						Copyright © Все права защищены
+					</div>
+				</div>
+				<div class="footer__info-box">
+					<div data-da=".footer__logo-box, 767.98" class="footer__social-media footer-social-media">
+						<a href="#" class="footer-social-media__img _icon-facebook"></a>
+						<a href="#" class="footer-social-media__img _icon-instagram"></a>
+						<a href="#" class="footer-social-media__img _icon-telegram"></a>
+					</div>
+					<div class="footer__links footer-link">
+						<a href="" class="footer-link__box">
+							<div class="footer-link__text">Documentation</div>
+						</a>
+						<a href="" class="footer-link__box">
+							<div class="footer-link__text">About Us</div>
+						</a>
+						<a href="" class="footer-link__box">
+							<div class="footer-link__text">Pricing</div>
+						</a>
+						<a href="" class="footer-link__box">
+							<div class="footer-link__text">FAQ</div>
+						</a>
+						<a href="" class="footer-link__box">
+							<div class="footer-link__text">Support</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<div id="popup_auth" aria-hidden="true" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close"></button>
+				<div class="popup__header">
+					<div class="popup__title">Вход в кабинет </div>
+					<div class="popup__text">
+						Введите логин и пароль для входа <br> в личный кабинет
+					</div>
+				</div>
+				<form action="" class="popup__form form-authorize">
+					<input type="text" class="form-authorize__input" placeholder="Введите E-mail">
+					<input type="password" class="form-authorize__input" placeholder="Введите пароль">
+					<button type="submit">Войти</button>
+				</form>
+				<div class="popup__registration-box">
+					Еще не зарегистрированы?
+					<a href="" class="popup__registration-link" data-popup="#popup_reg">Зарегистрироваться</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="popup_reg" aria-hidden="true" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close"></button>
+				<div class="popup__header">
+					<div class="popup__title">Зарегистрироватся</div>
+					<div class="popup__text">
+						Заполните данные необходимые для <br> регистрации
+					</div>
+				</div>
+
+				<form action="" class="popup__form form-authorize">
+					<input type="text" class="form-authorize__input" placeholder="Ваше ФИО">
+					<input type="email" class="form-authorize__input" placeholder="Ваше E-mail">
+
+					<input type="tel" class="form-authorize__input" data-inputmask-clearmaskonlostfocus="false" data-inputmask="'mask': '+7 (999) 999 99-99'" placeholder="Номер телефона">
+					<input type="password" class="form-authorize__input" placeholder="Придумайте пароль">
+					<input type="password" class="form-authorize__input" placeholder="Повторите пароль">
+					<button type="submit">Зарегистрироваться</button>
+				</form>
+				<div class="popup__registration-box">
+					Уже зарегистрированы?
+					<a href="" class="popup__registration-link" data-popup="#popup_auth">Войти</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="js/app.min.js"></script>
+</body>
+
+</html>

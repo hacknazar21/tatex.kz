@@ -1,23 +1,37 @@
 .first-screen {
-    &__box {
-        @include adaptiveValue("margin-left", 80, 0, 1440, 1200, 1);
-        @include adaptiveValue("margin-right", 80, 0, 1440, 1200, 1);
-        @include adaptiveValue("border-radius", 24, 0, 1440, 1200, 1);
-        min-height: rem(720);
-        display: flex;
+    &__slider {
+        @media (min-width: $tablet) {
+            border-radius: 24px;
+        }
 
-        justify-content: space-between;
-        background: url("../img/first_screen.png") 100% 100% no-repeat;
-        background-position: center;
-        background-size: cover;
-        @media (max-width: $tablet) {
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-evenly;
+        overflow: hidden;
+        min-height: 0;
+    }
+
+    &__wrapper {
+    }
+
+    &__slide {
+        img {
         }
     }
 
+    &__box {
+        max-width: rem(1280);
+
+        margin: 0 auto;
+        @include adaptiveValue("border-radius", 24, 0, 1440, 1200, 1);
+        max-height: rem(720);
+        display: flex;
+        position: relative;
+
+        justify-content: space-between;
+    }
+
     &__offer {
+        position: absolute;
+        z-index: 2;
+        width: 100%;
         margin-left: rem(80);
         margin-top: math.div(360, 1280) * 100%;
         @media (max-width: $tablet) {
@@ -32,31 +46,83 @@
     }
 
     &__calc {
-        flex: 0 0 rem(502);
-        @include adaptiveValue("width", 502, 400);
+        flex: 0 0 auto;
         padding: 40px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         background-color: #fff;
-        height: auto;
+
         border-radius: rem(24);
-        margin: auto 0;
-        margin-right: rem(30);
         @media (max-width: $tablet) {
-            margin: 0;
-        }
-        @media (max-width: $mobileSmall) {
             width: 100%;
-            border-radius: rem(0);
+            border-radius: 0;
         }
+    }
+
+    &__calc-box {
+        position: absolute;
+        right: rem(30);
+        top: 0;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        @media (max-width: $tablet) {
+            width: 100%;
+            right: 0;
+        }
+    }
+}
+
+.swiper-first-screen {
+}
+.swiper-wrapper {
+}
+.swiper-slide {
+    &__img-ibg {
+        padding-bottom: rem(720);
+        width: rem(1280);
+        img {
+            max-width: 100%;
+        }
+    }
+}
+.swiper-pagination-bullet {
+    background-color: #fcfcfd;
+    height: rem(2);
+    width: rem(56);
+    @media (any-hover: hover) {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+.swiper-pagination-bullet-active {
+    background-color: #cb0e16;
+}
+.swiper-pagination {
+    display: flex;
+    gap: rem(16);
+    position: absolute;
+    width: 100%;
+    bottom: rem(68);
+    left: rem(68);
+    @media (max-width: $tablet) {
+        justify-content: center;
+        left: 0;
+        bottom: rem(34);
     }
 }
 .offer {
     &__title {
         font-weight: bold;
-        @include adaptiveValue("font-size", 48, 25);
+        @include adaptiveValue("font-size", 36, 20);
         line-height: math.div(60, 48) * 100%;
+        @media (max-width: $tablet) {
+            @include adaptiveValue("margin-top", 0, 15);
+        }
     }
 
     &__text {
@@ -108,7 +174,7 @@
             }
         }
         &:last-child {
-            margin: 0px 0px rem(32) 0px;
+            @include adaptiveValue("margin-bottom", 32, 16);
         }
     }
     &__favorite-distance-box {
