@@ -47,6 +47,8 @@
 
     &__calc {
         flex: 0 0 auto;
+        width: rem(510);
+
         padding: 40px;
         display: flex;
         flex-direction: column;
@@ -64,7 +66,7 @@
         position: absolute;
         right: rem(30);
         top: 0;
-        z-index: 2;
+        z-index: 1;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -107,6 +109,8 @@
     gap: rem(16);
     position: absolute;
     width: 100%;
+    z-index: 2;
+
     bottom: rem(68);
     left: rem(68);
     @media (max-width: $tablet) {

@@ -23,12 +23,12 @@ import "../../scss/base/swiper.scss";
 // Полный набор стилей из node_modules
 // import 'swiper/css';
 // Инициализация слайдеров
-function initSliders() {
+async function initSliders() {
 	// Перечень слайдеров
 	// Проверяем, есть ли слайдер на стронице
 	if (document.querySelector('.swiper')) { // Указываем скласс нужного слайдера
 		// Создаем слайдер
-		new Swiper('.swiper', { // Указываем скласс нужного слайдера
+		await new Swiper('.swiper', { // Указываем скласс нужного слайдера
 			// Подключаем модули слайдера
 			// для конкретного случая
 
@@ -107,7 +107,7 @@ function initSliders() {
 	}
 	if (document.querySelector('.swiper-first-screen')) { // Указываем скласс нужного слайдера
 		// Создаем слайдер
-		new Swiper('.swiper-first-screen', { // Указываем скласс нужного слайдера
+		await new Swiper('.swiper-first-screen', { // Указываем скласс нужного слайдера
 			// Подключаем модули слайдера
 			// для конкретного случая
 
@@ -120,15 +120,17 @@ function initSliders() {
 
 			//touchRatio: 0,
 			//simulateTouch: false,
-			loop: true,
-			//preloadImages: false,
-			//lazy: true,
+			loop: false,
+			preloadImages: false,
+			lazy: {
+				loadPrevNext: true, // pre-loads the next image to avoid showing a loading placeholder if possible
+			},
 
 
-			// Эффекты
-			effect: 'fade',
+			// Эффект
+
 			autoplay: {
-				delay: 3000,
+				delay: 5000,
 				disableOnInteraction: false
 			},
 
@@ -137,7 +139,6 @@ function initSliders() {
 
 			pagination: {
 				el: '.swiper-pagination',
-				type: 'bullets',
 				clickable: true
 			},
 

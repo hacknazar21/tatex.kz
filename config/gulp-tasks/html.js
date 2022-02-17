@@ -12,7 +12,8 @@ export const html = () => {
 		.pipe(
 			app.plugins.if(
 				app.isWebP,
-				webpHtmlNosvg()
+				webpHtmlNosvg(),
+
 			)
 		)
 		.pipe(versionNumber({

@@ -34,7 +34,7 @@ const fonts = gulp.series(reset, otfToTtf, ttfToWoff, fonstStyle);
 // Основные задачи будем выполнять параллельно после обработки шрифтов
 const devTasks = gulp.parallel(fonts, gitignore);
 // Основные задачи будем выполнять параллельно после обработки шрифтов
-const buildTasks = gulp.series(fonts, js, gulp.parallel(html, css, images, gitignore), jsDev);
+const buildTasks = gulp.series(fonts, jsDev, js, gulp.parallel(html, css, images, gitignore));
 
 // Экспорт задач
 export { html }
@@ -61,3 +61,9 @@ export { deployZIP }
 
 // Выполнение сценария по умолчанию
 gulp.task('default', development);
+
+
+
+
+
+

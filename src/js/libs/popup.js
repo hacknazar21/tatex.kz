@@ -1,9 +1,11 @@
 // Модуль попапов
+// (c) Фрилансер по жизни, Хмурый Кот
+// Документация по работе в шаблоне: https://template.fls.guru/template-docs/funkcional-popup.html
+// Сниппет (HTML): pl
 
+// Подключение функционала "Чертогов Фрилансера"
 import { isMobile, bodyLockStatus, bodyLock, bodyUnlock, bodyLockToggle, FLS } from "../files/functions.js";
 import { flsModules } from "../files/modules.js";
-import 'intl-tel-input/build/css/intlTelInput.css';
-
 
 // Класс Popup
 class Popup {
@@ -17,8 +19,8 @@ class Popup {
 			// Для сторонних объектов
 			fixElementSelector: '[data-lp]', // Атрибут для элементов с левым паддингом (которые fixed)
 			// Для объекта попапа
-			youtubeAttribute: 'data-youtube', // Атрибут для кода youtube
-			youtubePlaceAttribute: 'data-youtube-place', // Атрибут для вставки ролика youtube
+			youtubeAttribute: 'data-popup-youtube', // Атрибут для кода youtube
+			youtubePlaceAttribute: 'data-popup-youtube-place', // Атрибут для вставки ролика youtube
 			setAutoplayYoutube: true,
 			// Изменение классов
 			classes: {
@@ -42,6 +44,7 @@ class Popup {
 				afterClose: function () { },
 			},
 		}
+		this.youTubeCode;
 		this.isOpen = false;
 		// Текущее окно
 		this.targetOpen = {
@@ -60,8 +63,6 @@ class Popup {
 		}
 		this._dataValue = false;
 		this.hash = false;
-
-		this.fromMenu = false;
 
 		this._reopen = false;
 		this._selectorOpen = false;
@@ -114,6 +115,9 @@ class Popup {
 				this._dataValue = buttonOpen.getAttribute(this.options.attributeOpenButton) ?
 					buttonOpen.getAttribute(this.options.attributeOpenButton) :
 					'error';
+				this.youTubeCode = buttonOpen.getAttribute(this.options.youtubeAttribute) ?
+					buttonOpen.getAttribute(this.options.youtubeAttribute) :
+					null;
 				if (this._dataValue !== 'error') {
 					if (!this.isOpen) this.lastFocusEl = buttonOpen;
 					this.targetOpen.selector = `${this._dataValue}`;
@@ -168,11 +172,6 @@ class Popup {
 		if (bodyLockStatus) {
 			// Если перед открытием попапа был режим lock
 			this.bodyLock = document.documentElement.classList.contains('lock') ? true : false;
-			this.fromMenu = document.documentElement.classList.contains("menu-open") ? true : false;
-			if (this.fromMenu) {
-				document.documentElement.classList.remove("menu-open");
-				document.documentElement.classList.remove("lock");
-			}
 
 			// Если ввести значение селектора (селектор настраивается в options)
 			if (selectorValue && typeof (selectorValue) === "string" && selectorValue.trim() !== "") {
@@ -190,11 +189,9 @@ class Popup {
 
 			if (this.targetOpen.element) {
 				// YouTube
-				if (this.targetOpen.element.hasAttribute(this.options.youtubeAttribute)) {
-					const codeVideo = this.targetOpen.element.getAttribute(this.options.youtubeAttribute);
-
+				if (this.youTubeCode) {
+					const codeVideo = this.youTubeCode;
 					const urlVideo = `https://www.youtube.com/embed/${codeVideo}?rel=0&showinfo=0&autoplay=1`
-
 					const iframe = document.createElement('iframe');
 					iframe.setAttribute('allowfullscreen', '');
 
@@ -203,8 +200,10 @@ class Popup {
 
 					iframe.setAttribute('src', urlVideo);
 
-					if (this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`))
-						this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).appendChild(iframe);
+					if (!this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`)) {
+						const youtubePlace = this.targetOpen.element.querySelector('.popup__text').setAttribute(`${this.options.youtubePlaceAttribute}`, '');
+					}
+					this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).appendChild(iframe);
 				}
 				if (this.options.hashSettings.location) {
 					// Получение хэша и его выставление 
@@ -253,14 +252,13 @@ class Popup {
 				}));
 				this.popupLogging(`Открыл попап`);
 
-			} else this.popupLogging(`Ой ой, такого попапа нет. Проверьте корректность ввода. `);
+			} else this.popupLogging(`Ой ой, такого попапа нет.Проверьте корректность ввода. `);
 		}
 	}
 	close(selectorValue) {
 		if (selectorValue && typeof (selectorValue) === "string" && selectorValue.trim() !== "") {
 			this.previousOpen.selector = selectorValue;
 		}
-
 		if (!this.isOpen || !bodyLockStatus) {
 			return;
 		}
@@ -274,7 +272,7 @@ class Popup {
 		}));
 
 		// YouTube
-		if (this.targetOpen.element.hasAttribute(this.options.youtubeAttribute)) {
+		if (this.youTubeCode) {
 			if (this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`))
 				this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).innerHTML = '';
 		}
@@ -286,7 +284,6 @@ class Popup {
 			!this.bodyLock ? bodyUnlock() : null;
 			this.isOpen = false;
 		}
-		this.bodyLock = false;
 		// Очищение адресной строки
 		this._removeHash();
 		if (this._selectorOpen) {
@@ -321,7 +318,7 @@ class Popup {
 			document.querySelector(`${window.location.hash}`) ? `${window.location.hash}` :
 				null;
 
-		const buttons = document.querySelector(`[${this.options.attributeOpenButton}="${classInHash}"]`) ? document.querySelector(`[${this.options.attributeOpenButton}="${classInHash}"]`) : document.querySelector(`[${this.options.attributeOpenButton}="${classInHash.replace('.', "#")}"]`);
+		const buttons = document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) ? document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) : document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash.replace('.', "#")}"]`);
 		if (buttons && classInHash) this.open(classInHash);
 	}
 	// Утсановка хэша

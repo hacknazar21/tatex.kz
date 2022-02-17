@@ -4,7 +4,7 @@
 	"description": "Start template with Gulp and Webpack",
 	"author": "FLS",
 	"private": true,
-	"license": "GNU General Public License (GPL)",
+	"license": "",
 	"type": "module",
 	"scripts": {
 		"dev": "gulp && webpack serve --progress -c config/webpack.dev.js",
@@ -14,15 +14,15 @@
 		"deploy": "gulp deployFTP --build",
 		"zip": "gulp deployZIP --build",
 		"devbuild": "gulp build --build --nowebp",
-		"tmp": "gulp -f gulpfile.tmp.js"
+		"tmp": "gulp -f gulpfile.tmp.js",
+		"bem": "fls-bemtree-from-html"
 	},
 	"devDependencies": {
 		"copy-webpack-plugin": "latest",
 		"css-loader": "latest",
 		"del": "latest",
-		"extract-loader": "^5.1.0",
 		"file-include-webpack-plugin-replace": "latest",
-		"file-loader": "^6.2.0",
+		"fls-bemtree-from-html": "^1.0.0",
 		"gulp": "latest",
 		"gulp-autoprefixer": "latest",
 		"gulp-clean-css": "latest",
@@ -41,7 +41,7 @@
 		"gulp-util": "latest",
 		"gulp-version-number": "latest",
 		"gulp-webp": "latest",
-		"gulp-webp-html-nosvg": "latest",
+		"gulp-webp-html-nosvg": "^1.0.5",
 		"gulp-webpcss": "latest",
 		"gulp-zip": "latest",
 		"html-webpack-plugin": "latest",
@@ -50,7 +50,6 @@
 		"load-plugins": "latest",
 		"mini-css-extract-plugin": "2.4.7",
 		"nouislider": "latest",
-		"optimize-css-assets-webpack-plugin": "^6.0.1",
 		"pug": "latest",
 		"pug-loader": "latest",
 		"sass": "latest",
@@ -63,6 +62,7 @@
 		"tippy.js": "latest",
 		"transform-runtime": "0.0.0",
 		"vanilla-lazyload": "latest",
+		"vinyl": "^2.2.1",
 		"vinyl-ftp": "latest",
 		"webp-converter": "2.2.3",
 		"webpack": "latest",
@@ -71,7 +71,6 @@
 		"webpack-stream": "latest"
 	},
 	"dependencies": {
-		"intl-tel-input": "^17.0.15",
 		"simplebar": "latest"
 	}
 }
