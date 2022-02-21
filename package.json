@@ -71,6 +71,7 @@
 		"webpack-stream": "latest"
 	},
 	"dependencies": {
+		"intl-tel-input": "^17.0.15",
 		"simplebar": "latest"
 	}
 }

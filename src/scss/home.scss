@@ -35,15 +35,7 @@
             left: 0;
             width: 100%;
             height: 110%;
-            background: url("@img/reviews/background.png") 100% 100% no-repeat;
-            background-position: left;
-            background-size: cover;
-        }
-        .webp & {
-            &::before {
-                background-position: left !important;
-                background-size: cover !important;
-            }
+            background: url("@img/reviews/background.png") left / cover no-repeat;
         }
     }
     &__contacts {

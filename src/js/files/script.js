@@ -2,6 +2,32 @@
 import { isMobile } from "./functions.js";
 // Подключение списка активных модулей
 import { flsModules } from "./modules.js";
+import intlTelInput from 'intl-tel-input';
+import 'intl-tel-input/build/css/intlTelInput.css';
+
+window.onload = function () {
+    const inputs = document.querySelectorAll("[data-phone]");
+    inputs.forEach(input => {
+        var iti = intlTelInput(input, {
+            initialCountry: "kz",
+            autoPlaceholder: 'aggressive',
+            preferredCountries: ['kz', 'ru'],
+        });
+
+        var dialCode = iti.getSelectedCountryData().dialCode;
+        Inputmask({ "mask": `\\${dialCode}(999) 999-9999` }).mask(input);
+
+        input.addEventListener("countrychange", function () {
+            dialCode = iti.getSelectedCountryData().dialCode;
+            Inputmask({ "mask": `\\${dialCode}(999) 999-9999` }).mask(input);
+
+        });
+    });
+
+
+}
+
+
 
 let sortBy = 0;
 const tableDataInit = document.querySelectorAll('.table-history__row-data');
