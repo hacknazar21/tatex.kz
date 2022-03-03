@@ -61,11 +61,11 @@
 		}
 	}
 	@media (max-width: $mobile) {
-		max-height: rem(20);
-		min-height: auto;
-		width: 100%;
 		max-width: none;
-		border: none;
-		justify-content: flex-start;
+		&:not(:last-child) {
+			background-color: #23262f;
+			color: #fcfcfd;
+			margin-bottom: rem(16);
+		}
 	}
 }

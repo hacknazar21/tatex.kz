@@ -1,8 +1,6 @@
 .first-screen {
     &__slider {
-        @media (min-width: $tablet) {
-            border-radius: 24px;
-        }
+        border-radius: 24px;
 
         overflow: hidden;
         min-height: 0;
@@ -22,6 +20,10 @@
         margin: 0 auto;
         @include adaptiveValue("border-radius", 24, 0, 1440, 1200, 1);
         max-height: rem(720);
+
+        @media (max-width: $mobile) {
+            min-height: rem(848);
+        }
         display: flex;
         position: relative;
 
@@ -35,12 +37,10 @@
         margin-left: rem(80);
         margin-top: math.div(360, 1280) * 100%;
         @media (max-width: $tablet) {
-            & .offer__text {
-                display: none;
-            }
             & {
                 margin: rem(0);
-                text-align: center;
+                text-align: left;
+                padding: 0 rem(16);
             }
         }
     }
@@ -58,7 +58,6 @@
         border-radius: rem(24);
         @media (max-width: $tablet) {
             width: 100%;
-            border-radius: 0;
         }
     }
 
@@ -74,6 +73,8 @@
         @media (max-width: $tablet) {
             width: 100%;
             right: 0;
+            padding: 0 rem(16);
+            top: rem(62);
         }
     }
 }
@@ -85,6 +86,9 @@
 .swiper-slide {
     &__img-ibg {
         padding-bottom: rem(720);
+        @media (max-width: $mobile) {
+            padding-bottom: rem(848);
+        }
         width: rem(1280);
         img {
             max-width: 100%;
@@ -122,16 +126,19 @@
 .offer {
     &__title {
         font-weight: bold;
-        @include adaptiveValue("font-size", 36, 20);
-        line-height: math.div(60, 48) * 100%;
-        @media (max-width: $tablet) {
-            @include adaptiveValue("margin-top", 0, 15);
+        @include adaptiveValue("font-size", 36, 31);
+        line-height: math.div(60, 48);
+        @media (max-width: $mobile) {
+            margin-top: rem(30);
         }
     }
 
     &__text {
-        font-size: rem(24);
-        line-height: rem(32);
+        @include adaptiveValue("font-size", 24, 16);
+        @media (max-width: $mobile) {
+            margin-top: rem(16);
+        }
+        line-height: math.div(32, 24);
     }
 }
 

@@ -114,7 +114,7 @@ async function initSliders() {
 
 			slidesPerView: 1,
 			spaceBetween: 0,
-			autoHeight: true,
+			autoHeight: false,
 			speed: 800,
 			modules: [Autoplay, Pagination],
 
@@ -126,10 +126,10 @@ async function initSliders() {
 
 			// Эффект
 
-			autoplay: {
+			/* autoplay: {
 				delay: 5000,
 				disableOnInteraction: false
-			},
+			}, */
 
 
 			// Пагинация

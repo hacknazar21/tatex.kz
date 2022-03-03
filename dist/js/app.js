@@ -8209,15 +8209,11 @@
             if (document.querySelector(".swiper-first-screen")) await new core(".swiper-first-screen", {
                 slidesPerView: 1,
                 spaceBetween: 0,
-                autoHeight: true,
+                autoHeight: false,
                 speed: 800,
                 modules: [ Autoplay, Pagination ],
                 loop: true,
                 preloadImages: true,
-                autoplay: {
-                    delay: 5e3,
-                    disableOnInteraction: false
-                },
                 pagination: {
                     el: ".swiper-pagination",
                     clickable: true
@@ -8334,26 +8330,24 @@
         const da = new DynamicAdapt("max");
         da.init();
         var intl_tel_input = __webpack_require__(699);
-        window.onload = function() {
-            const inputs = document.querySelectorAll("[data-phone]");
-            inputs.forEach((input => {
-                var iti = intl_tel_input(input, {
-                    initialCountry: "kz",
-                    autoPlaceholder: "aggressive",
-                    preferredCountries: [ "kz", "ru" ]
-                });
-                var dialCode = iti.getSelectedCountryData().dialCode;
+        const inputs = document.querySelectorAll("[data-phone]");
+        inputs.forEach((input => {
+            var iti = intl_tel_input(input, {
+                initialCountry: "kz",
+                autoPlaceholder: "aggressive",
+                preferredCountries: [ "kz", "ru" ]
+            });
+            var dialCode = iti.getSelectedCountryData().dialCode;
+            Inputmask({
+                mask: `\\${dialCode}(999) 999-99999`
+            }).mask(input);
+            input.addEventListener("countrychange", (function() {
+                dialCode = iti.getSelectedCountryData().dialCode;
                 Inputmask({
-                    mask: `\\${dialCode}(999) 999-9999`
+                    mask: `\\${dialCode}(999) 999-99999`
                 }).mask(input);
-                input.addEventListener("countrychange", (function() {
-                    dialCode = iti.getSelectedCountryData().dialCode;
-                    Inputmask({
-                        mask: `\\${dialCode}(999) 999-9999`
-                    }).mask(input);
-                }));
             }));
-        };
+        }));
         let sortBy = 0;
         const tableDataInit = document.querySelectorAll(".table-history__row-data");
         function SortTable(data, filterId, direction, columns, rows) {
