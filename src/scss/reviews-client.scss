@@ -1,0 +1,130 @@
+.reviews {
+    &__page {
+    }
+
+    &__container {
+        margin: rem(80) auto;
+        color: #23262f;
+        text-align: center;
+    }
+
+    &__title {
+        font-weight: bold;
+        @include adaptiveValue("font-size", 32, 24);
+        line-height: math.div(38, 32);
+        margin-bottom: rem(80);
+    }
+
+    &__slider {
+    }
+    .swiper {
+    }
+    .swiper-wrapper {
+    }
+    .swiper-slide {
+    }
+    .swiper-pagination {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: rem(160);
+        margin: 0 auto;
+        margin-top: rem(74);
+
+        .swiper-pagination-bullet {
+            width: rem(10);
+            height: rem(10);
+            display: block;
+            border: 1px solid #cb0e16;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .swiper-pagination-bullet-active {
+            background-color: #cb0e16;
+        }
+    }
+}
+.slider-reviews {
+    &__slider {
+        overflow: hidden;
+    }
+
+    &__wrapper {
+    }
+
+    &__slide {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @media (min-width: $tablet) {
+            &.swiper-slide-prev {
+                .slide-reviews__img-ibg {
+                    transform: translate(370%, -140%) scale(0.7143);
+                    mix-blend-mode: normal;
+                    filter: blur(5px);
+                }
+            }
+            &.swiper-slide-next-next {
+                .slide-reviews__img-ibg {
+                    transform: translate(percent(-1800, 160), 50%) scale(0.7143);
+                    mix-blend-mode: normal;
+                    filter: blur(5px);
+                }
+            }
+            &.swiper-slide-prev-prev {
+                .slide-reviews__img-ibg {
+                    transform: translate(percent(1800, 160), 50%) scale(0.7143);
+                    mix-blend-mode: normal;
+                    filter: blur(5px);
+                }
+            }
+            &.swiper-slide-next {
+                .slide-reviews__img-ibg {
+                    transform: translate(-370%, -140%) scale(0.7143);
+                    mix-blend-mode: normal;
+                    filter: blur(5px);
+                }
+            }
+        }
+    }
+}
+
+.slide-reviews {
+    &__text-box {
+        @media (min-width: $mobile) {
+            max-width: percent(569, 1120);
+        }
+
+        @include adaptiveValue("font-size", 24, 17.5);
+        line-height: math.div(32, 24);
+    }
+
+    &__text {
+        font-weight: 500;
+    }
+
+    &__client {
+    }
+
+    &__img-ibg {
+        padding-bottom: rem(98);
+        margin-top: rem(37);
+        margin-bottom: rem(30);
+        transition: transform 0.8s ease 0s;
+
+        img {
+            object-fit: contain;
+            object-position: center;
+            margin: 0 auto;
+        }
+    }
+
+    &__name {
+        font-size: rem(20);
+        line-height: math.div(24, 20);
+        text-align: center;
+
+        color: #25202f;
+    }
+}

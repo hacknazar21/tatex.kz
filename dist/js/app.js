@@ -8171,6 +8171,12 @@
                 stop
             });
         }
+        function updateClasses({$el, slides, activeIndex}) {
+            $el.find(".swiper-slide-prev-prev").removeClass("swiper-slide-prev-prev");
+            slides.eq(activeIndex).prev().prev().addClass("swiper-slide-prev-prev");
+            $el.find(".swiper-slide-next-next").removeClass("swiper-slide-next-next");
+            slides.eq(activeIndex).next().next().addClass("swiper-slide-next-next");
+        }
         async function initSliders() {
             if (document.querySelector(".swiper")) await new core(".swiper", {
                 observer: true,
@@ -8219,6 +8225,32 @@
                     clickable: true
                 },
                 on: {}
+            });
+            if (document.querySelector(".swiper-reviews")) await new core(".swiper-reviews", {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                autoHeight: false,
+                speed: 1e3,
+                modules: [ Autoplay, Pagination ],
+                loop: true,
+                preloadImages: true,
+                loopAdditionalSlides: 2,
+                autoplay: {
+                    delay: 2e3,
+                    disableOnInteraction: false
+                },
+                pagination: {
+                    el: ".swiper-reviews .swiper-pagination",
+                    clickable: true
+                },
+                on: {
+                    init() {
+                        updateClasses(this);
+                    },
+                    slideChange() {
+                        updateClasses(this);
+                    }
+                }
             });
         }
         window.addEventListener("load", (function(e) {

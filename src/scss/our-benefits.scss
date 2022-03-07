@@ -6,10 +6,15 @@
 
     &__title {
         font-weight: bold;
-        @include adaptiveValue("font-size", 32, 25);
+        @include adaptiveValue("font-size", 32, 23.5);
         line-height: math.div(38, 32) * 100%;
         color: #23262f;
         @include adaptiveValue("margin-bottom", 80, 40);
+        margin-right: 92px;
+    }
+
+    &__header {
+        position: relative;
     }
 
     &__slider {
@@ -68,7 +73,7 @@
 .swiper-button-next {
     position: absolute;
     right: 0;
-    top: 0;
+    top: calc(50% - rem(20));
     width: rem(40);
     height: rem(40);
     border-radius: 50%;

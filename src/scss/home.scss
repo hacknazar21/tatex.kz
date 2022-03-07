@@ -8,7 +8,7 @@
     &__first-screen {
         @include adaptiveValue("margin-top", 16, 60);
         @media (max-width: $tablet) {
-            margin-top: rem(70);
+            margin-top: rem(100);
         }
     }
     &__our-benefits {
@@ -56,5 +56,5 @@
 @import "about-us";
 @import "our-benefits";
 @import "questions";
-@import "reviews";
+@import "reviews-client";
 @import "contacts";

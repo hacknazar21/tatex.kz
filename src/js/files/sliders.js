@@ -14,7 +14,13 @@ Navigation, Pagination, Autoplay,
 EffectFade, Lazy, Manipulation
 Подробнее смотри https://swiperjs.com/
 */
+function updateClasses({ $el, slides, activeIndex }) {
+	$el.find('.swiper-slide-prev-prev').removeClass('swiper-slide-prev-prev');
+	slides.eq(activeIndex).prev().prev().addClass('swiper-slide-prev-prev');
 
+	$el.find('.swiper-slide-next-next').removeClass('swiper-slide-next-next');
+	slides.eq(activeIndex).next().next().addClass('swiper-slide-next-next');
+}
 // Стили Swiper
 // Базовые стили
 import "../../scss/base/swiper.scss";
@@ -23,6 +29,7 @@ import "../../scss/base/swiper.scss";
 // Полный набор стилей из node_modules
 // import 'swiper/css';
 // Инициализация слайдеров
+
 async function initSliders() {
 	// Перечень слайдеров
 	// Проверяем, есть ли слайдер на стронице
@@ -181,6 +188,89 @@ async function initSliders() {
 			on: {
 
 			}
+		});
+	}
+	if (document.querySelector('.swiper-reviews')) { // Указываем скласс нужного слайдера
+		// Создаем слайдер
+		await new Swiper('.swiper-reviews', { // Указываем скласс нужного слайдера
+			// Подключаем модули слайдера
+			// для конкретного случая
+
+
+			slidesPerView: 1,
+			spaceBetween: 20,
+			autoHeight: false,
+			speed: 1000,
+			modules: [Autoplay, Pagination],
+
+			//touchRatio: 0,
+			//simulateTouch: false,
+			loop: true,
+			preloadImages: true,
+			loopAdditionalSlides: 2,
+
+			// Эффект
+
+			autoplay: {
+				delay: 2000,
+				disableOnInteraction: false
+			},
+
+
+			// Пагинация
+
+			pagination: {
+				el: '.swiper-reviews .swiper-pagination',
+				clickable: true
+			},
+
+
+
+			// Скроллбар
+			/*
+			scrollbar: {
+				el: '.swiper-scrollbar',
+				draggable: true,
+			},
+			*/
+
+			// Кнопки "влево/вправо"
+			/*navigation: {
+				prevEl: '.swiper-button-prev',
+				nextEl: '.swiper-button-next',
+			},*/
+
+			// Брейкпоинты
+
+			/*	breakpoints: {
+					320: {
+						slidesPerView: 1,
+						spaceBetween: 20,
+						autoHeight: true,
+					},
+					768: {
+						slidesPerView: 2.5,
+						spaceBetween: 20,
+					},
+					992: {
+						slidesPerView: 3.5,
+						spaceBetween: 20,
+					},
+					1268: {
+						slidesPerView: 4.5,
+						spaceBetween: 32,
+					},
+				},
+	*/
+			// События
+			on: {
+				init() {
+					updateClasses(this);
+				},
+				slideChange() {
+					updateClasses(this);
+				},
+			},
 		});
 	}
 }

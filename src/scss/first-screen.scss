@@ -35,7 +35,7 @@
         z-index: 2;
         width: 100%;
         margin-left: rem(80);
-        margin-top: math.div(360, 1280) * 100%;
+        margin-top: percent(360, 1280);
         @media (max-width: $tablet) {
             & {
                 margin: rem(0);
@@ -77,52 +77,52 @@
             top: rem(62);
         }
     }
+    .swiper-first-screen {
+    }
+    .swiper-wrapper {
+    }
+    .swiper-slide {
+        &__img-ibg {
+            padding-bottom: rem(720);
+            @media (max-width: $mobile) {
+                padding-bottom: rem(848);
+            }
+            width: rem(1280);
+            img {
+                max-width: 100%;
+            }
+        }
+    }
+    .swiper-pagination-bullet {
+        background-color: #fcfcfd;
+        height: rem(2);
+        width: rem(56);
+        @media (any-hover: hover) {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+    .swiper-pagination-bullet-active {
+        background-color: #cb0e16;
+    }
+    .swiper-pagination {
+        display: flex;
+        gap: rem(16);
+        position: absolute;
+        width: 100%;
+        z-index: 2;
+
+        bottom: rem(68);
+        left: rem(68);
+        @media (max-width: $tablet) {
+            justify-content: center;
+            left: 0;
+            bottom: rem(34);
+        }
+    }
 }
 
-.swiper-first-screen {
-}
-.swiper-wrapper {
-}
-.swiper-slide {
-    &__img-ibg {
-        padding-bottom: rem(720);
-        @media (max-width: $mobile) {
-            padding-bottom: rem(848);
-        }
-        width: rem(1280);
-        img {
-            max-width: 100%;
-        }
-    }
-}
-.swiper-pagination-bullet {
-    background-color: #fcfcfd;
-    height: rem(2);
-    width: rem(56);
-    @media (any-hover: hover) {
-        &:hover {
-            cursor: pointer;
-        }
-    }
-}
-.swiper-pagination-bullet-active {
-    background-color: #cb0e16;
-}
-.swiper-pagination {
-    display: flex;
-    gap: rem(16);
-    position: absolute;
-    width: 100%;
-    z-index: 2;
-
-    bottom: rem(68);
-    left: rem(68);
-    @media (max-width: $tablet) {
-        justify-content: center;
-        left: 0;
-        bottom: rem(34);
-    }
-}
 .offer {
     &__title {
         font-weight: bold;
@@ -243,9 +243,16 @@
 
     &__input-package {
         @extend .first-screen-calc__input;
-        margin-top: 55px;
+        @include adaptiveValue("margin-top", 55, 30);
+        display: grid;
+        grid-template-columns: rem(24) repeat(3, 33.333%);
+        align-items: center;
+        justify-content: flex-start;
+
+        &::before {
+            margin: 0;
+        }
         & > input {
-            max-width: rem(100);
             text-align: center;
             &:not(:last-child) {
                 border-right: 1px solid #979c9e;
@@ -265,9 +272,11 @@
 .doc-summ {
     &__title {
         font-weight: 500;
-        @include adaptiveValue("font-size", 16, 14);
+        @include adaptiveValue("font-size", 16, 12);
         line-height: math.div(24, 16) * 100%;
         color: #979c9e;
+
+        margin-bottom: rem(8);
     }
 
     &__value {
@@ -291,9 +300,11 @@
 .doc-date {
     &__title {
         font-weight: 500;
-        @include adaptiveValue("font-size", 16, 14);
+        @include adaptiveValue("font-size", 16, 12);
         line-height: math.div(24, 16) * 100%;
         color: #979c9e;
+
+        margin-bottom: rem(8);
     }
 
     &__value {
