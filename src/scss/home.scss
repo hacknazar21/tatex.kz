@@ -7,8 +7,8 @@
     }
     &__first-screen {
         @include adaptiveValue("margin-top", 16, 60);
-        @media (max-width: $tablet) {
-            margin-top: rem(100);
+        @media (max-width: $mobile) {
+            margin-top: rem(82);
         }
     }
     &__our-benefits {

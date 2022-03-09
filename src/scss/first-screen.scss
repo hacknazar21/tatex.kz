@@ -10,8 +10,7 @@
     }
 
     &__slide {
-        img {
-        }
+        position: relative;
     }
 
     &__box {
@@ -21,7 +20,7 @@
         @include adaptiveValue("border-radius", 24, 0, 1440, 1200, 1);
         max-height: rem(720);
 
-        @media (max-width: $mobile) {
+        @media (max-width: $tablet) {
             min-height: rem(848);
         }
         display: flex;
@@ -32,16 +31,16 @@
 
     &__offer {
         position: absolute;
-        z-index: 2;
+        z-index: 3;
         width: 100%;
-        margin-left: rem(80);
-        margin-top: percent(360, 1280);
+        max-width: rem(530);
+        @include adaptiveValue("left", 80, 10, 1440, 991.98);
+        top: 50%;
         @media (max-width: $tablet) {
-            & {
-                margin: rem(0);
-                text-align: left;
-                padding: 0 rem(16);
-            }
+            top: 0;
+            left: rem(16);
+            text-align: left;
+            padding: 0 rem(16);
         }
     }
 
@@ -84,7 +83,7 @@
     .swiper-slide {
         &__img-ibg {
             padding-bottom: rem(720);
-            @media (max-width: $mobile) {
+            @media (max-width: $tablet) {
                 padding-bottom: rem(848);
             }
             width: rem(1280);
@@ -114,7 +113,7 @@
         z-index: 2;
 
         bottom: rem(68);
-        left: rem(68);
+        @include adaptiveValue("left", 80, 10, 1440, 991.98);
         @media (max-width: $tablet) {
             justify-content: center;
             left: 0;
@@ -128,14 +127,14 @@
         font-weight: bold;
         @include adaptiveValue("font-size", 36, 31);
         line-height: math.div(60, 48);
-        @media (max-width: $mobile) {
+        @media (max-width: $tablet) {
             margin-top: rem(30);
         }
     }
 
     &__text {
         @include adaptiveValue("font-size", 24, 16);
-        @media (max-width: $mobile) {
+        @media (max-width: $tablet) {
             margin-top: rem(16);
         }
         line-height: math.div(32, 24);

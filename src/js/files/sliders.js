@@ -41,7 +41,7 @@ async function initSliders() {
 
 			observer: true,
 			observeParents: true,
-			slidesPerView: 4.5,
+			slidesPerView: 'auto',
 			spaceBetween: 32,
 			autoHeight: true,
 			speed: 800,
@@ -88,26 +88,54 @@ async function initSliders() {
 
 			breakpoints: {
 				320: {
-					slidesPerView: 1,
-					spaceBetween: 20,
 					autoHeight: true,
+					spaceBetween: 20,
+
 				},
 				768: {
-					slidesPerView: 2.5,
 					spaceBetween: 20,
+
 				},
 				992: {
-					slidesPerView: 3.5,
+
 					spaceBetween: 20,
 				},
 				1268: {
-					slidesPerView: 4.5,
+
 					spaceBetween: 32,
+
 				},
 			},
 
 			// События
 			on: {
+				init: (swiper) => {
+
+					swiper.slides.forEach(slide => {
+						if (slide.getBoundingClientRect().right > window.innerWidth) {
+							slide.classList.add('_out');
+						}
+
+					});
+				},
+				slideChange(swiper) {
+					if (swiper.wrapperEl.querySelector('._out') != null)
+						swiper.wrapperEl.querySelector('._out').classList.remove('_out');
+
+				},
+				transitionEnd(swiper) {
+					swiper.slides.forEach(slide => {
+						if (slide.getBoundingClientRect().right > window.innerWidth) {
+							slide.classList.add('_out');
+						}
+					});
+				},
+				reachEnd(swiper) {
+					swiper.slides.forEach(slide => {
+						if (swiper.wrapperEl.querySelector('._out') != null)
+							swiper.wrapperEl.querySelector('._out').classList.remove('_out');
+					});
+				}
 
 			}
 		});
@@ -267,8 +295,9 @@ async function initSliders() {
 				init() {
 					updateClasses(this);
 				},
-				slideChange() {
+				slideChange(swiper) {
 					updateClasses(this);
+					swiper.updateSlidesClasses()
 				},
 			},
 		});

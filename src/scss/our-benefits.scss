@@ -1,7 +1,19 @@
 .our-benefits {
+    position: relative;
+
     &__container {
         position: relative;
         overflow-x: visible;
+        &::before {
+            content: "";
+            width: 30%;
+            height: 100%;
+            position: absolute;
+            left: -30%;
+            top: 0;
+            background-color: #fff;
+            z-index: 6;
+        }
     }
 
     &__title {
@@ -18,7 +30,6 @@
     }
 
     &__slider {
-        width: 100vw;
     }
 
     &__wrapper {
@@ -26,10 +37,18 @@
 
     &__slide {
         max-width: rem(256);
+        transition: opacity 0.8s ease 0s;
+        opacity: 1;
+
+        &._out {
+            opacity: 0.6;
+        }
+    }
+    .swiper {
+        overflow: visible;
     }
 }
-.swiper {
-}
+
 .swiper-wrapper {
 }
 .swiper-slide {

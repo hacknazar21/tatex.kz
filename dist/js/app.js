@@ -8181,7 +8181,7 @@
             if (document.querySelector(".swiper")) await new core(".swiper", {
                 observer: true,
                 observeParents: true,
-                slidesPerView: 4.5,
+                slidesPerView: "auto",
                 spaceBetween: 32,
                 autoHeight: true,
                 speed: 800,
@@ -8193,24 +8193,39 @@
                 },
                 breakpoints: {
                     320: {
-                        slidesPerView: 1,
-                        spaceBetween: 20,
-                        autoHeight: true
+                        autoHeight: true,
+                        spaceBetween: 20
                     },
                     768: {
-                        slidesPerView: 2.5,
                         spaceBetween: 20
                     },
                     992: {
-                        slidesPerView: 3.5,
                         spaceBetween: 20
                     },
                     1268: {
-                        slidesPerView: 4.5,
                         spaceBetween: 32
                     }
                 },
-                on: {}
+                on: {
+                    init: swiper => {
+                        swiper.slides.forEach((slide => {
+                            if (slide.getBoundingClientRect().right > window.innerWidth) slide.classList.add("_out");
+                        }));
+                    },
+                    slideChange(swiper) {
+                        if (null != swiper.wrapperEl.querySelector("._out")) swiper.wrapperEl.querySelector("._out").classList.remove("_out");
+                    },
+                    transitionEnd(swiper) {
+                        swiper.slides.forEach((slide => {
+                            if (slide.getBoundingClientRect().right > window.innerWidth) slide.classList.add("_out");
+                        }));
+                    },
+                    reachEnd(swiper) {
+                        swiper.slides.forEach((slide => {
+                            if (null != swiper.wrapperEl.querySelector("._out")) swiper.wrapperEl.querySelector("._out").classList.remove("_out");
+                        }));
+                    }
+                }
             });
             if (document.querySelector(".swiper-first-screen")) await new core(".swiper-first-screen", {
                 slidesPerView: 1,
@@ -8247,8 +8262,9 @@
                     init() {
                         updateClasses(this);
                     },
-                    slideChange() {
+                    slideChange(swiper) {
                         updateClasses(this);
+                        swiper.updateSlidesClasses();
                     }
                 }
             });
@@ -8257,6 +8273,32 @@
             initSliders();
         }));
         let addWindowScrollEvent = false;
+        function headerScroll() {
+            addWindowScrollEvent = true;
+            const header = document.querySelector("header.header");
+            const headerShow = header.hasAttribute("data-scroll-show");
+            const headerShowTimer = header.dataset.scrollShow ? header.dataset.scrollShow : 500;
+            const startPoint = header.dataset.scroll ? header.dataset.scroll : 1;
+            let scrollDirection = 0;
+            let timer;
+            document.addEventListener("windowScroll", (function(e) {
+                const scrollTop = window.scrollY;
+                clearTimeout(timer);
+                if (scrollTop >= startPoint) {
+                    !header.classList.contains("_header-scroll") ? header.classList.add("_header-scroll") : null;
+                    if (headerShow) {
+                        if (scrollTop > scrollDirection) header.classList.contains("_header-show") ? header.classList.remove("_header-show") : null; else !header.classList.contains("_header-show") ? header.classList.add("_header-show") : null;
+                        timer = setTimeout((() => {
+                            !header.classList.contains("_header-show") ? header.classList.add("_header-show") : null;
+                        }), headerShowTimer);
+                    }
+                } else {
+                    header.classList.contains("_header-scroll") ? header.classList.remove("_header-scroll") : null;
+                    if (headerShow) header.classList.contains("_header-show") ? header.classList.remove("_header-show") : null;
+                }
+                scrollDirection = scrollTop <= 0 ? 0 : scrollTop;
+            }));
+        }
         setTimeout((() => {
             if (addWindowScrollEvent) {
                 let windowScroll = new Event("windowScroll");
@@ -8489,5 +8531,6 @@
         formFieldsInit();
         formSubmit(true);
         formViewpass();
+        headerScroll();
     })();
 })();

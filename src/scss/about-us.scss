@@ -1,7 +1,9 @@
 .about-us {
     &__container {
-        display: flex;
-        align-items: center;
+        @media (min-width: $mobile) {
+            display: flex;
+            align-items: center;
+        }
     }
 
     &__text-box {
@@ -27,9 +29,20 @@
         }
     }
 
-    &__img-box {
-        @media (max-width: $tablet) {
-            display: none;
+    &__img-box-ibg {
+        padding-bottom: percent(640, 1120);
+        @media (max-width: $mobile) {
+            padding-bottom: rem(343);
+            @include adaptiveValue("margin-top", 20, 41);
+        }
+        flex: 0 0 percent(700, 1120);
+        img {
+            max-width: 100%;
+            @media (max-width: $mobile) {
+                object-fit: contain;
+                object-position: center;
+            }
+            object-position: left;
         }
     }
 

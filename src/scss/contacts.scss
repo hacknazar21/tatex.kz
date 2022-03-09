@@ -2,11 +2,12 @@
     &__container {
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: rem(164);
         @include adaptiveValue("gap", 164, 0, 1440, 720);
         padding: 0 rem(10);
         @media (max-width: $mobile) {
-            flex-direction: column;
+            flex-direction: column-reverse;
             gap: rem(60);
         }
     }
@@ -14,16 +15,12 @@
     &__map {
         border-radius: rem(32);
         overflow: hidden;
-        & > iframe:last-child {
-            display: none;
-        }
+        flex: 0 0 percent(540, 1120);
+
+        @include adaptiveValue("height", 500, 341);
         @media (max-width: $mobile) {
-            & > iframe:first-child {
-                display: none;
-            }
-            & > iframe:last-child {
-                display: block;
-            }
+            width: 100%;
+            flex: 0 0 rem(341);
         }
     }
 
