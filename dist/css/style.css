@@ -1207,26 +1207,21 @@ body::after {
     margin-top: 3.75rem;
   }
 }
-@media (min-width: 71.875em) {
+@media (min-width: 90em) {
   .page__first-screen {
     margin-top: 1rem;
   }
 }
-@media (min-width: 20em) and (max-width: 71.875em) {
-  @supports (margin-top: clamp( 1rem , 4.8102409639rem  +  -5.3012048193vw , 3.75rem )) {
+@media (min-width: 48em) and (max-width: 90em) {
+  @supports (margin-top: clamp( 1rem , 6.8928571429rem  +  -6.5476190476vw , 3.75rem )) {
     .page__first-screen {
-      margin-top: clamp( 1rem , 4.8102409639rem  +  -5.3012048193vw , 3.75rem );
+      margin-top: clamp( 1rem , 6.8928571429rem  +  -6.5476190476vw , 3.75rem );
     }
   }
-  @supports not (margin-top: clamp( 1rem , 4.8102409639rem  +  -5.3012048193vw , 3.75rem )) {
+  @supports not (margin-top: clamp( 1rem , 6.8928571429rem  +  -6.5476190476vw , 3.75rem )) {
     .page__first-screen {
-      margin-top: calc(3.75rem + -2.75 * (100vw - 20rem) / 51.875);
+      margin-top: calc(3.75rem + -2.75 * (100vw - 48rem) / 42);
     }
-  }
-}
-@media (max-width: 20em) {
-  .page__first-screen {
-    margin-top: 3.75rem;
   }
 }
 @media (max-width: 47.99875em) {
@@ -1680,20 +1675,20 @@ body::after {
   }
 }
 @media (min-width: 20em) and (max-width: 71.875em) {
-  @supports (font-size: clamp( 1rem , 0.9518072289rem  +  0.2409638554vw , 1.125rem )) {
+  @supports (font-size: clamp( 0.875rem , 0.7786144578rem  +  0.4819277108vw , 1.125rem )) {
     .first-screen-calc__input > input::placeholder, .first-screen-calc__input-package > input::placeholder {
-      font-size: clamp( 1rem , 0.9518072289rem  +  0.2409638554vw , 1.125rem );
+      font-size: clamp( 0.875rem , 0.7786144578rem  +  0.4819277108vw , 1.125rem );
     }
   }
-  @supports not (font-size: clamp( 1rem , 0.9518072289rem  +  0.2409638554vw , 1.125rem )) {
+  @supports not (font-size: clamp( 0.875rem , 0.7786144578rem  +  0.4819277108vw , 1.125rem )) {
     .first-screen-calc__input > input::placeholder, .first-screen-calc__input-package > input::placeholder {
-      font-size: calc(1rem + 0.125 * (100vw - 20rem) / 51.875);
+      font-size: calc(0.875rem + 0.25 * (100vw - 20rem) / 51.875);
     }
   }
 }
 @media (max-width: 20em) {
   .first-screen-calc__input > input::placeholder, .first-screen-calc__input-package > input::placeholder {
-    font-size: 1rem;
+    font-size: 0.875rem;
   }
 }
 @media (min-width: 71.875em) {
@@ -1702,20 +1697,20 @@ body::after {
   }
 }
 @media (min-width: 20em) and (max-width: 71.875em) {
-  @supports (font-size: clamp( 1rem , 0.9518072289rem  +  0.2409638554vw , 1.125rem )) {
+  @supports (font-size: clamp( 0.875rem , 0.7786144578rem  +  0.4819277108vw , 1.125rem )) {
     .first-screen-calc__input > input, .first-screen-calc__input-package > input {
-      font-size: clamp( 1rem , 0.9518072289rem  +  0.2409638554vw , 1.125rem );
+      font-size: clamp( 0.875rem , 0.7786144578rem  +  0.4819277108vw , 1.125rem );
     }
   }
-  @supports not (font-size: clamp( 1rem , 0.9518072289rem  +  0.2409638554vw , 1.125rem )) {
+  @supports not (font-size: clamp( 0.875rem , 0.7786144578rem  +  0.4819277108vw , 1.125rem )) {
     .first-screen-calc__input > input, .first-screen-calc__input-package > input {
-      font-size: calc(1rem + 0.125 * (100vw - 20rem) / 51.875);
+      font-size: calc(0.875rem + 0.25 * (100vw - 20rem) / 51.875);
     }
   }
 }
 @media (max-width: 20em) {
   .first-screen-calc__input > input, .first-screen-calc__input-package > input {
-    font-size: 1rem;
+    font-size: 0.875rem;
   }
 }
 .first-screen-calc__input > input:focus-visible, .first-screen-calc__input-package > input:focus-visible {
@@ -1727,20 +1722,20 @@ body::after {
   }
 }
 @media (min-width: 20em) and (max-width: 71.875em) {
-  @supports (margin-bottom: clamp( 1rem , 0.6144578313rem  +  1.9277108434vw , 2rem )) {
+  @supports (margin-bottom: clamp( 0.875rem , 0.4412650602rem  +  2.1686746988vw , 2rem )) {
     .first-screen-calc__input:last-child, .first-screen-calc__input-package:last-child {
-      margin-bottom: clamp( 1rem , 0.6144578313rem  +  1.9277108434vw , 2rem );
+      margin-bottom: clamp( 0.875rem , 0.4412650602rem  +  2.1686746988vw , 2rem );
     }
   }
-  @supports not (margin-bottom: clamp( 1rem , 0.6144578313rem  +  1.9277108434vw , 2rem )) {
+  @supports not (margin-bottom: clamp( 0.875rem , 0.4412650602rem  +  2.1686746988vw , 2rem )) {
     .first-screen-calc__input:last-child, .first-screen-calc__input-package:last-child {
-      margin-bottom: calc(1rem + 1 * (100vw - 20rem) / 51.875);
+      margin-bottom: calc(0.875rem + 1.125 * (100vw - 20rem) / 51.875);
     }
   }
 }
 @media (max-width: 20em) {
   .first-screen-calc__input:last-child, .first-screen-calc__input-package:last-child {
-    margin-bottom: 1rem;
+    margin-bottom: 0.875rem;
   }
 }
 .first-screen-calc__favorite-distance-box {

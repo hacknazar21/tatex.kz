@@ -6,7 +6,7 @@
         @include adaptiveValue("margin-top", 240, 60);
     }
     &__first-screen {
-        @include adaptiveValue("margin-top", 16, 60);
+        @include adaptiveValue("margin-top", 16, 60, 1440, 768);
         @media (max-width: $mobile) {
             margin-top: rem(82);
         }
