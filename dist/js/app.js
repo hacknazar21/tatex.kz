@@ -8466,7 +8466,7 @@
                         tab.classList.add("active-tab");
                     } else console.log("No Found :(");
                 }
-            } else if (event.target.classList.contains("header-search__btn") && null != document.querySelector("._dynamic_adapt_")) {
+            } else if (event.target.classList.contains("header-search__btn") && (null != document.querySelector("._dynamic_adapt_") || window.innerWidth < 860)) {
                 const formInput = document.getElementsByClassName("header-search__form");
                 if (!formInput[0].classList.contains("_action-mobile")) {
                     event.preventDefault();

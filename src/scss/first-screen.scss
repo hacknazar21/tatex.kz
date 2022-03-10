@@ -173,11 +173,11 @@
         & > input {
             &::placeholder {
                 font-weight: bold;
-                @include adaptiveValue("font-size", 18, 15);
+                @include adaptiveValue("font-size", 18, 16);
                 color: #23262f;
             }
             font-weight: bold;
-            @include adaptiveValue("font-size", 18, 15);
+            @include adaptiveValue("font-size", 18, 16);
             color: #23262f;
             &:focus-visible {
                 outline-width: 0;
@@ -255,6 +255,8 @@
             text-align: center;
             &:not(:last-child) {
                 border-right: 1px solid #979c9e;
+            }
+            &::placeholder {
             }
         }
     }

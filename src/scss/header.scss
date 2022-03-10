@@ -37,7 +37,7 @@
 		display: flex;
 		align-items: center;
 		padding: rem(24) rem(10);
-
+		max-width: rem(1280);
 		@media (max-width: $mobile) {
 			padding: rem(20) rem(16);
 			&:first-child {
@@ -50,23 +50,28 @@
 		font-weight: 500;
 		display: flex;
 		align-items: center;
-		font-size: rem(12);
+		font-size: rem(14);
 		line-height: math.div(16, 12) * 100%;
-		span:first-child {
-			background-color: #f2f4f5;
-			padding: rem(5);
-			border-radius: 50%;
+
+		&::before {
+			font-size: rem(24);
+			margin-right: rem(8);
+			color: #c3c5c5;
+		}
+		._icon-tel {
+			position: relative;
+			width: rem(24);
+			height: rem(24);
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			margin-right: rem(8);
-		}
-		span:first-child::before {
-			content: "";
-			width: rem(14);
-			height: rem(14);
-			display: inline-block;
-			background: url(@img/tel.svg) 100% 0 no-repeat;
+			border-radius: 50%;
+			background-color: #c3c5c5;
+			margin-right: 8px;
+			&::before {
+				font-size: rem(14);
+				color: #fff;
+			}
 		}
 		@media (any-hover: hover) {
 			& > span:hover {
@@ -85,7 +90,7 @@
 		flex: 1 1 auto;
 		gap: rem(20);
 		font-weight: 500;
-		@include adaptiveValue("font-size", 12, 16.5);
+		@include adaptiveValue("font-size", 14, 16.5);
 		line-height: math.div(16, 12) * 100%;
 		@media (max-width: $mobile) {
 			color: #72777a;
@@ -94,19 +99,25 @@
 		}
 	}
 
-	&__logo {
-		display: flex;
+	&__logo-ibg {
+		flex: 0 0 rem(150);
+		@include adaptiveValue("padding-bottom", 50, 30);
+		img {
+			max-width: 100%;
+			object-fit: contain;
+			object-position: left;
+		}
 		@media (max-width: $mobile) {
 			flex: 1 1 auto;
+			._action-search & {
+				flex: none;
+				img {
+					width: 0;
+				}
+			}
 		}
 
 		align-items: center;
-		._action-search & {
-			flex: none;
-			img {
-				width: 0;
-			}
-		}
 	}
 	&__right-side {
 		display: flex;
@@ -165,13 +176,17 @@
 			color: #23262f;
 
 			@extend %ic;
-			@extend ._icon-user;
+			@extend ._icon-account;
 			font-size: rem(24);
 		}
 	}
 }
 
 .header-search {
+	@media (min-width: $tablet) {
+		flex: 1 1 auto;
+	}
+
 	&__form {
 		max-width: rem(274);
 		position: relative;
@@ -262,6 +277,9 @@
 }
 
 .menu {
+	@media (min-width: $tablet) {
+		display: contents;
+	}
 	&__open-header {
 		.header__right-side {
 			display: none;
@@ -273,9 +291,13 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		gap: rem(30);
 		.header__right-side {
+			flex: 1 1 auto;
 			display: flex;
-			align-items: center;
+			flex-direction: row;
+			justify-content: flex-end;
+			flex-wrap: wrap;
 		}
 	}
 
@@ -330,7 +352,7 @@
 		margin-left: auto;
 
 		position: relative;
-		width: rem(16);
+		flex: 0 0 rem(16);
 		height: rem(8);
 		cursor: pointer;
 		z-index: 101;

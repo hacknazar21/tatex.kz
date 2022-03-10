@@ -90,8 +90,8 @@
         .questions__question._spoller-init & {
             &::after {
                 @extend %ic;
-                @extend ._icon-arrow;
-                font-size: rem(10);
+                content: "\e901";
+                font-size: rem(24);
                 color: #72777a;
                 transition: transform 0.3s ease 0s;
             }

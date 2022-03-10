@@ -165,7 +165,7 @@
         }
         &::before {
             @extend %ic;
-            @extend ._icon-eye;
+            // @extend ._icon-eye;
             font-size: rem(24);
         }
     }
@@ -310,7 +310,7 @@
 
         & > span::before {
             @extend %ic;
-            @extend ._icon-arrow;
+            @extend ._icon-arrow-down;
             transform: rotate(180deg);
             color: #252426;
             opacity: 0.4;
@@ -327,7 +327,8 @@
         }
         & > span::after {
             @extend %ic;
-            @extend ._icon-arrow;
+            @extend ._icon-arrow-down;
+
             color: #252426;
             opacity: 0.4;
         }

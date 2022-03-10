@@ -26,6 +26,12 @@
 // Стили для отзывчивых картинок (IBG)
 // Сниппет (HTML): ibg (div c картинкой и классами)
 // Сниппет (HTML): ibga (a c картинкой и классами)
+:active,
+:hover,
+:focus {
+	outline: 0;
+	outline-offset: 0;
+}
 [class*="-ibg"] {
 	position: relative;
 	img {

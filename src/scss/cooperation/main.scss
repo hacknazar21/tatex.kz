@@ -48,7 +48,7 @@
         margin-bottom: rem(60);
         &::before {
             @extend %ic;
-            @extend ._icon-arrow;
+            @extend ._icon-arrow-down;
             font-size: rem(12);
             margin-right: 8px;
             transform: rotate(90deg);
