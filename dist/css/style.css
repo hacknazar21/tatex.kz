@@ -1198,9 +1198,6 @@ body::after {
     margin-top: 5.125rem;
   }
 }
-.page__our-benefits {
-  background: #fcfcfd;
-}
 @media (min-width: 71.875em) {
   .page__our-benefits {
     margin-bottom: 5rem;
@@ -2025,6 +2022,7 @@ body::after {
 }
 .our-benefits {
   position: relative;
+  background-color: #fcfcfd;
 }
 .our-benefits__container {
   position: relative;
@@ -2037,7 +2035,7 @@ body::after {
   position: absolute;
   left: -30%;
   top: 0;
-  background-color: #fff;
+  background-color: #fcfcfd;
   z-index: 6;
 }
 .our-benefits__title {

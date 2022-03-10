@@ -1,6 +1,6 @@
 .our-benefits {
     position: relative;
-
+    background-color: #fcfcfd;
     &__container {
         position: relative;
         overflow-x: visible;
@@ -11,7 +11,7 @@
             position: absolute;
             left: -30%;
             top: 0;
-            background-color: #fff;
+            background-color: #fcfcfd;
             z-index: 6;
         }
     }

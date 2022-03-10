@@ -14,7 +14,6 @@
     &__our-benefits {
         @include adaptiveValue("margin-bottom", 80, 30);
 
-        background: #fcfcfd;
         @include adaptiveValue("padding-top ", 80, 30);
         @include adaptiveValue("padding-bottom ", 80, 30);
     }
