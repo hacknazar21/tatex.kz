@@ -621,10 +621,21 @@ body::after {
   font-size: 0.75rem;
   line-height: 133.3333333333%;
 }
-.header__number::before {
-  font-size: 1.5rem;
+.header__number span:first-child {
+  background-color: #f2f4f5;
+  padding: 0.3125rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-right: 0.5rem;
-  color: #c5c5c5;
+}
+.header__number span:first-child::before {
+  content: "";
+  width: 0.875rem;
+  height: 0.875rem;
+  display: inline-block;
+  background: url(../img/tel.svg) 100% 0 no-repeat;
 }
 @media (any-hover: hover) {
   .header__number > span:hover {
@@ -2414,6 +2425,9 @@ body::after {
   line-height: 1.2;
   text-align: center;
   color: #25202f;
+}
+.slide-reviews__company {
+  margin-top: 0.3125rem;
 }
 
 .contacts__container {

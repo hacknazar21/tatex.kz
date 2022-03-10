@@ -8187,6 +8187,10 @@
                 speed: 800,
                 modules: [ Navigation, Autoplay, Pagination ],
                 loop: false,
+                autoplay: {
+                    delay: 3e3,
+                    disableOnInteraction: false
+                },
                 navigation: {
                     prevEl: ".swiper-button-prev",
                     nextEl: ".swiper-button-next"

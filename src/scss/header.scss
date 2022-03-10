@@ -52,10 +52,21 @@
 		align-items: center;
 		font-size: rem(12);
 		line-height: math.div(16, 12) * 100%;
-		&::before {
-			font-size: rem(24);
+		span:first-child {
+			background-color: #f2f4f5;
+			padding: rem(5);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 			margin-right: rem(8);
-			color: rgb(197, 197, 197);
+		}
+		span:first-child::before {
+			content: "";
+			width: rem(14);
+			height: rem(14);
+			display: inline-block;
+			background: url(@img/tel.svg) 100% 0 no-repeat;
 		}
 		@media (any-hover: hover) {
 			& > span:hover {
