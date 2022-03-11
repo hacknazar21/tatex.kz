@@ -321,7 +321,6 @@ h6 {
   .header-button:not(:last-child) {
     background-color: #23262f;
     color: #fcfcfd;
-    margin-bottom: 1rem;
   }
 }
 
@@ -743,10 +742,12 @@ body::after {
 }
 @media (max-width: 47.99875em) {
   .header__right-side {
-    display: inline-flex;
-    flex-direction: column-reverse;
-    align-items: flex-start;
-    flex: 0 0 auto;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .header__right-side a {
+    flex: 1 1 auto;
+    width: 100%;
   }
 }
 @media (max-width: 47.99875em) {
@@ -946,6 +947,7 @@ body::after {
 .menu__block-2 .header__links {
   gap: 20px;
 }
+
 .menu__block-1 {
   margin-bottom: 1rem;
 }
@@ -955,10 +957,13 @@ body::after {
 }
 
 .menu__block-0,
-.menu__block-2,
-.menu__block-3 {
+.menu__block-2 {
   padding: 0.75rem;
   margin-bottom: 0.9375rem;
+}
+
+.menu__block-0 .header__right-side {
+  justify-content: flex-start;
 }
 
 .icon-menu {

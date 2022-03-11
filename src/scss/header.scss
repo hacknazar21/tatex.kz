@@ -114,10 +114,12 @@
 		@include adaptiveValue("gap", 24, 10, 1440, 860, 1);
 		flex: 1 1 auto;
 		@media (max-width: $mobile) {
-			display: inline-flex;
-			flex-direction: column-reverse;
-			align-items: flex-start;
-			flex: 0 0 auto;
+			justify-content: center;
+			flex-direction: column;
+			a {
+				flex: 1 1 auto;
+				width: 100%;
+			}
 		}
 	}
 	&__search {
@@ -300,9 +302,6 @@
 			gap: 20px;
 		}
 	}
-
-	&__block-3 {
-	}
 }
 
 .menu__block-1 {
@@ -314,10 +313,14 @@
 	}
 }
 .menu__block-0,
-.menu__block-2,
-.menu__block-3 {
+.menu__block-2 {
 	padding: rem(12);
 	margin-bottom: rem(15);
+}
+.menu__block-0 {
+	.header__right-side {
+		justify-content: flex-start;
+	}
 }
 //====================================================================================================
 
