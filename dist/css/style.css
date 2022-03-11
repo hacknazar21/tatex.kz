@@ -3309,6 +3309,7 @@ body::after {
   max-width: 80rem;
   margin: 0 auto;
   margin-bottom: 7.5rem;
+  padding: 0 1.5rem;
 }
 
 .payment__back-btn {
