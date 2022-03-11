@@ -132,8 +132,11 @@ body {
 // Подключение стилей отдельных блоков
 @import "header";
 @import "footer";
+@import "page-name";
 
 // Подключение стилей отдельных страниц
 @import "home";
 @import "profile";
 @import "cooperation";
+@import "tracking";
+@import "payment";

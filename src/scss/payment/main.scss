@@ -1,0 +1,121 @@
+.page {
+    &__payment {
+        max-width: rem(1280);
+        margin: 0 auto;
+        margin-bottom: rem(120);
+    }
+}
+.payment {
+    &__back-btn {
+        padding: rem(12) rem(16);
+        display: inline-flex;
+        align-items: center;
+        gap: rem(12);
+        margin-bottom: rem(48);
+        &::before {
+            @extend %ic;
+            content: "\e901";
+            font-size: rem(16);
+            transform: rotate(90deg);
+        }
+    }
+
+    &__body {
+    }
+
+    &__title {
+        font-weight: 700;
+        font-size: rem(24);
+        line-height: math.div(32, 24);
+
+        text-align: center;
+
+        color: #23262f;
+    }
+
+    &__ways {
+        max-width: rem(406);
+        margin: rem(48) auto;
+    }
+
+    &__way {
+        padding: rem(18) rem(32);
+        border: 1px solid #e6e8ec;
+        border-radius: rem(24);
+        display: flex;
+        align-items: center;
+        gap: rem(16);
+        min-height: rem(80);
+        transition: background-color 0.3s ease 0s;
+        @media (any-hover: hover) {
+            &:hover {
+                cursor: pointer;
+                background-color: #e6e8ec;
+            }
+        }
+        &:not(:last-child) {
+            margin-bottom: rem(16);
+        }
+    }
+
+    &__price {
+        font-weight: 700;
+        font-size: rem(24);
+        line-height: math.div(32, 24);
+
+        text-align: center;
+
+        color: #23262f;
+
+        margin-bottom: rem(64);
+    }
+
+    &__cancel-btn {
+        display: block;
+        max-width: rem(200);
+        margin: 0 auto;
+        padding: rem(14) 0;
+        width: 100%;
+    }
+}
+.back-btn {
+}
+.payment-way {
+    &__img {
+    }
+
+    &__body {
+    }
+
+    &__body-title {
+        font-weight: 500;
+        font-size: rem(16);
+        line-height: math.div(24, 16);
+        color: #23262f;
+        margin-bottom: rem(4);
+    }
+
+    &__body-value {
+        font-weight: 400;
+        font-size: rem(12);
+        line-height: math.div(16, 12);
+        color: #72777a;
+    }
+}
+.payment-button {
+    font-weight: 700;
+    font-size: rem(14);
+    line-height: math.div(20, 14);
+    text-align: center;
+    color: #23262f;
+    border: 2px solid #e6e8ec;
+    border-radius: rem(90);
+
+    transition: background-color 0.3s ease 0s;
+    @media (any-hover: hover) {
+        &:hover {
+            cursor: pointer;
+            background-color: #e6e8ec;
+        }
+    }
+}

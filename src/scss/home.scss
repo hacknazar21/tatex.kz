@@ -1,15 +1,17 @@
 //====================================================================================================
 .page {
+    & > section:first-child {
+        @include adaptiveValue("margin-top", 16, 60, 1440, 768);
+        @media (max-width: $mobile) {
+            margin-top: rem(82);
+        }
+    }
     &__about-us {
         @include adaptiveValue("margin-bottom", 80, 30);
 
         @include adaptiveValue("margin-top", 240, 60);
     }
     &__first-screen {
-        @include adaptiveValue("margin-top", 16, 60, 1440, 768);
-        @media (max-width: $mobile) {
-            margin-top: rem(82);
-        }
     }
     &__our-benefits {
         @include adaptiveValue("margin-bottom", 80, 30);

@@ -177,8 +177,6 @@
 	}
 
 	&__form {
-		max-width: rem(274);
-		position: relative;
 		transition: max-width 0.8s ease 0s;
 		@media (max-width: rem(860)) {
 			max-width: rem(32);
@@ -189,15 +187,8 @@
 	}
 
 	&__input {
-		width: 100%;
-		border: 1px solid #e3e5e6;
-		border-radius: 8px;
-		padding: 12px 0;
-		padding-left: 16px;
-		line-height: 114%;
-		color: #72777a;
 		transition: visibility 0.5s ease 0s;
-		font-size: rem(16);
+
 		@media (max-width: rem(860)) {
 			opacity: 0;
 			transition: opacity 0.5s ease 0s;
@@ -208,27 +199,13 @@
 	}
 
 	&__btn {
-		width: 32px;
-		height: 32px;
-		position: absolute;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		right: 0;
-		top: 50%;
-		margin-top: -16px;
-		margin-right: 4px;
-		@media (min-width: $mobile) {
-			background: #23262f;
-			color: #fff;
-			font-size: rem(16);
-		}
-		border-radius: 8px;
 		color: #000;
 		font-size: rem(24);
-		&::before {
-			@extend %ic;
-			@extend ._icon-search;
+		background: none;
+		@media (min-width: $mobile) {
+			background-color: #23262f;
+			color: #fff;
+			font-size: rem(16);
 		}
 	}
 }
