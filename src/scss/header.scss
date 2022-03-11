@@ -197,6 +197,7 @@
 		line-height: 114%;
 		color: #72777a;
 		transition: visibility 0.5s ease 0s;
+		font-size: rem(16);
 		@media (max-width: rem(860)) {
 			opacity: 0;
 			transition: opacity 0.5s ease 0s;
