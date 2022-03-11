@@ -21,7 +21,7 @@
         max-height: rem(720);
 
         @media (max-width: $tablet) {
-            min-height: rem(848);
+            min-height: rem(900);
         }
         display: flex;
         position: relative;
@@ -84,7 +84,7 @@
         &__img-ibg {
             padding-bottom: rem(720);
             @media (max-width: $tablet) {
-                padding-bottom: rem(848);
+                padding-bottom: rem(900);
             }
             width: rem(1280);
             img {
@@ -170,7 +170,7 @@
             align-items: center;
             justify-content: center;
         }
-        & > input {
+        & input {
             &::placeholder {
                 font-weight: bold;
                 @include adaptiveValue("font-size", 18, 14);
@@ -240,20 +240,36 @@
     &__btn {
     }
 
+    &__inputs {
+        display: grid;
+        grid-template-columns: repeat(3, 33.333%);
+        width: 100%;
+        padding-left: rem(10);
+        flex-wrap: wrap;
+        @media (max-width: $mobileSmall) {
+            grid-template-columns: 1fr;
+        }
+    }
+
     &__input-package {
         @extend .first-screen-calc__input;
+
         @include adaptiveValue("margin-top", 55, 30);
-        display: grid;
-        grid-template-columns: rem(24) repeat(3, 33.333%);
         align-items: center;
         justify-content: flex-start;
-
         &::before {
             margin: 0;
         }
-        & > input {
+        & input {
             text-align: center;
+            @media (max-width: $mobileSmall) {
+                padding: rem(2);
+                text-align: left;
+            }
             &:not(:last-child) {
+                @media (max-width: $mobileSmall) {
+                    border-right: none;
+                }
                 border-right: 1px solid #979c9e;
             }
             &::placeholder {

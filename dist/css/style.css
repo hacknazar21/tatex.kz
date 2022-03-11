@@ -579,17 +579,6 @@ body::after {
   flex: 0 0 1rem;
   padding: 0.0625rem 0;
 }
-.menu-open .header__menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: #fff;
-  z-index: 100;
-  overflow: auto;
-  padding: 2.0625rem 1rem;
-}
 .header__container {
   display: flex;
   align-items: center;
@@ -939,32 +928,20 @@ body::after {
 .menu__open-header .header__right-side {
   display: none;
 }
-.menu-open .menu__open-header {
-  padding: 0 0.75rem;
-  margin-bottom: 1.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.875rem;
-}
-.menu-open .menu__open-header .header__right-side {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-}
 .menu__body {
-  width: 0;
-  height: 0;
-  transform: translateY(-500px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  transform: translateX(-200%);
+  transition: transform 0.5s ease 0s;
+  padding: 1rem;
+  background-color: #fff;
 }
 .menu-open .menu__body {
-  transition: transform 0.5s ease 0s;
-  width: auto;
-  height: auto;
-  transform: translateY(0);
-  display: block;
+  transform: translateX(0);
 }
 .menu__block-2 .header__links {
   gap: 20px;
@@ -977,10 +954,11 @@ body::after {
   border-bottom: 1px solid #e6e8ec;
 }
 
+.menu__block-0,
 .menu__block-2,
 .menu__block-3 {
   padding: 0.75rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.9375rem;
 }
 
 .icon-menu {
@@ -991,14 +969,14 @@ body::after {
     display: block;
     margin-left: auto;
     position: relative;
-    width: 1rem;
-    height: 0.5rem;
+    width: 1.625rem;
+    height: 0.8125rem;
     cursor: pointer;
     z-index: 101;
   }
   .icon-menu::before, .icon-menu::after {
     content: "";
-    transition: all 0.3s ease 0s;
+    transition: all 0.5s ease 0s;
     right: 0;
     position: absolute;
     width: 100%;
@@ -1447,7 +1425,7 @@ body::after {
 }
 @media (max-width: 61.99875em) {
   .first-screen__box {
-    min-height: 53rem;
+    min-height: 56.25rem;
   }
 }
 .first-screen__offer {
@@ -1521,7 +1499,7 @@ body::after {
 }
 @media (max-width: 61.99875em) {
   .first-screen .swiper-slide__img-ibg {
-    padding-bottom: 53rem;
+    padding-bottom: 56.25rem;
   }
 }
 .first-screen .swiper-slide__img-ibg img {
@@ -1661,59 +1639,59 @@ body::after {
   align-items: center;
   justify-content: center;
 }
-.first-screen-calc__input > input, .first-screen-calc__input-package > input {
+.first-screen-calc__input input, .first-screen-calc__input-package input {
   font-weight: bold;
   color: #23262f;
 }
-.first-screen-calc__input > input::placeholder, .first-screen-calc__input-package > input::placeholder {
+.first-screen-calc__input input::placeholder, .first-screen-calc__input-package input::placeholder {
   font-weight: bold;
   color: #23262f;
 }
 @media (min-width: 71.875em) {
-  .first-screen-calc__input > input::placeholder, .first-screen-calc__input-package > input::placeholder {
+  .first-screen-calc__input input::placeholder, .first-screen-calc__input-package input::placeholder {
     font-size: 1.125rem;
   }
 }
 @media (min-width: 20em) and (max-width: 71.875em) {
   @supports (font-size: clamp( 0.875rem , 0.7786144578rem  +  0.4819277108vw , 1.125rem )) {
-    .first-screen-calc__input > input::placeholder, .first-screen-calc__input-package > input::placeholder {
+    .first-screen-calc__input input::placeholder, .first-screen-calc__input-package input::placeholder {
       font-size: clamp( 0.875rem , 0.7786144578rem  +  0.4819277108vw , 1.125rem );
     }
   }
   @supports not (font-size: clamp( 0.875rem , 0.7786144578rem  +  0.4819277108vw , 1.125rem )) {
-    .first-screen-calc__input > input::placeholder, .first-screen-calc__input-package > input::placeholder {
+    .first-screen-calc__input input::placeholder, .first-screen-calc__input-package input::placeholder {
       font-size: calc(0.875rem + 0.25 * (100vw - 20rem) / 51.875);
     }
   }
 }
 @media (max-width: 20em) {
-  .first-screen-calc__input > input::placeholder, .first-screen-calc__input-package > input::placeholder {
+  .first-screen-calc__input input::placeholder, .first-screen-calc__input-package input::placeholder {
     font-size: 0.875rem;
   }
 }
 @media (min-width: 71.875em) {
-  .first-screen-calc__input > input, .first-screen-calc__input-package > input {
+  .first-screen-calc__input input, .first-screen-calc__input-package input {
     font-size: 1.125rem;
   }
 }
 @media (min-width: 20em) and (max-width: 71.875em) {
   @supports (font-size: clamp( 0.875rem , 0.7786144578rem  +  0.4819277108vw , 1.125rem )) {
-    .first-screen-calc__input > input, .first-screen-calc__input-package > input {
+    .first-screen-calc__input input, .first-screen-calc__input-package input {
       font-size: clamp( 0.875rem , 0.7786144578rem  +  0.4819277108vw , 1.125rem );
     }
   }
   @supports not (font-size: clamp( 0.875rem , 0.7786144578rem  +  0.4819277108vw , 1.125rem )) {
-    .first-screen-calc__input > input, .first-screen-calc__input-package > input {
+    .first-screen-calc__input input, .first-screen-calc__input-package input {
       font-size: calc(0.875rem + 0.25 * (100vw - 20rem) / 51.875);
     }
   }
 }
 @media (max-width: 20em) {
-  .first-screen-calc__input > input, .first-screen-calc__input-package > input {
+  .first-screen-calc__input input, .first-screen-calc__input-package input {
     font-size: 0.875rem;
   }
 }
-.first-screen-calc__input > input:focus-visible, .first-screen-calc__input-package > input:focus-visible {
+.first-screen-calc__input input:focus-visible, .first-screen-calc__input-package input:focus-visible {
   outline-width: 0;
 }
 @media (min-width: 71.875em) {
@@ -1768,9 +1746,19 @@ body::after {
 .first-screen-calc__params.active-tab {
   display: block;
 }
-.first-screen-calc__input-package {
+.first-screen-calc__inputs {
   display: grid;
-  grid-template-columns: 1.5rem repeat(3, 33.333%);
+  grid-template-columns: repeat(3, 33.333%);
+  width: 100%;
+  padding-left: 0.625rem;
+  flex-wrap: wrap;
+}
+@media (max-width: 29.99875em) {
+  .first-screen-calc__inputs {
+    grid-template-columns: 1fr;
+  }
+}
+.first-screen-calc__input-package {
   align-items: center;
   justify-content: flex-start;
 }
@@ -1799,11 +1787,22 @@ body::after {
 .first-screen-calc__input-package::before {
   margin: 0;
 }
-.first-screen-calc__input-package > input {
+.first-screen-calc__input-package input {
   text-align: center;
 }
-.first-screen-calc__input-package > input:not(:last-child) {
+@media (max-width: 29.99875em) {
+  .first-screen-calc__input-package input {
+    padding: 0.125rem;
+    text-align: left;
+  }
+}
+.first-screen-calc__input-package input:not(:last-child) {
   border-right: 1px solid #979c9e;
+}
+@media (max-width: 29.99875em) {
+  .first-screen-calc__input-package input:not(:last-child) {
+    border-right: none;
+  }
 }
 .doc-summ__title {
   font-weight: 500;
