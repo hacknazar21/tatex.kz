@@ -952,12 +952,14 @@ body::after {
   height: 100vh;
   overflow: auto;
   transform: translateX(-200%);
+  opacity: 0;
   transition: transform 0.5s ease 0s;
   padding: 1rem;
   background-color: #fff;
 }
 .menu-open .menu__body {
   transform: translateX(0);
+  opacity: 1;
 }
 .menu__block-2 .header__links {
   gap: 20px;
@@ -3300,7 +3302,7 @@ body::after {
   height: 1.5px;
   width: 5px;
   top: 50%;
-  left: calc(50% - 5px);
+  left: calc(50% - 5.5px);
   transform: rotate(45deg);
 }
 .checkbox__input[type=checkbox]:checked + label > span:first-child::after {

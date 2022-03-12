@@ -264,11 +264,13 @@
 		height: 100vh;
 		overflow: auto;
 		transform: translateX(-200%);
+		opacity: 0;
 		transition: transform 0.5s ease 0s;
 		padding: rem(16);
 		background-color: #fff;
 		.menu-open & {
 			transform: translateX(0);
+			opacity: 1;
 		}
 	}
 
