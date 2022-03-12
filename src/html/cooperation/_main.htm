@@ -10,69 +10,134 @@
         </div>
         <div class="coop__form-box">
             <form action="#" class="coop__form coop-form">
-                <h3 class="coop-form__personal-title">Личные данные</h3>
-                <div class="coop-form__personal coop_grid">
-                    <div class="coop-form__input-box">
-                        <div class="coop-form__input-title _nessesary">Фамилия</div>
-                        <input type="text" name="form[]" value="" data-error="Ошибка" placeholder="Фамилия"
-                            class="input coop-form__input ">
+                <div class="coop-form__block">
+                    <h3 class="coop-form__personal-title">Личные данные</h3>
+                    <div class="coop-form__personal coop_grid">
+                        <div class="coop-form__input-box">
+                            <div class="coop-form__input-title _nessesary">ФИО</div>
+                            <input type="text" name="form[]" value="" data-error="Ошибка" placeholder="ФИО"
+                                class="input coop-form__input ">
+                        </div>
+                        <div class="coop-form__input-box">
+                            <div class="coop-form__input-title _nessesary">Контактный телефон</div>
+                            <input type="tel" data-phone class="input coop-form__input"
+                                data-inputmask-clearmaskonlostfocus="true" placeholder="Номер телефона">
+                        </div>
+                        <div class="coop-form__input-box">
+                            <div class="coop-form__input-title _nessesary">E-mail</div>
+                            <input type="text" name="form[]" value="" data-error="Ошибка" placeholder="E-mail"
+                                class="input coop-form__input ">
+                        </div>
+                        <div class="coop-form__input-box">
+                            <div class="coop-form__input-title _nessesary">Название компании</div>
+                            <input type="text" name="form[]" value="" data-error="Ошибка"
+                                placeholder="Название компании" class="input coop-form__input ">
+                        </div>
+                        <div class="coop-form__input-box">
+                            <div class="coop-form__input-title">Сфера деятельности</div>
+                            <input type="text" name="form[]" value="" data-error="Ошибка"
+                                placeholder="Сфера деятельности" class="input coop-form__input ">
+                        </div>
                     </div>
-                    <div class="coop-form__input-box">
-                        <div class="coop-form__input-title _nessesary">Имя</div>
-                        <input type="text" name="form[]" value="" data-error="Ошибка" placeholder="Имя"
-                            class="input coop-form__input ">
+                </div>
+                <div class="coop-form__block">
+                    <h3 class="coop-form__personal-title">Услуга</h3>
+                    <div class="coop-form__personal coop_grid">
+                        <div class="coop-form__input-box">
+                            <div class="coop_grid__checkbox checkbox">
+                                <input id="c_1" data-error="Ошибка" class="checkbox__input" type="checkbox" value="1"
+                                    name="form[]">
+                                <label for="c_1" class="checkbox__label">
+                                    <span></span>
+                                    <span class="checkbox__text">Доставка почты</span>
+                                </label>
+                            </div>
+                            <div class="coop_grid__checkbox checkbox">
+                                <input id="c_2" data-error="Ошибка" class="checkbox__input" type="checkbox" value="1"
+                                    name="form[]">
+                                <label for="c_2" class="checkbox__label">
+                                    <span></span>
+                                    <span class="checkbox__text">Доставка груза</span>
+                                </label>
+                            </div>
+                            <div class="coop_grid__checkbox checkbox">
+                                <input id="c_3" data-error="Ошибка" class="checkbox__input" type="checkbox" value="1"
+                                    name="form[]">
+                                <label for="c_3" class="checkbox__label">
+                                    <span></span>
+                                    <span class="checkbox__text">Доставка для интернет магазинов</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="coop-form__input-box">
+                            <div class="coop_grid__checkbox checkbox">
+                                <input id="c_4" data-error="Ошибка" class="checkbox__input" type="checkbox" value="1"
+                                    name="form[]">
+                                <label for="c_4" class="checkbox__label">
+                                    <span></span>
+                                    <span class="checkbox__text">Доставка по времени</span>
+                                </label>
+                            </div>
+                            <div class="coop_grid__checkbox checkbox">
+                                <input id="c_5" data-error="Ошибка" class="checkbox__input" type="checkbox" value="1"
+                                    name="form[]">
+                                <label for="c_5" class="checkbox__label">
+                                    <span></span>
+                                    <span class="checkbox__text">Доставка по времени</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="coop-form__input-box">
+                            <div class="coop-form__input-title _nessesary">Ожидаемый объем отправлений (шт в месяц)
+                            </div>
+                            <input type="text" name="form[]" value="" data-error="Ошибка"
+                                placeholder="Ожидаемый объем отправлений (шт в месяц)" class="input coop-form__input ">
+                        </div>
+                        <div class="coop-form__input-box">
+                            <div class="coop-form__input-title _nessesary"> Характер груза
+                            </div>
+                            <input type="text" name="form[]" value="" data-error="Ошибка" placeholder="Характер груза"
+                                class="input coop-form__input ">
+                        </div>
                     </div>
-                    <div class="coop-form__input-box">
-                        <div class="coop-form__input-title _nessesary">Отчество</div>
-                        <input type="text" name="form[]" value="" data-error="Ошибка" placeholder="Отчество"
-                            class="input coop-form__input ">
+                </div>
+                <div class="coop-form__block">
+                    <h3 class="coop-form__personal-title">Геограция отправок</h3>
+                    <div class="coop-form__personal coop_grid">
+                        <div class="coop-form__input-box">
+                            <div class="coop_grid__checkbox checkbox">
+                                <input id="geo_kz" data-error="Ошибка" class="checkbox__input" type="checkbox" value="1"
+                                    name="geo_kz">
+                                <label for="geo_kz" class="checkbox__label">
+                                    <span></span>
+                                    <span class="checkbox__text">По Казахстану</span>
+                                </label>
+                            </div>
+                            <div class="coop_grid__checkbox checkbox">
+                                <input id="geo_sng" data-error="Ошибка" class="checkbox__input" type="checkbox"
+                                    value="1" name="geo_sng">
+                                <label for="geo_sng" class="checkbox__label">
+                                    <span></span>
+                                    <span class="checkbox__text">СНГ и дальнее зарубежье</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="coop-form__input-box">
+                            <div class="coop_grid__checkbox checkbox">
+                                <input id="geo_import" data-error="Ошибка" class="checkbox__input" type="checkbox"
+                                    value="1" name="geo_import">
+                                <label for="geo_import" class="checkbox__label">
+                                    <span></span>
+                                    <span class="checkbox__text">Импорт</span>
+                                </label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="coop-form__input-box">
-                        <div class="coop-form__input-title _nessesary">Должность</div>
-                        <input type="text" name="form[]" value="" data-error="Ошибка" placeholder="Должность"
-                            class="input coop-form__input ">
-                    </div>
-                    <div class="coop-form__input-box">
-                        <div class="coop-form__input-title _nessesary">Контактный телефон</div>
-                        <input type="text" name="form[]" value="" data-error="Ошибка" placeholder="Контактный телефон"
-                            class="input coop-form__input ">
-                    </div>
-                    <div class="coop-form__input-box">
-                        <div class="coop-form__input-title _nessesary">E-mail</div>
-                        <input type="text" name="form[]" value="" data-error="Ошибка" placeholder="E-mail"
-                            class="input coop-form__input ">
-                    </div>
-                    <div class="coop-form__input-box">
-                        <div class="coop-form__input-title _nessesary">Название компании</div>
-                        <input type="text" name="form[]" value="" data-error="Ошибка" placeholder="Название компании"
-                            class="input coop-form__input ">
-                    </div>
-                    <div class="coop-form__input-box">
-                        <div class="coop-form__input-title">Сфера деятельности</div>
-                        <input type="text" name="form[]" value="" data-error="Ошибка" placeholder="Сфера деятельности"
-                            class="input coop-form__input ">
-                    </div>
-                    <div class="coop-form__input-box">
-                        <div class="coop-form__input-title _nessesary">Город</div>
-                        <input type="text" name="form[]" value="" data-error="Ошибка" placeholder="Город"
-                            class="input coop-form__input ">
-                    </div>
-                    <div class="coop-form__input-box">
-                        <div class="coop-form__input-title">БИН</div>
-                        <input type="text" name="form[]" value="" data-error="Ошибка" placeholder="БИН"
-                            class="input coop-form__input ">
-                    </div>
-                    <div class="coop-form__input-box">
-                        <div class="coop-form__input-title _nessesary">Адрес</div>
-                        <input type="text" name="form[]" value="" data-error="Ошибка" placeholder="Адрес"
-                            class="input coop-form__input ">
-                    </div>
-                    <div class="coop-form__input-box">
-                        <div class="coop-form__input-title">Веб-сайт</div>
-                        <input type="text" name="form[]" value="" data-error="Ошибка" placeholder="Веб-сайт"
-                            class="input coop-form__input ">
-                    </div>
+                </div>
 
+                <div class="coop-form__submit-box">
+                    <a href="/" class="coop-form__cancel coop-btn">Отмена</a>
+                    <button type="submit" class="coop-form__submit coop-btn">Отправить</button>
                 </div>
             </form>
         </div>

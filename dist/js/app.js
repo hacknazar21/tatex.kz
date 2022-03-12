@@ -4665,17 +4665,6 @@
                 FLS(`[Формы]: ${message}`);
             }
         }
-        function formViewpass() {
-            document.addEventListener("click", (function(e) {
-                let targetElement = e.target;
-                if (targetElement.closest('[class*="__viewpass"]')) {
-                    e.preventDefault();
-                    let inputType = targetElement.classList.contains("active") ? "password" : "text";
-                    targetElement.parentElement.querySelector("input").setAttribute("type", inputType);
-                    targetElement.classList.toggle("active");
-                }
-            }));
-        }
         __webpack_require__(125);
         const inputMasks = document.querySelectorAll("input");
         if (inputMasks.length) flsModules.inputmask = Inputmask().mask(inputMasks);
@@ -8409,22 +8398,23 @@
         da.init();
         var intl_tel_input = __webpack_require__(699);
         const inputs = document.querySelectorAll("[data-phone]");
+        const checkboxes = document.querySelectorAll(".checkbox");
+        checkboxes.forEach((checkbox => {
+            checkbox.addEventListener("click", (event => {
+                console.log(event.target);
+                if (event.target.checked) event.target.classList.add("active"); else if (event.target.classList.contains("active")) event.target.classList.remove("active");
+            }));
+        }));
         inputs.forEach((input => {
-            var iti = intl_tel_input(input, {
+            intl_tel_input(input, {
                 initialCountry: "kz",
                 autoPlaceholder: "aggressive",
-                preferredCountries: [ "kz", "ru" ]
+                preferredCountries: [ "kz", "ru" ],
+                separateDialCode: true
             });
-            var dialCode = iti.getSelectedCountryData().dialCode;
             Inputmask({
-                mask: `\\${dialCode}(999) 999-99999`
+                mask: `(999) 999-99999`
             }).mask(input);
-            input.addEventListener("countrychange", (function() {
-                dialCode = iti.getSelectedCountryData().dialCode;
-                Inputmask({
-                    mask: `\\${dialCode}(999) 999-99999`
-                }).mask(input);
-            }));
         }));
         let sortBy = 0;
         const tableDataInit = document.querySelectorAll(".table-history__row-data");
@@ -8534,7 +8524,6 @@
         spollers();
         formFieldsInit();
         formSubmit(true);
-        formViewpass();
         headerScroll();
     })();
 })();

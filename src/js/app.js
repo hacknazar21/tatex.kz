@@ -84,7 +84,7 @@ flsForms.formSubmit(true);
 // flsForms.formQuantity();
 
 /* Модуль формы "показать пароль" */
-flsForms.formViewpass();
+//flsForms.formViewpass();
 
 /* Модуль звездного рейтинга */
 // flsForms.formRating();

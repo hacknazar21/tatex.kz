@@ -47,6 +47,8 @@
         background-color: #fcfcfd;
     }
     &__coop {
+        margin-bottom: rem(142);
+        @include adaptiveValue("margin-bottom", 142, 24);
     }
 }
 ._hide {

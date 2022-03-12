@@ -6,21 +6,32 @@ import intlTelInput from 'intl-tel-input';
 import 'intl-tel-input/build/css/intlTelInput.css';
 
 const inputs = document.querySelectorAll("[data-phone]");
+const checkboxes = document.querySelectorAll(".checkbox");
+
+checkboxes.forEach(checkbox => {
+
+    checkbox.addEventListener('click', (event) => {
+        console.log(event.target);
+        if (event.target.checked) {
+            event.target.classList.add('active');
+        }
+        else if (event.target.classList.contains('active')) {
+            event.target.classList.remove('active');
+        }
+    });
+});
 
 inputs.forEach(input => {
     var iti = intlTelInput(input, {
         initialCountry: "kz",
         autoPlaceholder: 'aggressive',
         preferredCountries: ['kz', 'ru'],
+        separateDialCode: true
     });
 
-    var dialCode = iti.getSelectedCountryData().dialCode;
-    Inputmask({ "mask": `\\${dialCode}(999) 999-99999` }).mask(input);
+    Inputmask({ "mask": `(999) 999-99999` }).mask(input);
 
-    input.addEventListener("countrychange", function () {
-        dialCode = iti.getSelectedCountryData().dialCode;
-        Inputmask({ "mask": `\\${dialCode}(999) 999-99999` }).mask(input);
-    });
+
 });
 
 
