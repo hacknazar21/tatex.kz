@@ -35,18 +35,57 @@
 	}
 }
 .button {
-	display: inline-flex;
-	border: 1px solid #e3e5e6;
 	border-radius: 90px;
-	color: #202325;
-	font-weight: bold;
+	@include adaptiveValue("min-width", 200, 155);
+	min-height: rem(40);
+	font-weight: 700;
+	text-align: center;
+	border: 2px solid #e3e5e6;
+	color: #23262f;
+	padding: rem(12) 0;
 	transition: background-color 0.3s ease 0s, color 0.3s ease 0s;
-	@media (max-width: $mobile) {
-		display: flex;
+	&.radio {
+		display: none;
+		& + label {
+			color: #23262f;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			@include adaptiveValue("min-width", 200, 155);
+			border: 2px solid #e3e5e6;
+			transition: background-color 0.3s ease 0s;
+			border-radius: 90px;
+			@media (any-hover: hover) {
+				&:hover {
+					background-color: #e3e5e6;
+					cursor: pointer;
+				}
+			}
+			min-height: rem(40);
+		}
+		&:checked + label {
+			border: none;
+			background-color: #23262f;
+			color: #fff;
+		}
 	}
-	&._fw {
-		width: 100%;
+	@media (any-hover: hover) {
+		&:hover {
+			background-color: #e3e5e6;
+		}
 	}
+
+	&.cancel {
+		display: inline-block;
+	}
+	&.submit {
+		color: #ffffff;
+		background-color: #cb0e16;
+	}
+}
+.buttons-box {
+	display: inline-flex;
+	gap: rem(12);
 }
 .header-button {
 	flex: 0 0 rem(158);

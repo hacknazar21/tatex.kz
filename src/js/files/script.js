@@ -4,23 +4,99 @@ import { isMobile } from "./functions.js";
 import { flsModules } from "./modules.js";
 import intlTelInput from 'intl-tel-input';
 import 'intl-tel-input/build/css/intlTelInput.css';
+import datepicker from 'js-datepicker'
+
 
 const inputs = document.querySelectorAll("[data-phone]");
 const checkboxes = document.querySelectorAll(".checkbox");
+const radiobuttons = document.querySelectorAll(".radio");
+const datafor = document.querySelectorAll("[data-for]");
+const calendares = document.querySelectorAll(".calendar");
 
-checkboxes.forEach(checkbox => {
 
-    checkbox.addEventListener('click', (event) => {
-        console.log(event.target);
-        if (event.target.checked) {
-            event.target.classList.add('active');
-        }
-        else if (event.target.classList.contains('active')) {
-            event.target.classList.remove('active');
-        }
+let dataforList = {
+    name: [],
+    data: []
+};
+if (calendares.length != 0) {
+    const picker = new datepicker('.calendar', {
+        formatter: (input, date, instance) => {
+            const value = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+            input.value = value // => '1/1/2099'
+        },
+        customMonths: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+        customDays: ['Пон', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вос']
+
+
     });
-});
 
+    let today = new Date();
+    today.setUTCHours(today.getUTCHours() + 6)
+    let hours = today.getUTCHours();
+    let minutes = today.getUTCMinutes();
+    if (hours > 15 && minutes > 30) {
+        today.setUTCDate(today.getUTCDate() + 1)
+        picker.setMin(today);
+    }
+    else
+        picker.setMin(today);
+
+    setInterval(() => {
+        today = new Date();
+        today.setUTCHours(today.getUTCHours() + 6)
+        hours = today.getUTCHours();
+        minutes = today.getUTCMinutes();
+        if (hours > 15 && minutes > 30) {
+            today.setUTCDate(today.getUTCDate() + 1)
+            picker.setMin(today);
+        }
+        else
+            picker.setMin(today);
+
+    }, 60000)
+
+}
+if (datafor.length != 0) {
+    datafor.forEach(data => {
+        dataforList.name.push(data.dataset.for);
+        dataforList.data.push(data);
+        data.remove();
+    });
+}
+if (radiobuttons.length != 0) {
+    radiobuttons.forEach(radiobutton => {
+        if (radiobutton.checked) {
+            radiobutton.classList.add('active');
+            const index = dataforList.name.findIndex(el => el == radiobutton.value);
+            document.querySelector(".order__type").insertAdjacentElement("afterend", dataforList.data[index]);
+        }
+        radiobutton.addEventListener('click', (event) => {
+            if (event.target.checked) {
+                document.querySelector('.radio.active').classList.remove('active');
+                radiobutton.classList.add('active');
+                const index = dataforList.name.findIndex(el => el == event.target.value);
+                document.querySelector('.form-order__body').remove();
+
+                document.querySelector(".order__type").insertAdjacentElement("afterend", dataforList.data[index]);
+            }
+
+        });
+    });
+}
+if (checkboxes.length != 0) {
+    checkboxes.forEach(checkbox => {
+
+        checkbox.addEventListener('click', (event) => {
+            console.log(event.target);
+            if (event.target.checked) {
+                event.target.classList.add('active');
+            }
+            else if (event.target.classList.contains('active')) {
+                event.target.classList.remove('active');
+            }
+        });
+    });
+}
 inputs.forEach(input => {
     var iti = intlTelInput(input, {
         initialCountry: "kz",
@@ -29,7 +105,7 @@ inputs.forEach(input => {
         separateDialCode: true
     });
 
-    Inputmask({ "mask": `(999) 999-99999` }).mask(input);
+    Inputmask({ "mask": `(999) 999-9999` }).mask(input);
 
 
 });

@@ -151,37 +151,16 @@
     &__input-box {
     }
     &__input {
-        display: flex;
-        position: relative;
-        color: #979c9e;
-        font-size: rem(24);
+        margin-bottom: rem(16);
+        padding: 0;
         padding-bottom: 12px;
+        border: none;
         &::after {
             content: "";
             position: absolute;
             bottom: 0;
             width: 100%;
             border-bottom: 1px solid #f2f4f5;
-        }
-        margin-bottom: rem(16);
-        &::before {
-            margin-right: rem(12);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        & input {
-            &::placeholder {
-                font-weight: bold;
-                @include adaptiveValue("font-size", 18, 16);
-                color: #23262f;
-            }
-            font-weight: bold;
-            @include adaptiveValue("font-size", 18, 16);
-            color: #23262f;
-            &:focus-visible {
-                outline-width: 0;
-            }
         }
         &:last-child {
             @include adaptiveValue("margin-bottom", 32, 16);

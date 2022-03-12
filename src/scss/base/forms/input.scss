@@ -1,5 +1,7 @@
 //<INPUT>
 // Снипет (HTML): inp
+@import "~js-datepicker/src/datepicker";
+
 input[type="text"],
 input[type="email"],
 input[type="tel"],
@@ -9,13 +11,46 @@ textarea {
 	appearance: none;
 }
 .input {
-	width: 100%;
-	display: block;
-	padding: 16px;
+	.iti {
+		font-size: rem(16);
+	}
+	.iti__country-name,
+	.iti__selected-dial-code {
+		color: #090a0a;
+	}
+	.iti--separate-dial-code .iti__selected-flag {
+		background: none;
+	}
+	display: flex;
+	position: relative;
+	color: #979c9e;
+	font-size: rem(24);
+	padding: rem(12);
+
+	&::before {
+		margin-right: rem(12);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 	border: 1px solid #e3e5e6;
 	border-radius: 8px;
-	font-size: rem(16);
-	color: #090a0a;
+	& input {
+		flex: 1 1 auto;
+		font-weight: 400;
+
+		&::placeholder {
+			@include adaptiveValue("font-size", 18, 16);
+			font-weight: 400;
+			color: #72777a;
+		}
+		font-weight: bold;
+		@include adaptiveValue("font-size", 18, 16);
+		color: #090a0a;
+		&:focus-visible {
+			outline-width: 0;
+		}
+	}
 	&._focus {
 	}
 	&._error {

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title>Оформить посылку</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20220313012212">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header" data-scroll-show data-scroll="1">
+			<div class="header__container">
+				<div data-da=".menu__block-1, 767.98" class="header__links links-header">
+					<a href="" class="links-header__link">О компании</a>
+					<a href="" class="links-header__link">Частые вопросы</a>
+					<a href="/cooperation.html" class="links-header__link">Сотрудничество</a>
+				</div>
+
+				<div data-da=".menu__block-0, 767.98" class="header__right-side">
+					<a href="tel:+77057774600" class="header__number">
+						<span class="_icon-tel"></span>
+						<span>+7 (705) 777-46-00</span>
+					</a>
+					<a href="" class="header__number _icon-telegram"><span>Наш Телеграм</span></a>
+				</div>
+			</div>
+			<div class="header__container">
+				<a href="/" class="header__logo-ibg">
+					<img src="img/logo.svg" alt="tatex">
+				</a>
+				<div class="header__search header-search search">
+					<form action="" class="header-search__form search-form">
+						<input type="text" class="header-search__input search-input" placeholder="Введите трек-код">
+						<button class="header-search__btn search-btn"></button>
+					</form>
+				</div>
+				<div data-da=".menu__block-2, 767.98" class="header__right-side header__menu-box">
+					<a href="/order.html" class="header__questions-btn button header-button">Оформить
+						заявку</a>
+					<a href="" class="header__questions-btn button header-button">Вызвать
+						курьера</a>
+
+				</div>
+				<div class="header__menu menu">
+					<div class="menu__open-header">
+						<button type="button" class="menu__icon icon-menu"></button>
+					</div>
+					<div class="menu__body">
+						<div class="menu__block-0"></div>
+						<div class="menu__block-1"></div>
+						<div class="menu__block-2"></div>
+
+					</div>
+				</div>
+			</div>
+
+		</header>
+		<main class="page">
+			<section class="page__name page-name">
+				<h1 class="page-name__title"><a href="/">Оформить посылку</a></h1>
+			</section>
+			<section class="page__order order">
+				<div class="order__container">
+
+					<h2 class="order__title title-h2">Тип посылки</h2>
+
+					<div class="order__body">
+						<form action="#" class="order__form form-order">
+							<div class="order__type">
+								<input checked type="radio" class="form-order__type-btn button radio" id="typedocument" name="type" value="document">
+								<label class="form-order__label" for="typedocument">Документ</label>
+								<input type="radio" class="form-order__type-btn button radio" id="typepackage" name="type" value="package">
+								<label class="form-order__label" for="typepackage">Посылка</label>
+							</div>
+							<div data-for="document" class="form-order__body">
+								<div class="form-order__section">
+									<h2 class="form-order__title title-h2">Вес и габариты</h2>
+									<div class="form-order__grid">
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Вес(кг)</div>
+											<div class="input _icon-weight">
+												<input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Вес(кг)" data-placeholder="Вес(кг)" class="form-order__input">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-order__section">
+									<h2 class="form-order__title title-h2">Заполните данные о посылке</h2>
+									<div class="form-order__grid">
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Город отправителя</div>
+											<div class="input">
+												<select name="form[]" class="form" data-pseudo-label>
+													<option value="" selected>Город</option>
+													<option value="1">Алматы</option>
+													<option value="2">Астана</option>
+													<option value="3">Актобе</option>
+													<option value="4">Шымкент</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Город получателя</div>
+											<div class="input">
+												<select name="form[]" class="form" data-pseudo-label>
+													<option value="" selected>Город</option>
+													<option value="1">Алматы</option>
+													<option value="2">Астана</option>
+													<option value="3">Актобе</option>
+													<option value="4">Шымкент</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Адрес отправителя</div>
+											<div class="input">
+												<input autocomplete="off" type="text" name="sendersAddress" data-error="Ошибка" placeholder="Адрес отправителя" class="form-order__input">
+											</div>
+										</div>
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Адрес получателя</div>
+											<div class="input">
+												<input autocomplete="off" type="text" name="recipientAddress" data-error="Ошибка" placeholder="Адрес получателя" class="form-order__input">
+											</div>
+										</div>
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Почтовый индекс отправителя</div>
+											<div class="input">
+												<input autocomplete="off" type="text" name="postIndexSender" data-error="Ошибка" placeholder="Почтовый индекс" class="form-order__input">
+											</div>
+										</div>
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Почтовый индекс получателя</div>
+											<div class="input">
+												<input autocomplete="off" type="text" name="postIndexRecipient" data-error="Ошибка" placeholder="Почтовый индекс" class="form-order__input">
+											</div>
+										</div>
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Выберите дату отправки</div>
+											<div class="input">
+												<input autocomplete="off" type="text" name="dataSend" data-error="Ошибка" placeholder="Дата отправки" id="dataSend" class="form-order__input calendar">
+												<label for="dataSend" class="_icon-calendar"></label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-order__section">
+									<h2 class="form-order__title title-h2">Заполните данные</h2>
+									<div class="form-order__grid">
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Имя отправителя</div>
+											<div class="input">
+												<input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Введите имя отправителя" class="form-order__input">
+											</div>
+										</div>
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Телефон отправителя</div>
+											<div class="input">
+												<input data-phone autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Номер телефона" class="form-order__input">
+											</div>
+										</div>
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Имя получателя</div>
+											<div class="input">
+												<input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Введите имя получателя" class="form-order__input">
+											</div>
+										</div>
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Телефон получателя</div>
+											<div class="input">
+												<input data-phone autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Номер телефона" class="form-order__input">
+											</div>
+										</div>
+
+									</div>
+									<div class="form-order__input-box">
+										<div class="form-order__input-title">Комментарии и пожелания</div>
+										<div class="input">
+											<textarea name="" id="" placeholder="Комментарий" rows="5" cols="33"></textarea>
+										</div>
+									</div>
+								</div>
+								<div class="form-order__section">
+									<div class="form-order__danger">
+										Нажимая на кнопку вы соглашаетесь с условиями отправки и принимаете <a href="">оферту</a> и
+										<a href="">политику</a> конфиденциальности
+									</div>
+									<div class="form-order__price">
+										К оплате: 2500 ₸
+									</div>
+									<div class="form-order__submit-box buttons-box">
+										<a href="/" class="form-order__cancel button cancel">Отмена</a>
+										<button type="submit" class="form-order__submit button submit"> Перейти к оплате </button>
+									</div>
+								</div>
+							</div>
+							<div data-for="package" class="form-order__body">
+								<div class="form-order__alert form-alert">
+									<h3 class="form-alert__title">Список запрещенных предметов</h3>
+									<ul class="form-alert__list">
+										<li class="form-alert__item">Наркотические средства</li>
+										<li class="form-alert__item">Психотропные вещества и прекурсоры</li>
+										<li class="form-alert__item">Ядерные материалы, радиоактивные и другие опасные вещества</li>
+										<li class="form-alert__item">Яды, ядовитые животные, вещества, растения и семена.</li>
+									</ul>
+								</div>
+								<div class="form-order__section">
+									<h2 class="form-order__title title-h2">Вес и габариты</h2>
+									<div class="form-order__grid">
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Вес(кг)</div>
+											<div class="input _icon-weight">
+												<input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Вес(кг)" data-placeholder="Вес(кг)" class="form-order__input">
+											</div>
+										</div>
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Длина(см)</div>
+											<div class="input _icon-treangle">
+												<input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Длина(см)" data-placeholder="Длина(см)" class="form-order__input">
+											</div>
+										</div>
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Ширина(см)</div>
+											<div class="input _icon-treangle">
+												<input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Ширина(см)" data-placeholder="Ширина(см)" class="form-order__input">
+											</div>
+										</div>
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Высота(см)</div>
+											<div class="input _icon-treangle">
+												<input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Высота(см)" data-placeholder="Высота(см)" class="form-order__input">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-order__section">
+									<h2 class="form-order__title title-h2">Заполните данные о посылке</h2>
+									<div class="form-order__grid">
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Город отправителя</div>
+											<div class="input">
+												<select name="form[]" class="form" data-pseudo-label>
+													<option value="" selected>Город</option>
+													<option value="1">Алматы</option>
+													<option value="2">Астана</option>
+													<option value="3">Актобе</option>
+													<option value="4">Шымкент</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Город получателя</div>
+											<div class="input">
+												<select name="form[]" class="form" data-pseudo-label>
+													<option value="" selected>Город</option>
+													<option value="1">Алматы</option>
+													<option value="2">Астана</option>
+													<option value="3">Актобе</option>
+													<option value="4">Шымкент</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Адрес отправителя</div>
+											<div class="input">
+												<input autocomplete="off" type="text" name="sendersAddress" data-error="Ошибка" placeholder="Адрес отправителя" class="form-order__input">
+											</div>
+										</div>
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Адрес получателя</div>
+											<div class="input">
+												<input autocomplete="off" type="text" name="recipientAddress" data-error="Ошибка" placeholder="Адрес получателя" class="form-order__input">
+											</div>
+										</div>
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Почтовый индекс отправителя</div>
+											<div class="input">
+												<input autocomplete="off" type="text" name="postIndexSender" data-error="Ошибка" placeholder="Почтовый индекс" class="form-order__input">
+											</div>
+										</div>
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Почтовый индекс получателя</div>
+											<div class="input">
+												<input autocomplete="off" type="text" name="postIndexRecipient" data-error="Ошибка" placeholder="Почтовый индекс" class="form-order__input">
+											</div>
+										</div>
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Выберите дату отправки</div>
+											<div class="input">
+												<input autocomplete="off" type="text" name="dataSend" data-error="Ошибка" placeholder="Дата отправки" id="dataSend" class="form-order__input calendar">
+												<label for="dataSend" class="_icon-calendar"></label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-order__section">
+									<h2 class="form-order__title title-h2">Заполните данные</h2>
+									<div class="form-order__grid">
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Имя отправителя</div>
+											<div class="input">
+												<input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Введите имя отправителя" class="form-order__input">
+											</div>
+										</div>
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Телефон отправителя</div>
+											<div class="input">
+												<input data-phone autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Номер телефона" class="form-order__input">
+											</div>
+										</div>
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Имя получателя</div>
+											<div class="input">
+												<input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Введите имя получателя" class="form-order__input">
+											</div>
+										</div>
+										<div class="form-order__input-box">
+											<div class="form-order__input-title">Телефон получателя</div>
+											<div class="input">
+												<input data-phone autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Номер телефона" class="form-order__input">
+											</div>
+										</div>
+
+									</div>
+									<div class="form-order__input-box">
+										<div class="form-order__input-title">Комментарии и пожелания</div>
+										<div class="input">
+											<textarea name="" id="" placeholder="Комментарий" rows="5" cols="33"></textarea>
+										</div>
+									</div>
+								</div>
+								<div class="form-order__section">
+									<div class="form-order__danger">
+										Нажимая на кнопку вы соглашаетесь с условиями отправки и принимаете <a href="">оферту</a> и
+										<a href="">политику</a> конфиденциальности
+									</div>
+									<div class="form-order__price">
+										К оплате: 2500 ₸
+									</div>
+									<div class="form-order__submit-box buttons-box">
+										<a href="/" class="form-order__cancel button cancel">Отмена</a>
+										<button type="submit" class="form-order__submit button submit"> Перейти к оплате </button>
+									</div>
+								</div>
+							</div>
+
+						</form>
+					</div>
+				</div>
+
+			</section>
+		</main>
+		<footer class="footer">
+			<div class="footer__container">
+				<div class="footer__logo-box">
+					<div class="footer__logo">
+						<img src="img/logo.svg" alt="tatex">
+					</div>
+					<div class="footer__copyright">
+						Copyright © Все права защищены
+					</div>
+				</div>
+				<div class="footer__info-box">
+					<div data-da=".footer__logo-box, 767.98" class="footer__social-media footer-social-media">
+						<a href="#" class="footer-social-media__img _icon-facebook"></a>
+						<a href="#" class="footer-social-media__img _icon-instagram"></a>
+						<a href="#" class="footer-social-media__img _icon-telegram"></a>
+					</div>
+					<div class="footer__links footer-link">
+						<a href="" class="footer-link__box">
+							<div class="footer-link__text">Documentation</div>
+						</a>
+						<a href="" class="footer-link__box">
+							<div class="footer-link__text">About Us</div>
+						</a>
+						<a href="" class="footer-link__box">
+							<div class="footer-link__text">Pricing</div>
+						</a>
+						<a href="" class="footer-link__box">
+							<div class="footer-link__text">FAQ</div>
+						</a>
+						<a href="" class="footer-link__box">
+							<div class="footer-link__text">Support</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<div id="popup_auth" aria-hidden="true" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close"></button>
+				<div class="popup__header">
+					<div class="popup__title">Вход в кабинет </div>
+					<div class="popup__text">
+						Введите логин и пароль для входа <br> в личный кабинет
+					</div>
+				</div>
+				<form action="" class="popup__form form-authorize">
+					<input type="text" class="form-authorize__input" placeholder="Введите E-mail">
+					<input type="password" class="form-authorize__input" placeholder="Введите пароль">
+					<button type="submit">Войти</button>
+				</form>
+				<div class="popup__registration-box">
+					Еще не зарегистрированы?
+					<a href="" class="popup__registration-link" data-popup="#popup_reg">Зарегистрироваться</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="popup_reg" aria-hidden="true" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close"></button>
+				<div class="popup__header">
+					<div class="popup__title">Зарегистрироватся</div>
+					<div class="popup__text">
+						Заполните данные необходимые для <br> регистрации
+					</div>
+				</div>
+
+				<form action="" class="popup__form form-authorize">
+					<input type="text" class="form-authorize__input" placeholder="Ваше ФИО">
+					<input type="email" class="form-authorize__input" placeholder="Ваше E-mail">
+
+					<input type="tel" data-phone class="form-authorize__input" data-inputmask-clearmaskonlostfocus="false" placeholder="Номер телефона">
+					<input type="password" class="form-authorize__input" placeholder="Придумайте пароль">
+					<input type="password" class="form-authorize__input" placeholder="Повторите пароль">
+					<button type="submit">Зарегистрироваться</button>
+				</form>
+				<div class="popup__registration-box">
+					Уже зарегистрированы?
+					<a href="" class="popup__registration-link" data-popup="#popup_auth">Войти</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="js/app.min.js?_v=20220313012212"></script>
+</body>
+
+</html>

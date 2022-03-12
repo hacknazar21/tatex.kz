@@ -72,6 +72,7 @@
 	},
 	"dependencies": {
 		"intl-tel-input": "^17.0.15",
+		"js-datepicker": "^5.18.0",
 		"simplebar": "latest"
 	}
 }

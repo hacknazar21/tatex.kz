@@ -14,6 +14,15 @@
 		display: block;
 	}
 }
+._icon-calendar:before {
+	content: "\e90d";
+}
+._icon-treangle:before {
+	content: "\e90e";
+}
+._icon-weight:before {
+	content: "\e90f";
+}
 ._icon-account:before {
 	content: "\e900";
 }
