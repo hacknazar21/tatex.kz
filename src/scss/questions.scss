@@ -113,5 +113,36 @@
 
         margin-top: rem(41);
         color: #72777a;
+        text-align: justify;
+
+        ul {
+            &:not(:last-child) {
+                margin-bottom: rem(30);
+            }
+        }
+        ul li {
+            list-style-type: disc;
+            text-align: justify;
+            &:not(:last-child) {
+                margin-bottom: rem(10);
+            }
+        }
+        p {
+            &:not(:last-child) {
+                margin-bottom: rem(10);
+            }
+        }
+        a {
+            color: red;
+            text-decoration: underline;
+        }
+    }
+
+    &__text-title {
+        font-size: rem(14);
+        font-weight: 700;
+        &:not(:last-child) {
+            margin-bottom: rem(20);
+        }
     }
 }
