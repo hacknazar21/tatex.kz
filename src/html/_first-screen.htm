@@ -43,48 +43,53 @@
             <div class="swiper-pagination"></div>
         </div>
         <div class="first-screen__calc-box">
-            <form data-tabsbox action="" class="first-screen__calc first-screen-calc">
+            <form data-formcalc action="" class="first-screen__calc first-screen-calc">
                 <div class="first-screen-calc__type">
-                    <button data-tabs="1" class="first-screen-calc__doc button calc-button active-btn">Документ</button>
-                    <button data-tabs="2" class="first-screen-calc__package button calc-button">Посылка</button>
-
+                    <input checked type="radio" class="first-screen-calc__type-btn button radio" id="typedocument"
+                        name="type" value="document">
+                    <label class="first-screen-calc__label" for="typedocument">Документ</label>
+                    <input type="radio" class="first-screen-calc__type-btn button radio" id="typepackage" name="type"
+                        value="package">
+                    <label class="first-screen-calc__label" for="typepackage">Посылка</label>
                 </div>
-                <div data-tab="1" class="first-screen-calc__params doc-params active-tab">
-                    <div div class="first-screen-calc__input-box">
+                <div data-for="document" class="first-screen-calc__params doc-params">
+                    <div class="first-screen-calc__input-box">
                         <div class="first-screen-calc__input input _icon-map-arrow">
-                            <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Откуда"
-                                class="first-screen-calc__fromwhere">
+                            <input data-inputcity required autocomplete="off" type="text" name="from" id="from_input"
+                                placeholder="Откуда" class="first-screen-calc__fromwhere">
                         </div>
                         <div class="first-screen-calc__favorite-distance-box">
-                            <a href="" class="first-screen-calc__favorite-link">Алматы</a>
-                            <a href="" class="first-screen-calc__favorite-link">Нур-Султан(Астана)</a>
-                            <a href="" class="first-screen-calc__favorite-link">Шымкент</a>
+                            <a href="" data-tip="from_input" class="first-screen-calc__favorite-link">Алматы</a>
+                            <a href="" data-tip="from_input"
+                                class="first-screen-calc__favorite-link">Нур-Султан(Астана)</a>
+                            <a href="" data-tip="from_input" class="first-screen-calc__favorite-link">Шымкент</a>
                         </div>
                     </div>
                     <div class="first-screen-calc__input-box">
                         <div class="first-screen-calc__input input _icon-location">
-                            <input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Куда"
-                                class="first-screen-calc__where">
+                            <input data-inputcity required autocomplete="off" type="text" name="where" id="where_input"
+                                data-error="Ошибка" placeholder="Куда" class="first-screen-calc__where">
                         </div>
                         <div class="first-screen-calc__favorite-distance-box">
-                            <a href="" class="first-screen-calc__favorite-link">Алматы</a>
-                            <a href="" class="first-screen-calc__favorite-link">Нур-Султан(Астана)</a>
-                            <a href="" class="first-screen-calc__favorite-link">Шымкент</a>
+                            <a href="" data-tip="where_input" class="first-screen-calc__favorite-link">Алматы</a>
+                            <a href="" data-tip="where_input"
+                                class="first-screen-calc__favorite-link">Нур-Султан(Астана)</a>
+                            <a href="" data-tip="where_input" class="first-screen-calc__favorite-link">Шымкент</a>
                         </div>
                     </div>
                     <div class="first-screen-calc__input-box">
                         <div class="first-screen-calc__input input _icon-cart">
-                            <input autocomplete="off" type="text" name="form[]" data-error="Ошибка"
-                                data-inputmask-clearmaskonlostfocus="true"
+                            <input data-inputnumber required autocomplete="off" type="text" name="weight"
+                                data-error="Ошибка" data-inputmask-clearmaskonlostfocus="true"
                                 data-inputmask="'mask': '9{+|1} (кг)', 'greedy' : false" placeholder="Вес (кг)"
                                 class="first-screen-calc__weight">
                         </div>
                     </div>
                 </div>
-                <div data-tab="2" class="first-screen-calc__params package-params">
+                <div data-for="package" class="first-screen-calc__params package-params">
                     <div div class="first-screen-calc__input-box">
                         <div class="first-screen-calc__input input _icon-map-arrow">
-                            <input class="first-screen-calc__fromwhere" placeholder="Откуда">
+                            <input required class="first-screen-calc__fromwhere" placeholder="Откуда">
                         </div>
                         <div class="first-screen-calc__favorite-distance-box">
                             <a href="" class="first-screen-calc__favorite-link">Алматы</a>
@@ -94,7 +99,7 @@
                     </div>
                     <div class="first-screen-calc__input-box">
                         <div class="first-screen-calc__input input _icon-location">
-                            <input class="first-screen-calc__where" placeholder="Куда">
+                            <input required class="first-screen-calc__where" placeholder="Куда">
                         </div>
                         <div class="first-screen-calc__favorite-distance-box">
                             <a href="" class="first-screen-calc__favorite-link">Алматы</a>
@@ -105,39 +110,29 @@
 
                     <div class="first-screen-calc__input-box">
                         <div class="first-screen-calc__input input _icon-cart">
-                            <input class="first-screen-calc__weight" data-inputmask-clearmaskonlostfocus="true"
+                            <input required class="first-screen-calc__weight" data-inputmask-clearmaskonlostfocus="true"
                                 data-inputmask="'mask': '9{+|1} (кг)', 'greedy' : false" placeholder="Вес (кг)">
                         </div>
                     </div>
                     <div class="first-screen-calc__input-box ">
                         <div class="first-screen-calc__input-package input _icon-boxes">
                             <div class="first-screen-calc__inputs">
-                                <input data-inputmask-clearmaskonlostfocus="true"
+                                <input required data-inputmask-clearmaskonlostfocus="true"
                                     data-inputmask="'mask': '9{+|1} (см)', 'greedy' : false"
                                     class="first-screen-calc__height" placeholder="Высота (см)">
-                                <input data-inputmask-clearmaskonlostfocus="true"
+                                <input required data-inputmask-clearmaskonlostfocus="true"
                                     data-inputmask="'mask': '9{+|1} (см)', 'greedy' : false"
                                     class="first-screen-calc__lebgth" placeholder="Длина (см)">
-                                <input data-inputmask-clearmaskonlostfocus="true"
+                                <input required data-inputmask-clearmaskonlostfocus="true"
                                     data-inputmask="'mask': '9{+|1} (см)', 'greedy' : false"
                                     class="first-screen-calc__width" placeholder="Ширина  (см)">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="first-screen-calc__info _hide">
-                    <div class="first-screen-calc__info-box doc-summ">
-                        <div class="doc-summ__title">Стоимость <br>доставки</div>
-                        <div class="doc-summ__value">2500</div>
-                        <div class="doc-summ__text"> Тенге</div>
-                    </div>
-                    <div class="first-screen-calc__info-box doc-date">
-                        <div class="doc-date__title">Ориентировочная <br> дата доставки</div>
-                        <div class="doc-date__value">31.12.2021</div>
-                    </div>
-                </div>
-                <button type="submit" class="first-screen-calc__btn button calc-submit-button">Рассчитать
-                    стоимость</button>
+                <button data-btncalc class="first-screen-calc__btn button calc-submit-button">
+                    Рассчитать стоимость
+                </button>
             </form>
         </div>
     </div>

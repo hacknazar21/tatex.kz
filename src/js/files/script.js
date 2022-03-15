@@ -12,6 +12,23 @@ const checkboxes = document.querySelectorAll(".checkbox");
 const radiobuttons = document.querySelectorAll(".radio");
 const datafor = document.querySelectorAll("[data-for]");
 const calendares = document.querySelectorAll(".calendar");
+const tips = document.querySelectorAll("[data-tip]");
+let deliveryPrice = '', deliveryDate = '';
+const templatePrice = `
+                <div class="first-screen-calc__info">
+                    <div class="first-screen-calc__info-box doc-summ">
+                        <div class="doc-summ__title">Стоимость <br>доставки</div>
+                        <div class="doc-summ__value">${deliveryPrice}</div>
+                        <div class="doc-summ__text"> Тенге</div>
+                    </div>
+                    <div class="first-screen-calc__info-box doc-date">
+                        <div class="doc-date__title">Ориентировочная <br> дата доставки</div>
+                        <div class="doc-date__value">${deliveryDate}</div>
+                    </div>
+                </div>
+`;
+
+
 
 
 let dataforList = {
@@ -68,16 +85,16 @@ if (radiobuttons.length != 0) {
         if (radiobutton.checked) {
             radiobutton.classList.add('active');
             const index = dataforList.name.findIndex(el => el == radiobutton.value);
-            document.querySelector(".order__type").insertAdjacentElement("afterend", dataforList.data[index]);
+            document.querySelector('form [class*="__type"]').insertAdjacentElement("afterend", dataforList.data[index]);
         }
         radiobutton.addEventListener('click', (event) => {
             if (event.target.checked) {
                 document.querySelector('.radio.active').classList.remove('active');
                 radiobutton.classList.add('active');
                 const index = dataforList.name.findIndex(el => el == event.target.value);
-                document.querySelector('.form-order__body').remove();
+                document.querySelector('[data-for]').remove();
 
-                document.querySelector(".order__type").insertAdjacentElement("afterend", dataforList.data[index]);
+                document.querySelector('form [class*="__type"]').insertAdjacentElement("afterend", dataforList.data[index]);
             }
 
         });
@@ -145,6 +162,48 @@ function SortTable(data, filterId, direction, columns, rows) {
         }
     }
     return sortedData;
+}
+
+
+function validateInput(input) {
+    if (input.dataset.inputcity != null) return /^([a-zA-Zа-яА-ЯёЁ]+[-]?[a-zA-Zа-яА-ЯёЁ]*[-]?[a-zA-Zа-яА-ЯёЁ]*[-]?[a-zA-Zа-яА-ЯёЁ]*)$/.test(input.value);
+    else if (input.dataset.inputnumber != null) return /^[0-9]+/.test(input.value);
+}
+
+function calculatePrice(form) {
+    let data = {
+        from: '',
+        where: '',
+        weight: '',
+        height: '',
+        length: '',
+        width: '',
+    }
+    form.querySelectorAll('input[type="radio"]').forEach(radio => {
+        if (radio.checked && radio.value == "document") {
+            const from = form.querySelector('[name="from"]'), //получаем поле from
+                where = form.querySelector('[name="where"]'), //получаем поле where
+                weight = form.querySelector('[name="weight"]'); //получаем поле weight
+            data.from = from.value;
+            data.where = where.value;
+            data.weight = weight.value;
+        }
+        else if (radio.checked && radio.value == "package") {
+            const from = form.querySelector('[name="from"]'), //получаем поле from
+                where = form.querySelector('[name="where"]'), //получаем поле where
+                height = form.querySelector('[name="height"]'), //получаем поле height
+                length = form.querySelector('[name="length"]'), //получаем поле length
+                width = form.querySelector('[name="width"]'), //получаем поле width
+                weight = form.querySelector('[name="weight"]'); //получаем поле weight
+            data.from = from.value;
+            data.where = where.value;
+            data.height = height.value;
+            data.length = length.value;
+            data.width = width.value;
+            data.weight = weight.value;
+        }
+    });
+    console.log(data);
 }
 
 document.addEventListener('click', (event) => {
@@ -242,3 +301,43 @@ document.addEventListener('click', (event) => {
         }
     }
 });
+
+function calculateForm() {
+    const formcalc = document.querySelector('[data-formcalc]');
+    const error = document.createElement('span');
+    error.classList.add('error');
+    error.innerHTML = "Поле заполнено неверно!";
+    formcalc.addEventListener('submit', (event) => {
+        event.preventDefault();
+        let badValidate = false;
+        for (let index = 0; index < event.target.querySelectorAll('input[required]').length; index++) {
+            const input = event.target.querySelectorAll('input[required]')[index];
+            input.addEventListener('focusout', () => {
+                if (formcalc.querySelector('.error') != null)
+                    formcalc.querySelector('.error').remove();
+            });
+            if (!validateInput(input)) {
+                input.focus();
+                input.insertAdjacentElement('afterend', error);
+                badValidate = true;
+                break;
+            }
+        }
+        if (!badValidate) {
+            calculatePrice(formcalc);
+            formcalc.querySelector('[data-btncalc]').innerHTML = "Оформить";
+        }
+
+    });
+}
+
+window.onload = () => {
+    tips.forEach(tip => {
+        tip.addEventListener('click', (event) => {
+            event.preventDefault();
+            document.querySelector(`#${tip.dataset.tip}`).value = tip.innerHTML.split('(')[0];
+        });
+    });
+    calculateForm();
+
+}

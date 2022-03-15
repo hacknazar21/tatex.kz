@@ -201,10 +201,6 @@
     }
 
     &__params {
-        display: none;
-        &.active-tab {
-            display: block;
-        }
     }
 
     &__fromwhere {
@@ -217,6 +213,8 @@
     }
 
     &__btn {
+        background-color: #cb0e16;
+        color: #fff;
     }
 
     &__inputs {
@@ -233,7 +231,6 @@
     &__input-package {
         @extend .first-screen-calc__input;
 
-        @include adaptiveValue("margin-top", 55, 30);
         align-items: center;
         justify-content: flex-start;
         &::before {

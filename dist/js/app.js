@@ -9186,6 +9186,7 @@
         const radiobuttons = document.querySelectorAll(".radio");
         const datafor = document.querySelectorAll("[data-for]");
         const calendares = document.querySelectorAll(".calendar");
+        const tips = document.querySelectorAll("[data-tip]");
         let dataforList = {
             name: [],
             data: []
@@ -9227,15 +9228,15 @@
             if (radiobutton.checked) {
                 radiobutton.classList.add("active");
                 const index = dataforList.name.findIndex((el => el == radiobutton.value));
-                document.querySelector(".order__type").insertAdjacentElement("afterend", dataforList.data[index]);
+                document.querySelector('form [class*="__type"]').insertAdjacentElement("afterend", dataforList.data[index]);
             }
             radiobutton.addEventListener("click", (event => {
                 if (event.target.checked) {
                     document.querySelector(".radio.active").classList.remove("active");
                     radiobutton.classList.add("active");
                     const index = dataforList.name.findIndex((el => el == event.target.value));
-                    document.querySelector(".form-order__body").remove();
-                    document.querySelector(".order__type").insertAdjacentElement("afterend", dataforList.data[index]);
+                    document.querySelector("[data-for]").remove();
+                    document.querySelector('form [class*="__type"]').insertAdjacentElement("afterend", dataforList.data[index]);
                 }
             }));
         }));
@@ -9272,6 +9273,36 @@
             dataToSort.sort(sortTablefcn);
             for (i = 0; i < rows; i++) for (j = 0; j < columns; j++) sortedData.push(dataToSort[i][j]);
             return sortedData;
+        }
+        function validateInput(input) {
+            if (null != input.dataset.inputcity) return /^([a-zA-Zа-яА-ЯёЁ]+[-]?[a-zA-Zа-яА-ЯёЁ]*[-]?[a-zA-Zа-яА-ЯёЁ]*[-]?[a-zA-Zа-яА-ЯёЁ]*)$/.test(input.value); else if (null != input.dataset.inputnumber) return /^[0-9]+/.test(input.value);
+        }
+        function calculatePrice(form) {
+            let data = {
+                from: "",
+                where: "",
+                weight: "",
+                height: "",
+                length: "",
+                width: ""
+            };
+            form.querySelectorAll('input[type="radio"]').forEach((radio => {
+                if (radio.checked && "document" == radio.value) {
+                    const from = form.querySelector('[name="from"]'), where = form.querySelector('[name="where"]'), weight = form.querySelector('[name="weight"]');
+                    data.from = from.value;
+                    data.where = where.value;
+                    data.weight = weight.value;
+                } else if (radio.checked && "package" == radio.value) {
+                    const from = form.querySelector('[name="from"]'), where = form.querySelector('[name="where"]'), height = form.querySelector('[name="height"]'), length = form.querySelector('[name="length"]'), width = form.querySelector('[name="width"]'), weight = form.querySelector('[name="weight"]');
+                    data.from = from.value;
+                    data.where = where.value;
+                    data.height = height.value;
+                    data.length = length.value;
+                    data.width = width.value;
+                    data.weight = weight.value;
+                }
+            }));
+            console.log(data);
         }
         document.addEventListener("click", (event => {
             if (event.target.closest("[data-tabs]")) {
@@ -9358,6 +9389,41 @@
                 }
             }
         }));
+        function calculateForm() {
+            const formcalc = document.querySelector("[data-formcalc]");
+            const error = document.createElement("span");
+            error.classList.add("error");
+            error.innerHTML = "Поле заполнено неверно!";
+            formcalc.addEventListener("submit", (event => {
+                event.preventDefault();
+                let badValidate = false;
+                for (let index = 0; index < event.target.querySelectorAll("input[required]").length; index++) {
+                    const input = event.target.querySelectorAll("input[required]")[index];
+                    input.addEventListener("focusout", (() => {
+                        if (null != formcalc.querySelector(".error")) formcalc.querySelector(".error").remove();
+                    }));
+                    if (!validateInput(input)) {
+                        input.focus();
+                        input.insertAdjacentElement("afterend", error);
+                        badValidate = true;
+                        break;
+                    }
+                }
+                if (!badValidate) {
+                    calculatePrice(formcalc);
+                    formcalc.querySelector("[data-btncalc]").innerHTML = "Оформить";
+                }
+            }));
+        }
+        window.onload = () => {
+            tips.forEach((tip => {
+                tip.addEventListener("click", (event => {
+                    event.preventDefault();
+                    document.querySelector(`#${tip.dataset.tip}`).value = tip.innerHTML.split("(")[0];
+                }));
+            }));
+            calculateForm();
+        };
         window["FLS"] = true;
         isWebp();
         menuInit();

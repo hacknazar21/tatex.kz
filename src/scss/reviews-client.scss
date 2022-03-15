@@ -60,28 +60,28 @@
         @media (min-width: $tablet) {
             &.swiper-slide-prev {
                 .slide-reviews__img-ibg {
-                    transform: translate(370%, -140%) scale(0.7143);
+                    transform: translate(450%, -140%) scale(0.7143);
                     mix-blend-mode: normal;
                     filter: blur(5px);
                 }
             }
             &.swiper-slide-next-next {
                 .slide-reviews__img-ibg {
-                    transform: translate(percent(-1800, 160), 50%) scale(0.7143);
+                    transform: translate(percent(-2100, 160), 50%) scale(0.7143);
                     mix-blend-mode: normal;
                     filter: blur(5px);
                 }
             }
             &.swiper-slide-prev-prev {
                 .slide-reviews__img-ibg {
-                    transform: translate(percent(1800, 160), 50%) scale(0.7143);
+                    transform: translate(percent(2100, 160), 50%) scale(0.7143);
                     mix-blend-mode: normal;
                     filter: blur(5px);
                 }
             }
             &.swiper-slide-next {
                 .slide-reviews__img-ibg {
-                    transform: translate(-370%, -140%) scale(0.7143);
+                    transform: translate(-450%, -140%) scale(0.7143);
                     mix-blend-mode: normal;
                     filter: blur(5px);
                 }

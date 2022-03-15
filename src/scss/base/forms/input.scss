@@ -28,6 +28,7 @@ textarea {
 	padding: rem(12);
 
 	&::before {
+		flex: 0 0 rem(24);
 		margin-right: rem(12);
 		display: flex;
 		align-items: center;
@@ -39,10 +40,31 @@ textarea {
 		flex: 1 1 auto;
 		font-weight: 400;
 
+		& + .error {
+			position: absolute;
+			z-index: 50;
+			font-size: rem(14);
+			background-color: rgba(205, 14, 23, 0.9);
+			border-top-left-radius: rem(20);
+			border-top-right-radius: rem(20);
+			border-bottom-right-radius: rem(20);
+
+			color: #fff;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			right: 0;
+			top: -180%;
+			width: rem(100);
+			height: rem(95);
+			clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 13% 95%, 0 100%, 3% 86%, 0% 75%);
+		}
 		&::placeholder {
 			@include adaptiveValue("font-size", 18, 16);
-			font-weight: 400;
-			color: #72777a;
+			transition: color 0.3s ease 0s;
+			font-weight: 500;
+			color: #acacac;
 		}
 		font-weight: bold;
 		@include adaptiveValue("font-size", 18, 16);

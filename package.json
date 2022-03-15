@@ -71,6 +71,7 @@
 		"webpack-stream": "latest"
 	},
 	"dependencies": {
+		"2gis-maps": "^3.7.0",
 		"intl-tel-input": "^17.0.15",
 		"js-datepicker": "^5.18.0",
 		"simplebar": "latest"

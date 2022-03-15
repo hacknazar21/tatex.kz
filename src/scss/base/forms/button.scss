@@ -21,19 +21,7 @@
 		flex: 0 0 rem(120);
 	}
 }
-.calc-submit-button {
-	flex: 0 0 rem(46);
-	width: rem(336);
-	margin: 0 auto;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: #cb0e16;
-	color: #fff !important;
-	@media (max-width: $mobile) {
-		width: rem(200);
-	}
-}
+
 .button {
 	border-radius: 90px;
 	@include adaptiveValue("min-width", 200, 155);
@@ -51,7 +39,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			@include adaptiveValue("min-width", 200, 155);
+			@include adaptiveValue("min-width", 200, 120);
 			border: 2px solid #e3e5e6;
 			transition: background-color 0.3s ease 0s;
 			border-radius: 90px;
@@ -72,6 +60,7 @@
 	@media (any-hover: hover) {
 		&:hover {
 			background-color: #e3e5e6;
+			color: #23262f;
 		}
 	}
 
