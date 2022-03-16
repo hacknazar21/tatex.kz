@@ -3940,18 +3940,18 @@ body::after {
 .checkbox__input {
   display: none;
 }
-.checkbox__input[type=checkbox]:checked + label > span:first-child {
+.checkbox__input[type=checkbox]:checked + label > span:first-child, .checkbox__input[type=radio]:checked + label > span:first-child {
   border: none;
   background-color: #cb0e16;
 }
-.checkbox__input[type=checkbox]:checked + label > span:first-child::before {
+.checkbox__input[type=checkbox]:checked + label > span:first-child::before, .checkbox__input[type=radio]:checked + label > span:first-child::before {
   height: 1.5px;
   width: 5px;
   top: 50%;
   left: calc(50% - 5.5px);
   transform: rotate(45deg);
 }
-.checkbox__input[type=checkbox]:checked + label > span:first-child::after {
+.checkbox__input[type=checkbox]:checked + label > span:first-child::after, .checkbox__input[type=radio]:checked + label > span:first-child::after {
   height: 1.5px;
   width: 10px;
   top: calc(50% - 1.5px);
@@ -4334,6 +4334,9 @@ body::after {
     row-gap: 1.5rem;
   }
 }
+.form-order__input-box._margin-10 {
+  margin-top: 1.25rem;
+}
 .form-order__input-title {
   font-size: 0.875rem;
   line-height: 1.4285714286;
@@ -4400,6 +4403,13 @@ body::after {
   .form-order__price {
     font-size: 1.1rem;
   }
+}
+.form-order__checkbox .checkbox__label:not(:last-child) {
+  margin-bottom: 0.625rem;
+}
+.form-order__checkbox .checkbox__text {
+  font-weight: 400;
+  color: #23262f;
 }
 .swiper {
   overflow: hidden;

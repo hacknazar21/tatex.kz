@@ -104,6 +104,9 @@
     }
 
     &__input-box {
+        &._margin-10 {
+            margin-top: rem(20);
+        }
     }
 
     &__input-title {
@@ -135,5 +138,24 @@
         line-height: math.div(32, 24);
         color: #23262f;
         margin-bottom: rem(48);
+    }
+
+    &__checkbox {
+        .checkbox__input {
+        }
+
+        .checkbox__label {
+            &:not(:last-child) {
+                margin-bottom: rem(10);
+            }
+        }
+
+        .checkbox__text {
+            font-weight: 400;
+            color: #23262f;
+        }
+    }
+
+    &__label {
     }
 }

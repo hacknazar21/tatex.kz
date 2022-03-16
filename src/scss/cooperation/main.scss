@@ -175,7 +175,8 @@
     &__input {
         display: none;
 
-        &[type="checkbox"]:checked + label > span:first-child {
+        &[type="checkbox"]:checked + label > span:first-child,
+        &[type="radio"]:checked + label > span:first-child {
             border: none;
             background-color: #cb0e16;
 

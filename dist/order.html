@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20220315183137">
+	<link rel="stylesheet" href="css/style.min.css?_v=20220316165640">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -184,11 +184,27 @@
 												<input required autocomplete="off" type="email" name="form[]" data-error="Ошибка" placeholder="Ваш e-mail" class="form-order__input">
 											</div>
 										</div>
+
 									</div>
 									<div class="form-order__input-box">
 										<div class="form-order__input-title">Комментарии и пожелания</div>
 										<div class="input">
 											<textarea name="" id="" placeholder="Комментарий" rows="5" cols="33"></textarea>
+										</div>
+									</div>
+									<div class="form-order__input-box _margin-10">
+										<div class="form-order__input-title">Удобно ли вам распечатать накладную?</div>
+										<div class="form-order__checkbox checkbox">
+											<input type="radio" class="checkbox__input" id="answer_yes" name="type" value="yes">
+											<label class="form-order__label checkbox__label" for="answer_yes">
+												<span></span>
+												<span class="checkbox__text">Да</span>
+											</label>
+											<input type="radio" class="checkbox__input" id="answer_no" name="type" value="no">
+											<label class="form-order__label checkbox__label" for="answer_no">
+												<span></span>
+												<span class="checkbox__text">Нет</span>
+											</label>
 										</div>
 									</div>
 								</div>
@@ -345,6 +361,15 @@
 											<textarea name="" id="" placeholder="Комментарий" rows="5" cols="33"></textarea>
 										</div>
 									</div>
+									<div class="form-order__input-box">
+										<div class="form-order__input-title">Удобно ли вам распечатать накладную?</div>
+										<div class="form-order__checkbox checkbox">
+											<input type="radio" class="checkbox__input" id="answer_yes" name="type" value="yes">
+											<label class="form-order__label" for="answer_yes">Да</label>
+											<input type="radio" class="checkbox__input" id="answer_no" name="type" value="no">
+											<label class="form-order__label" for="answer_no">Нет</label>
+										</div>
+									</div>
 								</div>
 								<div class="form-order__section">
 									<div class="form-order__danger">
@@ -418,15 +443,15 @@
 					<div class="popup__title">Заявка оформлена </div>
 					<div class="popup__text">
 						В течении 10 минут вам на почту придёт письмо с трек-номером
-						<br> для отслеживания заказа
+						<br> для отслеживания заказа и накладная по отправке
 					</div>
 				</div>
 				<a href="/" class="popup__button button">Вернуться на главную</a>
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="http://maps.api.2gis.ru/1.0?_v=20220315183137"></script>
-	<script src="js/app.min.js?_v=20220315183137"></script>
+	<script type="text/javascript" src="http://maps.api.2gis.ru/1.0?_v=20220316165640"></script>
+	<script src="js/app.min.js?_v=20220316165640"></script>
 </body>
 
 </html>
