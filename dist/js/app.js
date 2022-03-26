@@ -4472,6 +4472,9 @@
                 document.documentElement.classList.add(className);
             }));
         }
+        function getHash() {
+            if (location.hash) return location.hash.replace("#", "");
+        }
         let _slideUp = (target, duration = 500, showmore = 0) => {
             if (!target.classList.contains("_slide")) {
                 target.classList.add("_slide");
@@ -4952,7 +4955,7 @@
             }
         }
         flsModules.popup = new Popup({});
-        let gotoblock_gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
+        let gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
             const targetBlockElement = document.querySelector(targetBlock);
             if (targetBlockElement) {
                 let headerItem = "";
@@ -5112,7 +5115,7 @@
                 } else {
                     e.preventDefault();
                     const formError = form.querySelector("._form-error");
-                    if (formError && form.hasAttribute("data-goto-error")) gotoblock_gotoBlock(formError, true, 1e3);
+                    if (formError && form.hasAttribute("data-goto-error")) gotoBlock(formError, true, 1e3);
                 }
             }
             function formSent(form) {
@@ -9045,6 +9048,44 @@
             initSliders();
         }));
         let addWindowScrollEvent = false;
+        function pageNavigation() {
+            document.addEventListener("click", pageNavigationAction);
+            document.addEventListener("watcherCallback", pageNavigationAction);
+            function pageNavigationAction(e) {
+                if ("click" === e.type) {
+                    const targetElement = e.target;
+                    if (targetElement.closest("[data-goto]")) {
+                        const gotoLink = targetElement.closest("[data-goto]");
+                        const gotoLinkSelector = gotoLink.dataset.goto ? gotoLink.dataset.goto : "";
+                        const noHeader = gotoLink.hasAttribute("data-goto-header") ? true : false;
+                        const gotoSpeed = gotoLink.dataset.gotoSpeed ? gotoLink.dataset.gotoSpeed : 500;
+                        const offsetTop = gotoLink.dataset.gotoTop ? parseInt(gotoLink.dataset.gotoTop) : 0;
+                        gotoBlock(gotoLinkSelector, noHeader, gotoSpeed, offsetTop);
+                        e.preventDefault();
+                    }
+                } else if ("watcherCallback" === e.type && e.detail) {
+                    const entry = e.detail.entry;
+                    const targetElement = entry.target;
+                    if ("navigator" === targetElement.dataset.watch) {
+                        document.querySelector(`[data-goto]._navigator-active`);
+                        let navigatorCurrentItem;
+                        if (targetElement.id && document.querySelector(`[data-goto="#${targetElement.id}"]`)) navigatorCurrentItem = document.querySelector(`[data-goto="#${targetElement.id}"]`); else if (targetElement.classList.length) for (let index = 0; index < targetElement.classList.length; index++) {
+                            const element = targetElement.classList[index];
+                            if (document.querySelector(`[data-goto=".${element}"]`)) {
+                                navigatorCurrentItem = document.querySelector(`[data-goto=".${element}"]`);
+                                break;
+                            }
+                        }
+                        if (entry.isIntersecting) navigatorCurrentItem ? navigatorCurrentItem.classList.add("_navigator-active") : null; else navigatorCurrentItem ? navigatorCurrentItem.classList.remove("_navigator-active") : null;
+                    }
+                }
+            }
+            if (getHash()) {
+                let goToHash;
+                if (document.querySelector(`#${getHash()}`)) goToHash = `#${getHash()}`; else if (document.querySelector(`.${getHash()}`)) goToHash = `.${getHash()}`;
+                goToHash ? gotoBlock(goToHash, true, 500, 20) : null;
+            }
+        }
         function headerScroll() {
             addWindowScrollEvent = true;
             const header = document.querySelector("header.header");
@@ -9189,18 +9230,18 @@
         };
         if (0 != calendares.length) {
             const picker = new datepicker_min(".calendar", {
+                startDay: 1,
                 formatter: (input, date, instance) => {
                     const value = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
                     input.value = value;
                 },
                 customMonths: [ "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" ],
-                customDays: [ "Пон", "Вт", "Ср", "Чт", "Пт", "Сб", "Вос" ]
+                customDays: [ "Вос", "Пон", "Вт", "Ср", "Чт", "Пт", "Сб" ]
             });
             let today = new Date;
-            today.setUTCHours(today.getUTCHours() + 6);
             let hours = today.getUTCHours();
             let minutes = today.getUTCMinutes();
-            if (hours > 15 && minutes > 30) {
+            if (hours > 9) {
                 today.setUTCDate(today.getUTCDate() + 1);
                 picker.setMin(today);
             } else picker.setMin(today);
@@ -9387,29 +9428,31 @@
         }));
         function calculateForm() {
             const formcalc = document.querySelector("[data-formcalc]");
-            const error = document.createElement("span");
-            error.classList.add("error");
-            error.innerHTML = "Поле заполнено неверно!";
-            formcalc.addEventListener("submit", (event => {
-                event.preventDefault();
-                let badValidate = false;
-                for (let index = 0; index < event.target.querySelectorAll("input[required]").length; index++) {
-                    const input = event.target.querySelectorAll("input[required]")[index];
-                    input.addEventListener("focusout", (() => {
-                        if (null != formcalc.querySelector(".error")) formcalc.querySelector(".error").remove();
-                    }));
-                    if (!validateInput(input)) {
-                        input.focus();
-                        input.insertAdjacentElement("afterend", error);
-                        badValidate = true;
-                        break;
+            if (null != formcalc) {
+                const error = document.createElement("span");
+                error.classList.add("error");
+                error.innerHTML = "Поле заполнено неверно!";
+                formcalc.addEventListener("submit", (event => {
+                    event.preventDefault();
+                    let badValidate = false;
+                    for (let index = 0; index < event.target.querySelectorAll("input[required]").length; index++) {
+                        const input = event.target.querySelectorAll("input[required]")[index];
+                        input.addEventListener("focusout", (() => {
+                            if (null != formcalc.querySelector(".error")) formcalc.querySelector(".error").remove();
+                        }));
+                        if (!validateInput(input)) {
+                            input.focus();
+                            input.insertAdjacentElement("afterend", error);
+                            badValidate = true;
+                            break;
+                        }
                     }
-                }
-                if (!badValidate) {
-                    calculatePrice(formcalc);
-                    formcalc.querySelector("[data-btncalc]").innerHTML = "Оформить";
-                }
-            }));
+                    if (!badValidate) {
+                        calculatePrice(formcalc);
+                        formcalc.querySelector("[data-btncalc]").innerHTML = "Оформить";
+                    }
+                }));
+            }
         }
         window.onload = () => {
             tips.forEach((tip => {
@@ -9426,6 +9469,7 @@
         spollers();
         formFieldsInit();
         formSubmit(true);
+        pageNavigation();
         headerScroll();
     })();
 })();

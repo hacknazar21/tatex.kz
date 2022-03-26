@@ -37,21 +37,22 @@ let dataforList = {
 };
 if (calendares.length != 0) {
     const picker = new datepicker('.calendar', {
+        startDay: 1,
         formatter: (input, date, instance) => {
             const value = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
             input.value = value // => '1/1/2099'
         },
         customMonths: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-        customDays: ['Пон', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вос']
-
+        customDays: ['Вос', 'Пон', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
 
     });
 
     let today = new Date();
-    today.setUTCHours(today.getUTCHours() + 6)
+
     let hours = today.getUTCHours();
     let minutes = today.getUTCMinutes();
-    if (hours > 15 && minutes > 30) {
+
+    if (hours > 9) {
         today.setUTCDate(today.getUTCDate() + 1)
         picker.setMin(today);
     }
@@ -304,31 +305,33 @@ document.addEventListener('click', (event) => {
 
 function calculateForm() {
     const formcalc = document.querySelector('[data-formcalc]');
-    const error = document.createElement('span');
-    error.classList.add('error');
-    error.innerHTML = "Поле заполнено неверно!";
-    formcalc.addEventListener('submit', (event) => {
-        event.preventDefault();
-        let badValidate = false;
-        for (let index = 0; index < event.target.querySelectorAll('input[required]').length; index++) {
-            const input = event.target.querySelectorAll('input[required]')[index];
-            input.addEventListener('focusout', () => {
-                if (formcalc.querySelector('.error') != null)
-                    formcalc.querySelector('.error').remove();
-            });
-            if (!validateInput(input)) {
-                input.focus();
-                input.insertAdjacentElement('afterend', error);
-                badValidate = true;
-                break;
+    if (formcalc != null) {
+        const error = document.createElement('span');
+        error.classList.add('error');
+        error.innerHTML = "Поле заполнено неверно!";
+        formcalc.addEventListener('submit', (event) => {
+            event.preventDefault();
+            let badValidate = false;
+            for (let index = 0; index < event.target.querySelectorAll('input[required]').length; index++) {
+                const input = event.target.querySelectorAll('input[required]')[index];
+                input.addEventListener('focusout', () => {
+                    if (formcalc.querySelector('.error') != null)
+                        formcalc.querySelector('.error').remove();
+                });
+                if (!validateInput(input)) {
+                    input.focus();
+                    input.insertAdjacentElement('afterend', error);
+                    badValidate = true;
+                    break;
+                }
             }
-        }
-        if (!badValidate) {
-            calculatePrice(formcalc);
-            formcalc.querySelector('[data-btncalc]').innerHTML = "Оформить";
-        }
+            if (!badValidate) {
+                calculatePrice(formcalc);
+                formcalc.querySelector('[data-btncalc]').innerHTML = "Оформить";
+            }
 
-    });
+        });
+    }
 }
 
 window.onload = () => {
