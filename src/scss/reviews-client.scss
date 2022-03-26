@@ -57,31 +57,32 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+
         @media (min-width: $tablet) {
             &.swiper-slide-prev {
                 .slide-reviews__img-ibg {
-                    transform: translate(450%, -140%) scale(0.7143);
+                    transform: translate(60%, -100%) scale(0.7143);
                     mix-blend-mode: normal;
                     filter: blur(5px);
                 }
             }
             &.swiper-slide-next-next {
                 .slide-reviews__img-ibg {
-                    transform: translate(percent(-2100, 160), 50%) scale(0.7143);
+                    transform: translate(-175%, 50%) scale(0.7143);
                     mix-blend-mode: normal;
                     filter: blur(5px);
                 }
             }
             &.swiper-slide-prev-prev {
                 .slide-reviews__img-ibg {
-                    transform: translate(percent(2100, 160), 50%) scale(0.7143);
+                    transform: translate(175%, 50%) scale(0.7143);
                     mix-blend-mode: normal;
                     filter: blur(5px);
                 }
             }
             &.swiper-slide-next {
                 .slide-reviews__img-ibg {
-                    transform: translate(-450%, -140%) scale(0.7143);
+                    transform: translate(-60%, -100%) scale(0.7143);
                     mix-blend-mode: normal;
                     filter: blur(5px);
                 }
@@ -95,7 +96,7 @@
         @media (min-width: $mobile) {
             max-width: percent(569, 1120);
         }
-
+        height: 40%;
         @include adaptiveValue("font-size", 24, 17.5);
         line-height: math.div(32, 24);
     }
@@ -105,6 +106,8 @@
     }
 
     &__client {
+        width: 100%;
+        flex: 1 1 auto;
     }
 
     &__img-ibg {
@@ -112,7 +115,8 @@
         margin-top: rem(37);
         margin-bottom: rem(30);
         transition: transform 0.8s ease 0s;
-
+        border-radius: 15px;
+        overflow: hidden;
         img {
             object-fit: contain;
             object-position: center;

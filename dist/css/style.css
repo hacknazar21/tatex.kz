@@ -1242,6 +1242,11 @@ body::after {
   color: #979c9e;
 }
 
+._nessesary::after {
+  content: " *";
+  color: #cb0e16;
+}
+
 @media (max-width: 47.99875em) {
   .header {
     position: fixed;
@@ -3114,28 +3119,29 @@ body::after {
 }
 @media (min-width: 61.99875em) {
   .slider-reviews__slide.swiper-slide-prev .slide-reviews__img-ibg {
-    transform: translate(450%, -140%) scale(0.7143);
+    transform: translate(60%, -100%) scale(0.7143);
     mix-blend-mode: normal;
     filter: blur(5px);
   }
   .slider-reviews__slide.swiper-slide-next-next .slide-reviews__img-ibg {
-    transform: translate(-1312.5%, 50%) scale(0.7143);
+    transform: translate(-175%, 50%) scale(0.7143);
     mix-blend-mode: normal;
     filter: blur(5px);
   }
   .slider-reviews__slide.swiper-slide-prev-prev .slide-reviews__img-ibg {
-    transform: translate(1312.5%, 50%) scale(0.7143);
+    transform: translate(175%, 50%) scale(0.7143);
     mix-blend-mode: normal;
     filter: blur(5px);
   }
   .slider-reviews__slide.swiper-slide-next .slide-reviews__img-ibg {
-    transform: translate(-450%, -140%) scale(0.7143);
+    transform: translate(-60%, -100%) scale(0.7143);
     mix-blend-mode: normal;
     filter: blur(5px);
   }
 }
 
 .slide-reviews__text-box {
+  height: 40%;
   line-height: 1.3333333333;
 }
 @media (min-width: 47.99875em) {
@@ -3168,11 +3174,17 @@ body::after {
 .slide-reviews__text {
   font-weight: 500;
 }
+.slide-reviews__client {
+  width: 100%;
+  flex: 1 1 auto;
+}
 .slide-reviews__img-ibg {
   padding-bottom: 6.125rem;
   margin-top: 2.3125rem;
   margin-bottom: 1.875rem;
   transition: transform 0.8s ease 0s;
+  border-radius: 15px;
+  overflow: hidden;
 }
 .slide-reviews__img-ibg img {
   object-fit: contain;
@@ -3859,10 +3871,6 @@ body::after {
   color: #979c9e;
   margin-bottom: 0.5rem;
 }
-.coop-form__input-title._nessesary::after {
-  content: " *";
-  color: #cb0e16;
-}
 .coop-form__submit-box {
   display: flex;
   align-items: center;
@@ -4314,6 +4322,11 @@ body::after {
   border: 0.0625rem solid #dee2e6;
   border-radius: 0.5rem;
   margin-bottom: 3rem;
+}
+@media (max-width: 47.99875em) {
+  .form-order__alert {
+    padding: 1.875rem 1.25rem;
+  }
 }
 .form-order__title {
   margin-bottom: 1.5rem;

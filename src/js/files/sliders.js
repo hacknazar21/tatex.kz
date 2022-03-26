@@ -239,10 +239,10 @@ async function initSliders() {
 
 			// Эффект
 
-			autoplay: {
+			/* autoplay: {
 				delay: 2000,
 				disableOnInteraction: false
-			},
+			}, */
 
 
 			// Пагинация

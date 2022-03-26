@@ -9,3 +9,9 @@
         color: #979c9e;
     }
 }
+._nessesary {
+    &::after {
+        content: " *";
+        color: #cb0e16;
+    }
+}

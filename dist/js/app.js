@@ -9026,10 +9026,6 @@
                 loop: true,
                 preloadImages: true,
                 loopAdditionalSlides: 2,
-                autoplay: {
-                    delay: 2e3,
-                    disableOnInteraction: false
-                },
                 pagination: {
                     el: ".swiper-reviews .swiper-pagination",
                     clickable: true

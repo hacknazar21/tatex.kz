@@ -106,12 +106,6 @@
 
         color: #979c9e;
         margin-bottom: rem(8);
-        &._nessesary {
-            &::after {
-                content: " *";
-                color: #cb0e16;
-            }
-        }
     }
 
     &__input {
