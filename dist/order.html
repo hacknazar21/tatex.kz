@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20220330160149">
+	<link rel="stylesheet" href="css/style.min.css?_v=20220401224901">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -86,7 +86,7 @@
 										<div class="form-order__input-box">
 											<div class="form-order__input-title _nessesary">Вес(кг)</div>
 											<div class="input _icon-weight">
-												<input required autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Вес(кг)" data-placeholder="Вес(кг)" class="form-order__input">
+												<input data-inputnumber required autocomplete="off" type="text" name="weight" data-error="Ошибка" data-inputmask-clearmaskonlostfocus="true" data-inputmask="'mask': '9{+|1}.9 (кг)', 'greedy' : false" placeholder="Вес (кг)" class="form-order__input">
 											</div>
 										</div>
 									</div>
@@ -108,7 +108,7 @@
 										<div class="form-order__input-box">
 											<div class="form-order__input-title _nessesary">Вес(кг)</div>
 											<div class="input _icon-weight">
-												<input required autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Вес(кг)" data-placeholder="Вес(кг)" class="form-order__input">
+												<input data-inputnumber required autocomplete="off" type="text" name="weight" data-error="Ошибка" data-inputmask-clearmaskonlostfocus="true" data-inputmask="'mask': '9{+|1}.9 (кг)', 'greedy' : false" placeholder="Вес (кг)" class="form-order__input">
 											</div>
 										</div>
 										<div class="form-order__input-box">
@@ -142,7 +142,7 @@
 												<select required name="form[]" class="form" data-pseudo-label>
 													<option value="" selected>Страна</option>
 													<option value="1">Алматы</option>
-													<option value="2">Астана</option>
+													<option value="2">Нур-Султан</option>
 													<option value="3">Актобе</option>
 													<option value="4">Шымкент</option>
 												</select>
@@ -154,7 +154,7 @@
 												<select required name="form[]" class="form" data-pseudo-label>
 													<option value="" selected>Страна</option>
 													<option value="1">Алматы</option>
-													<option value="2">Астана</option>
+													<option value="2">Нур-Султан</option>
 													<option value="3">Актобе</option>
 													<option value="4">Шымкент</option>
 												</select>
@@ -163,10 +163,10 @@
 										<div class="form-order__input-box">
 											<div class="form-order__input-title _nessesary">Город отправителя</div>
 											<div class="input">
-												<select required name="form[]" class="form" data-pseudo-label>
+												<select required name="from" class="form" data-pseudo-label>
 													<option value="" selected>Город</option>
 													<option value="1">Алматы</option>
-													<option value="2">Астана</option>
+													<option value="2">Нур-Султан</option>
 													<option value="3">Актобе</option>
 													<option value="4">Шымкент</option>
 												</select>
@@ -175,10 +175,10 @@
 										<div class="form-order__input-box">
 											<div class="form-order__input-title _nessesary">Город получателя</div>
 											<div class="input">
-												<select required name="form[]" class="form" data-pseudo-label>
+												<select required name="where" class="form" data-pseudo-label>
 													<option value="" selected>Город</option>
 													<option value="1">Алматы</option>
-													<option value="2">Астана</option>
+													<option value="2">Нур-Султан</option>
 													<option value="3">Актобе</option>
 													<option value="4">Шымкент</option>
 												</select>
@@ -279,7 +279,7 @@
 										<a href="">политику</a> конфиденциальности
 									</div>
 									<div class="form-order__price">
-										К оплате: 2500 ₸
+										К оплате: <span>2500</span> ₸
 									</div>
 									<div class="form-order__submit-box buttons-box">
 										<a href="/" class="form-order__cancel button cancel">Отмена</a>
@@ -352,8 +352,8 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="http://maps.api.2gis.ru/1.0?_v=20220330160149"></script>
-	<script src="js/app.min.js?_v=20220330160149"></script>
+	<script type="text/javascript" src="http://maps.api.2gis.ru/1.0?_v=20220401224901"></script>
+	<script src="js/app.min.js?_v=20220401224901"></script>
 </body>
 
 </html>

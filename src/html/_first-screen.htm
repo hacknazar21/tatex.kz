@@ -43,7 +43,7 @@
             <div class="swiper-pagination"></div>
         </div>
         <div class="first-screen__calc-box">
-            <form data-formcalc action="" class="first-screen__calc first-screen-calc">
+            <form data-formcalc method="get" action="/order.html" class="first-screen__calc first-screen-calc">
                 <div class="first-screen-calc__type">
                     <input checked type="radio" class="first-screen-calc__type-btn button radio" id="typedocument"
                         name="type" value="document">
@@ -81,7 +81,7 @@
                         <div class="first-screen-calc__input input _icon-cart">
                             <input data-inputnumber required autocomplete="off" type="text" name="weight"
                                 data-error="Ошибка" data-inputmask-clearmaskonlostfocus="true"
-                                data-inputmask="'mask': '9{+|1} (кг)', 'greedy' : false" placeholder="Вес (кг)"
+                                data-inputmask="'mask': '9{+|1}.9 (кг)', 'greedy' : false" placeholder="Вес (кг)"
                                 class="first-screen-calc__weight">
                         </div>
                     </div>

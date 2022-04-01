@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20220330160149">
+	<link rel="stylesheet" href="css/style.min.css?_v=20220401224901">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -108,7 +108,7 @@
 						<div class="swiper-pagination"></div>
 					</div>
 					<div class="first-screen__calc-box">
-						<form data-formcalc action="" class="first-screen__calc first-screen-calc">
+						<form data-formcalc method="get" action="/order.html" class="first-screen__calc first-screen-calc">
 							<div class="first-screen-calc__type">
 								<input checked type="radio" class="first-screen-calc__type-btn button radio" id="typedocument" name="type" value="document">
 								<label class="first-screen-calc__label" for="typedocument">Документ</label>
@@ -138,7 +138,7 @@
 								</div>
 								<div class="first-screen-calc__input-box">
 									<div class="first-screen-calc__input input _icon-cart">
-										<input data-inputnumber required autocomplete="off" type="text" name="weight" data-error="Ошибка" data-inputmask-clearmaskonlostfocus="true" data-inputmask="'mask': '9{+|1} (кг)', 'greedy' : false" placeholder="Вес (кг)" class="first-screen-calc__weight">
+										<input data-inputnumber required autocomplete="off" type="text" name="weight" data-error="Ошибка" data-inputmask-clearmaskonlostfocus="true" data-inputmask="'mask': '9{+|1}.9 (кг)', 'greedy' : false" placeholder="Вес (кг)" class="first-screen-calc__weight">
 									</div>
 								</div>
 							</div>
@@ -576,8 +576,8 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="http://maps.api.2gis.ru/1.0?_v=20220330160149"></script>
-	<script src="js/app.min.js?_v=20220330160149"></script>
+	<script type="text/javascript" src="http://maps.api.2gis.ru/1.0?_v=20220401224901"></script>
+	<script src="js/app.min.js?_v=20220401224901"></script>
 </body>
 
 </html>

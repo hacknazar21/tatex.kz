@@ -13,20 +13,6 @@ const radiobuttons = document.querySelectorAll(".radio");
 const datafor = document.querySelectorAll("[data-for]");
 const calendares = document.querySelectorAll(".calendar");
 const tips = document.querySelectorAll("[data-tip]");
-let deliveryPrice = '', deliveryDate = '';
-const templatePrice = `
-                <div class="first-screen-calc__info">
-                    <div class="first-screen-calc__info-box doc-summ">
-                        <div class="doc-summ__title">Стоимость <br>доставки</div>
-                        <div class="doc-summ__value">${deliveryPrice}</div>
-                        <div class="doc-summ__text"> Тенге</div>
-                    </div>
-                    <div class="first-screen-calc__info-box doc-date">
-                        <div class="doc-date__title">Ориентировочная <br> дата доставки</div>
-                        <div class="doc-date__value">${deliveryDate}</div>
-                    </div>
-                </div>
-`;
 
 
 
@@ -35,45 +21,7 @@ let dataforList = {
     name: [],
     data: []
 };
-if (calendares.length != 0) {
-    const picker = new datepicker('.calendar', {
-        startDay: 1,
-        formatter: (input, date, instance) => {
-            const value = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
-            input.value = value // => '1/1/2099'
-        },
-        customMonths: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-        customDays: ['Вос', 'Пон', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
 
-    });
-
-    let today = new Date();
-
-    let hours = today.getUTCHours();
-    let minutes = today.getUTCMinutes();
-
-    if (hours > 9) {
-        today.setUTCDate(today.getUTCDate() + 1)
-        picker.setMin(today);
-    }
-    else
-        picker.setMin(today);
-
-    setInterval(() => {
-        today = new Date();
-        today.setUTCHours(today.getUTCHours() + 6)
-        hours = today.getUTCHours();
-        minutes = today.getUTCMinutes();
-        if (hours > 15 && minutes > 30) {
-            today.setUTCDate(today.getUTCDate() + 1)
-            picker.setMin(today);
-        }
-        else
-            picker.setMin(today);
-
-    }, 60000)
-
-}
 if (datafor.length != 0) {
     datafor.forEach(data => {
         dataforList.name.push(data.dataset.for);
@@ -81,57 +29,6 @@ if (datafor.length != 0) {
         data.remove();
     });
 }
-if (radiobuttons.length != 0) {
-    radiobuttons.forEach(radiobutton => {
-        if (radiobutton.checked) {
-            radiobutton.classList.add('active');
-            const index = dataforList.name.findIndex(el => el == radiobutton.value);
-            document.querySelector('form [class*="__type"]').insertAdjacentElement("afterend", dataforList.data[index]);
-        }
-        radiobutton.addEventListener('click', (event) => {
-            if (event.target.checked) {
-                document.querySelector('.radio.active').classList.remove('active');
-                radiobutton.classList.add('active');
-                const index = dataforList.name.findIndex(el => el == event.target.value);
-                document.querySelector('[data-for]').remove();
-
-                document.querySelector('form [class*="__type"]').insertAdjacentElement("afterend", dataforList.data[index]);
-            }
-
-        });
-    });
-}
-if (checkboxes.length != 0) {
-    checkboxes.forEach(checkbox => {
-
-        checkbox.addEventListener('click', (event) => {
-            console.log(event.target);
-            if (event.target.checked) {
-                event.target.classList.add('active');
-            }
-            else if (event.target.classList.contains('active')) {
-                event.target.classList.remove('active');
-            }
-        });
-    });
-}
-inputs.forEach(input => {
-    var iti = intlTelInput(input, {
-        initialCountry: "kz",
-        autoPlaceholder: 'aggressive',
-        preferredCountries: ['kz', 'ru'],
-        separateDialCode: true
-    });
-
-    Inputmask({ "mask": `(999) 999-9999` }).mask(input);
-
-
-});
-
-
-
-
-
 
 let sortBy = 0;
 const tableDataInit = document.querySelectorAll('.table-history__row-data');
@@ -176,10 +73,12 @@ function calculatePrice(form) {
         from: '',
         where: '',
         weight: '',
-        height: '',
-        length: '',
-        width: '',
-    }
+        heightbox: '',
+        lengthbox: '',
+        widthbox: '',
+    }, deliveryPrice, deliveryDate;
+    const startPrice = 3000, stepWeight = 0.5, stepPrice = 800;
+
     form.querySelectorAll('input[type="radio"]').forEach(radio => {
         if (radio.checked && radio.value == "document") {
             const from = form.querySelector('[name="from"]'), //получаем поле from
@@ -198,13 +97,31 @@ function calculatePrice(form) {
                 weight = form.querySelector('[name="weight"]'); //получаем поле weight
             data.from = from.value;
             data.where = where.value;
-            data.height = height.value;
-            data.length = length.value;
-            data.width = width.value;
             data.weight = weight.value;
+            data.heightbox = height.value;
+            data.lengthbox = length.value;
+            data.widthbox = width.value;
         }
+
+
     });
-    console.log(data);
+    deliveryPrice = Math.floor((parseFloat(data.weight) - 1) / 0.5) * 800 + 3000;
+    deliveryDate = "25 апр. 2022";
+    const templatePrice = `
+                <div class="first-screen-calc__info">
+                    <div class="first-screen-calc__info-box doc-summ">
+                        <div class="doc-summ__title">Стоимость <br>доставки</div>
+                        <input name="price" hidden value="${deliveryPrice}">
+                        <div name="price" class="doc-summ__value">${deliveryPrice}</div>
+                        <div class="doc-summ__text"> Тенге</div>
+                    </div>
+                    <div class="first-screen-calc__info-box doc-date">
+                        <div class="doc-date__title">Ориентировочная <br> дата доставки</div>
+                        <div class="doc-date__value">${deliveryDate}</div>
+                    </div>
+                </div>
+`;
+    form.querySelector('[data-btncalc]').insertAdjacentHTML('beforeBegin', templatePrice);
 }
 
 document.addEventListener('click', (event) => {
@@ -305,42 +222,170 @@ document.addEventListener('click', (event) => {
 
 function calculateForm() {
     const formcalc = document.querySelector('[data-formcalc]');
+    let flag = false;
     if (formcalc != null) {
         const error = document.createElement('span');
         error.classList.add('error');
         error.innerHTML = "Поле заполнено неверно!";
         formcalc.addEventListener('submit', (event) => {
-            event.preventDefault();
-            let badValidate = false;
-            for (let index = 0; index < event.target.querySelectorAll('input[required]').length; index++) {
-                const input = event.target.querySelectorAll('input[required]')[index];
-                input.addEventListener('focusout', () => {
-                    if (formcalc.querySelector('.error') != null)
-                        formcalc.querySelector('.error').remove();
-                });
-                if (!validateInput(input)) {
-                    input.focus();
-                    input.insertAdjacentElement('afterend', error);
-                    badValidate = true;
-                    break;
+            if (!flag) {
+                event.preventDefault();
+                let badValidate = false;
+                for (let index = 0; index < event.target.querySelectorAll('input[required]').length; index++) {
+                    const input = event.target.querySelectorAll('input[required]')[index];
+                    input.addEventListener('focusout', () => {
+                        if (formcalc.querySelector('.error') != null)
+                            formcalc.querySelector('.error').remove();
+                    });
+                    if (!validateInput(input)) {
+                        input.focus();
+                        input.insertAdjacentElement('afterend', error);
+                        badValidate = true;
+                        break;
+                    }
                 }
-            }
-            if (!badValidate) {
-                calculatePrice(formcalc);
-                formcalc.querySelector('[data-btncalc]').innerHTML = "Оформить";
+                if (!badValidate) {
+                    calculatePrice(formcalc);
+                    formcalc.querySelector('[data-btncalc]').innerHTML = "Оформить";
+                    flag = true;
+                }
             }
 
         });
     }
 }
 
-window.onload = () => {
-    tips.forEach(tip => {
-        tip.addEventListener('click', (event) => {
-            event.preventDefault();
-            document.querySelector(`#${tip.dataset.tip}`).value = tip.innerHTML.split('(')[0];
-        });
-    });
-    calculateForm();
+function getParams() {
+    const search = location.search.substr(1)
+        .split('&') // разбиваем на параметры
+        .reduce(function (res, a) { // разбираем пары ключ-значение
+            var t = a.split('=');
 
+            // нужно декодировать и ключ и значение, значения может не быть
+            res[decodeURIComponent(t[0])] = t.length == 1 ? null : decodeURIComponent(t[1]);
+            return res;
+        }, {});
+
+    return search;
+}
+
+function updateRadio() {
+
+}
+
+window.onload = () => {
+    if (document.querySelector('.form-order__body') != null) {
+        const params = getParams();
+        const keys = Object.keys(params);
+
+        keys.forEach(key => {
+            console.log(document.querySelector(`[name = "${key}"]`))
+            if (key == 'type') {
+                document.querySelector(`[name = "${key}"][value = "${params[key]}"]`).checked = true;
+                document.querySelector(`[name = "${key}"][value = "${params[key]}"]`).classList.add('active');
+                const index = dataforList.name.findIndex(el => el == document.querySelector(`[name = "${key}"][value = "${params[key]}"]`).value);
+                document.querySelector('form [class*="__type"]').insertAdjacentElement("afterend", dataforList.data[index]);
+
+            }
+            else if (key == 'price') document.querySelector('.form-order__price span').innerHTML = params[key];
+            else {
+                document.querySelector(`[name = "${key}"]`).value = params[key];
+            }
+        });
+
+
+
+    }
+    if (calendares.length != 0) {
+        const picker = new datepicker('.calendar', {
+            startDay: 1,
+            formatter: (input, date, instance) => {
+                const value = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+                input.value = value // => '1/1/2099'
+            },
+            customMonths: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+            customDays: ['Вос', 'Пон', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
+
+        });
+
+        let today = new Date();
+
+        let hours = today.getUTCHours();
+        let minutes = today.getUTCMinutes();
+
+        if (hours > 9) {
+            today.setUTCDate(today.getUTCDate() + 1)
+            picker.setMin(today);
+        }
+        else
+            picker.setMin(today);
+
+        setInterval(() => {
+            today = new Date();
+            today.setUTCHours(today.getUTCHours() + 6)
+            hours = today.getUTCHours();
+            minutes = today.getUTCMinutes();
+            if (hours > 15 && minutes > 30) {
+                today.setUTCDate(today.getUTCDate() + 1)
+                picker.setMin(today);
+            }
+            else
+                picker.setMin(today);
+
+        }, 60000)
+
+    }
+    if (radiobuttons.length != 0) {
+        radiobuttons.forEach(radiobutton => {
+            if (radiobutton.checked) {
+                radiobutton.classList.add('active');
+                const index = dataforList.name.findIndex(el => el == radiobutton.value);
+                document.querySelector('form [class*="__type"]').insertAdjacentElement("afterend", dataforList.data[index]);
+            }
+            radiobutton.addEventListener('click', (event) => {
+                if (event.target.checked) {
+                    document.querySelector('.radio.active').classList.remove('active');
+                    radiobutton.classList.add('active');
+                    const index = dataforList.name.findIndex(el => el == event.target.value);
+                    document.querySelector('[data-for]').remove();
+                    document.querySelector('form [class*="__type"]').insertAdjacentElement("afterend", dataforList.data[index]);
+                }
+            });
+        });
+    }
+    if (checkboxes.length != 0) {
+        checkboxes.forEach(checkbox => {
+
+            checkbox.addEventListener('click', (event) => {
+                console.log(event.target);
+                if (event.target.checked) {
+                    event.target.classList.add('active');
+                }
+                else if (event.target.classList.contains('active')) {
+                    event.target.classList.remove('active');
+                }
+            });
+        });
+    }
+    inputs.forEach(input => {
+        var iti = intlTelInput(input, {
+            initialCountry: "kz",
+            autoPlaceholder: 'aggressive',
+            preferredCountries: ['kz', 'ru'],
+            separateDialCode: true
+        });
+
+        Inputmask({ "mask": `(999) 999-9999` }).mask(input);
+
+
+    });
+    if (tips.length != 0)
+        tips.forEach(tip => {
+            tip.addEventListener('click', (event) => {
+                event.preventDefault();
+                document.querySelector(`#${tip.dataset.tip}`).value = tip.innerHTML.split('(')[0];
+            });
+        });
+    if (document.querySelector('[data-formcalc]') != null)
+        calculateForm();
 }
