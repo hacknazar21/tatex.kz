@@ -54,6 +54,10 @@
 	}
 	// .select__options
 	&__options {
+		overflow-y: auto;
+		overflow-x: hidden;
+		// Максимальная высота
+		max-height: 200px;
 		color: #979c9e;
 		position: absolute;
 		top: 29px;
@@ -67,10 +71,7 @@
 	}
 	// .select__scroll
 	&__scroll {
-		overflow-y: auto;
-		overflow-x: hidden;
-		// Максимальная высота
-		max-height: 200px;
+		
 		// Стили скроллбара
 		.simplebar-scrollbar {
 			&::before {
@@ -80,6 +81,7 @@
 	}
 	// .select__option
 	&__option {
+		
 		width: 100%;
 		display: block;
 		text-align: left;

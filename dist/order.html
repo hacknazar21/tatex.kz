@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20220401230307">
+	<link rel="stylesheet" href="css/style.min.css?_v=20220411141308">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -139,7 +139,7 @@
 										<div class="form-order__input-box">
 											<div class="form-order__input-title _nessesary">Страна отправителя</div>
 											<div class="input">
-												<select required name="form[]" class="form" data-pseudo-label>
+												<select required name="form[]" data-country="from" class="form" data-pseudo-label>
 													<option value="" selected>Страна</option>
 													<option value="1">Алматы</option>
 													<option value="2">Нур-Султан</option>
@@ -151,7 +151,7 @@
 										<div class="form-order__input-box">
 											<div class="form-order__input-title _nessesary">Страна получателя</div>
 											<div class="input">
-												<select required name="form[]" class="form" data-pseudo-label>
+												<select required name="form[]" data-country="where" class="form" data-pseudo-label>
 													<option value="" selected>Страна</option>
 													<option value="1">Алматы</option>
 													<option value="2">Нур-Султан</option>
@@ -352,8 +352,8 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="http://maps.api.2gis.ru/1.0?_v=20220401230307"></script>
-	<script src="js/app.min.js?_v=20220401230307"></script>
+	<script type="text/javascript" src="http://maps.api.2gis.ru/1.0?_v=20220411141308"></script>
+	<script src="js/app.min.js?_v=20220411141308"></script>
 </body>
 
 </html>

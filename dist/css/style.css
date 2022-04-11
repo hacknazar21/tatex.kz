@@ -257,6 +257,33 @@ h6 {
   padding: 0 1.5rem;
 }
 
+.qs-disabled.hover {
+  opacity: 1;
+}
+.qs-disabled.hover .hover-span {
+  position: absolute;
+  width: 12.5rem;
+  bottom: 20px;
+  color: #fff;
+  background-color: #1a1818;
+  padding: 15px;
+  border-radius: 5px;
+}
+.qs-disabled:not(.Сб) .hover-span {
+  left: 30px;
+  border-bottom-left-radius: 0px;
+}
+.qs-disabled:not(.Вос) .hover-span {
+  left: 30px;
+  border-bottom-left-radius: 0px;
+}
+.qs-disabled.Сб .hover-span, .qs-disabled.Вос .hover-span {
+  left: auto;
+  right: 30px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 0px;
+}
+
 .calc-button {
   flex: 0 0 12.6875rem;
   min-height: 2.5rem;
@@ -844,6 +871,9 @@ textarea.input {
   height: 100%;
 }
 .select__options {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 200px;
   color: #979c9e;
   position: absolute;
   top: 29px;
@@ -854,11 +884,6 @@ textarea.input {
   border-top: 0;
   border-top: 0;
   padding: 10px 0px 5px 0px;
-}
-.select__scroll {
-  overflow-y: auto;
-  overflow-x: hidden;
-  max-height: 200px;
 }
 .select__option {
   width: 100%;
@@ -1230,6 +1255,12 @@ body::after {
 
 [class*=-ibg_contain] img {
   object-fit: contain;
+}
+
+.qs-disabled.Сб,
+.qs-disabled.Вос {
+  opacity: 1;
+  color: red;
 }
 
 .title-h2 {

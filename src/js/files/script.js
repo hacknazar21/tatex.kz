@@ -13,7 +13,7 @@ const radiobuttons = document.querySelectorAll(".radio");
 const datafor = document.querySelectorAll("[data-for]");
 const calendares = document.querySelectorAll(".calendar");
 const tips = document.querySelectorAll("[data-tip]");
-
+const selectOptions = document.querySelectorAll(".select__option");
 
 
 
@@ -33,8 +33,7 @@ if (datafor.length != 0) {
 let sortBy = 0;
 const tableDataInit = document.querySelectorAll('.table-history__row-data');
 
-
-function SortTable(data, filterId, direction, columns, rows) {
+/* function SortTable(data, filterId, direction, columns, rows) {
     let dataToSort = new Array();
     let sortedData = new Array();
     let indexData = 0;
@@ -61,7 +60,7 @@ function SortTable(data, filterId, direction, columns, rows) {
     }
     return sortedData;
 }
-
+ */
 
 function validateInput(input) {
     if (input.dataset.inputcity != null) return /^([a-zA-Zа-яА-ЯёЁ]+[-]?[a-zA-Zа-яА-ЯёЁ]*[-]?[a-zA-Zа-яА-ЯёЁ]*[-]?[a-zA-Zа-яА-ЯёЁ]*)$/.test(input.value);
@@ -269,11 +268,27 @@ function getParams() {
     return search;
 }
 
-function updateRadio() {
-
-}
 
 window.onload = () => {
+    if (selectOptions.length != null) {
+        selectOptions.forEach(selectOption => {
+            console.log()
+            selectOption.addEventListener('click', (e) => {
+                const select = selectOption.parentElement.parentElement.parentElement.querySelector('select');
+                const selectCity = document.querySelector(`select[name=${select.dataset.country}]`);
+                const selectPlaceholder = selectCity.firstElementChild;
+                while (selectCity.lastElementChild != selectPlaceholder) {
+                    selectCity.removeChild(selectCity.lastElementChild);
+                }
+                fetch(`/order/${selectOption.dataset.value}`)
+                    .then((response) => { return response.json() })
+                    .then((data) => {
+                        for (const city of data.cities)
+                            selectCity.insertAdjacentHTML('beforeend', `<option value="${city}">${city}</option>`)
+                    });
+            })
+        });
+    }
     if (document.querySelector('.form-order__body') != null) {
         const params = getParams();
         const keys = Object.keys(params);
@@ -297,23 +312,58 @@ window.onload = () => {
 
     }
     if (calendares.length != 0) {
+
+        const isHoliday = (date) => {
+            if (date.getMonth() + 1 == 1) { // Январь
+                if (date.getDate() >= 1 && date.getDate() <= 4) return true; // Новый год 1 января — 4 января
+                else if (date.getDate() >= 7 && date.getDate() <= 9) return true; // Рождество 7 января — 9 января
+                else return false
+            }
+            else if (date.getMonth() + 1 == 3) { // Март
+                if (date.getDate() >= 6 && date.getDate() <= 8) return true; // Международный женский день 6 марта — 8 марта
+                else if (date.getDate() >= 19 && date.getDate() <= 23) return true; // Наурыз мейрамы 19 марта — 23 марта
+                else return false
+            }
+            else if (date.getMonth() + 1 == 5) { // Май
+                if (date.getDate() >= 7 && date.getDate() <= 10) return true; // День защитника Отечества 7 мая — 10 мая
+                else return false
+            }
+            else if (date.getMonth() + 1 == 7) { // Июль
+                if (date.getDate() == 6) return true; // День Столицы 6 июля
+                else if (date.getDate() >= 9 && date.getDate() <= 10) return true; // Первый день Курбан-айта 9 июля — 10 июля
+                else return false
+            }
+            else if (date.getMonth() + 1 == 8) { // Август
+                if (date.getDate() >= 28 && date.getDate() <= 30) return true; // День Конституции РК 28 августа — 30 августа
+                else return false
+            }
+            else if (date.getMonth() + 1 == 12) { // Август
+                if (date.getDate() == 1) return true; // День Первого Президента РК 1 декабря
+                else if (date.getDate() >= 16 && date.getDate() <= 19) return true; // День Независимости 16 декабря — 19 декабря
+                else return false
+            }
+        }
+
         const picker = new datepicker('.calendar', {
             startDay: 1,
             formatter: (input, date, instance) => {
                 const value = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
                 input.value = value // => '1/1/2099'
             },
-            customMonths: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-            customDays: ['Вос', 'Пон', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
 
+            noWeekends: true,
+            customMonths: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+            customDays: ['Вос', 'Пон', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+            disabler: (date) => isHoliday(date),
+            /* disableYearOverlay: true, */
         });
 
         let today = new Date();
-
         let hours = today.getUTCHours();
         let minutes = today.getUTCMinutes();
-
-        if (hours > 9) {
+        picker.toggleOverlay()
+        picker.calendarContainer.style.overflow = 'visible'
+        if (hours >= 9) {
             today.setUTCDate(today.getUTCDate() + 1)
             picker.setMin(today);
         }
@@ -325,7 +375,7 @@ window.onload = () => {
             today.setUTCHours(today.getUTCHours() + 6)
             hours = today.getUTCHours();
             minutes = today.getUTCMinutes();
-            if (hours > 15 && minutes > 30) {
+            if (hours > 15) {
                 today.setUTCDate(today.getUTCDate() + 1)
                 picker.setMin(today);
             }
@@ -334,6 +384,28 @@ window.onload = () => {
 
         }, 60000)
 
+        document.addEventListener('mouseover', (e) => {
+            e.target.classList.contains("qs-disabled") ? hover(e.target, true) : null;
+        })
+        document.addEventListener('mouseout', (e) => {
+            e.target.classList.contains("qs-disabled") ? hover(e.target, false) : null;
+        })
+        function hover(el, isHover) {
+            if (isHover) el.classList.add('hover')
+            else el.classList.contains('hover') ? el.classList.remove('hover') : null
+
+            if (el.classList.contains('hover')) {
+                const span = document.createElement('span')
+                span.classList.add('hover-span')
+                span.innerHTML = 'К сожалению, в выходные дни курьер не сможет осуществить забор груза, пожалуйста, выберите другую дату'
+                el.style.position = 'relative'
+
+                el.insertAdjacentElement('afterbegin', span)
+            }
+            else if (el.querySelector('.hover-span')) {
+                el.querySelector('.hover-span').remove()
+            }
+        }
     }
     if (radiobuttons.length != 0) {
         radiobuttons.forEach(radiobutton => {
@@ -379,13 +451,14 @@ window.onload = () => {
 
 
     });
-    if (tips.length != 0)
+    if (tips.length != 0) {
         tips.forEach(tip => {
             tip.addEventListener('click', (event) => {
                 event.preventDefault();
                 document.querySelector(`#${tip.dataset.tip}`).value = tip.innerHTML.split('(')[0];
             });
         });
+    }
     if (document.querySelector('[data-formcalc]') != null)
         calculateForm();
 }

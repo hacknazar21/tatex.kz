@@ -121,7 +121,43 @@ body {
 		}
 	}
 }
+.qs-disabled {
+	&.hover {
+		opacity: 1;
 
+		.hover-span {
+			position: absolute;
+			width: rem(200);
+			bottom: 20px;
+			color: #fff;
+			background-color: rgb(26, 24, 24);
+			padding: 15px;
+			border-radius: 5px;
+		}
+	}
+	&:not(.Сб) {
+		.hover-span {
+			left: 30px;
+			border-bottom-left-radius: 0px;
+		}
+	}
+	&:not(.Вос) {
+		.hover-span {
+			left: 30px;
+			border-bottom-left-radius: 0px;
+		}
+	}
+	&.Сб,
+	&.Вос {
+		.hover-span {
+			left: auto;
+			right: 30px;
+			border-bottom-left-radius: 5px;
+
+			border-bottom-right-radius: 0px;
+		}
+	}
+}
 // Подключение базовых стилей, шаблонов (заготовок) и вспомогательных  классов
 // Для подключения/отключения конкретных стилей смотри base.scss
 @import "base";

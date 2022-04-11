@@ -5225,6 +5225,19 @@
                 originalSelect.addEventListener("change", (function(e) {
                     _this.selectChange(e);
                 }));
+                var mutationObserver = new MutationObserver((function(mutations) {
+                    mutations.forEach((function(mutation) {
+                        _this.selectChange(originalSelect);
+                    }));
+                }));
+                mutationObserver.observe(originalSelect, {
+                    attributes: true,
+                    characterData: true,
+                    childList: true,
+                    subtree: true,
+                    attributeOldValue: true,
+                    characterDataOldValue: true
+                });
             }
             selectBuild(originalSelect) {
                 const selectItem = originalSelect.parentElement;
@@ -5400,8 +5413,7 @@
                 this.setSelectTitleValue(selectItem, originalSelect);
                 this.setSelectChange(originalSelect);
             }
-            selectChange(e) {
-                const originalSelect = e.target;
+            selectChange(originalSelect) {
                 this.selectBuild(originalSelect);
                 this.setSelectChange(originalSelect);
             }
@@ -9224,6 +9236,7 @@
         const datafor = document.querySelectorAll("[data-for]");
         const calendares = document.querySelectorAll(".calendar");
         const tips = document.querySelectorAll("[data-tip]");
+        const selectOptions = document.querySelectorAll(".select__option");
         let dataforList = {
             name: [],
             data: []
@@ -9235,21 +9248,6 @@
         }));
         let sortBy = 0;
         const tableDataInit = document.querySelectorAll(".table-history__row-data");
-        function SortTable(data, filterId, direction, columns, rows) {
-            let dataToSort = new Array;
-            let sortedData = new Array;
-            let indexData = 0;
-            for (var i = 0; i < rows; i++) {
-                dataToSort[i] = new Array;
-                for (var j = 0; j < columns; j++) dataToSort[i][j] = data[indexData++];
-            }
-            let sortTablefcn = (a, b) => {
-                if ("up" == direction && a[filterId].innerHTML > b[filterId].innerHTML) return -1; else if ("up" == direction && a[filterId].innerHTML < b[filterId].innerHTML) return 1; else if ("down" == direction && a[filterId].innerHTML > b[filterId].innerHTML) return 1; else if ("down" == direction && a[filterId].innerHTML < b[filterId].innerHTML) return -1;
-            };
-            dataToSort.sort(sortTablefcn);
-            for (i = 0; i < rows; i++) for (j = 0; j < columns; j++) sortedData.push(dataToSort[i][j]);
-            return sortedData;
-        }
         function validateInput(input) {
             if (null != input.dataset.inputcity) return /^([a-zA-Zа-яА-ЯёЁ]+[-]?[a-zA-Zа-яА-ЯёЁ]*[-]?[a-zA-Zа-яА-ЯёЁ]*[-]?[a-zA-Zа-яА-ЯёЁ]*)$/.test(input.value); else if (null != input.dataset.inputnumber) return /^[0-9]+/.test(input.value);
         }
@@ -9409,6 +9407,18 @@
             return search;
         }
         window.onload = () => {
+            if (null != selectOptions.length) selectOptions.forEach((selectOption => {
+                console.log();
+                selectOption.addEventListener("click", (e => {
+                    const select = selectOption.parentElement.parentElement.parentElement.querySelector("select");
+                    const selectCity = document.querySelector(`select[name=${select.dataset.country}]`);
+                    const selectPlaceholder = selectCity.firstElementChild;
+                    while (selectCity.lastElementChild != selectPlaceholder) selectCity.removeChild(selectCity.lastElementChild);
+                    fetch(`/order/${selectOption.dataset.value}`).then((response => response.json())).then((data => {
+                        for (const city of data.cities) selectCity.insertAdjacentHTML("beforeend", `<option value="${city}">${city}</option>`);
+                    }));
+                }));
+            }));
             if (null != document.querySelector(".form-order__body")) {
                 const params = getParams();
                 const keys = Object.keys(params);
@@ -9423,19 +9433,26 @@
                 }));
             }
             if (0 != calendares.length) {
+                const isHoliday = date => {
+                    if (date.getMonth() + 1 == 1) if (date.getDate() >= 1 && date.getDate() <= 4) return true; else if (date.getDate() >= 7 && date.getDate() <= 9) return true; else return false; else if (date.getMonth() + 1 == 3) if (date.getDate() >= 6 && date.getDate() <= 8) return true; else if (date.getDate() >= 19 && date.getDate() <= 23) return true; else return false; else if (date.getMonth() + 1 == 5) if (date.getDate() >= 7 && date.getDate() <= 10) return true; else return false; else if (date.getMonth() + 1 == 7) if (6 == date.getDate()) return true; else if (date.getDate() >= 9 && date.getDate() <= 10) return true; else return false; else if (date.getMonth() + 1 == 8) if (date.getDate() >= 28 && date.getDate() <= 30) return true; else return false; else if (date.getMonth() + 1 == 12) if (1 == date.getDate()) return true; else if (date.getDate() >= 16 && date.getDate() <= 19) return true; else return false;
+                };
                 const picker = new datepicker_min(".calendar", {
                     startDay: 1,
                     formatter: (input, date, instance) => {
                         const value = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
                         input.value = value;
                     },
+                    noWeekends: true,
                     customMonths: [ "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь" ],
-                    customDays: [ "Вос", "Пон", "Вт", "Ср", "Чт", "Пт", "Сб" ]
+                    customDays: [ "Вос", "Пон", "Вт", "Ср", "Чт", "Пт", "Сб" ],
+                    disabler: date => isHoliday(date)
                 });
                 let today = new Date;
                 let hours = today.getUTCHours();
                 let minutes = today.getUTCMinutes();
-                if (hours > 9) {
+                picker.toggleOverlay();
+                picker.calendarContainer.style.overflow = "visible";
+                if (hours >= 9) {
                     today.setUTCDate(today.getUTCDate() + 1);
                     picker.setMin(today);
                 } else picker.setMin(today);
@@ -9444,11 +9461,27 @@
                     today.setUTCHours(today.getUTCHours() + 6);
                     hours = today.getUTCHours();
                     minutes = today.getUTCMinutes();
-                    if (hours > 15 && minutes > 30) {
+                    if (hours > 15) {
                         today.setUTCDate(today.getUTCDate() + 1);
                         picker.setMin(today);
                     } else picker.setMin(today);
                 }), 6e4);
+                document.addEventListener("mouseover", (e => {
+                    e.target.classList.contains("qs-disabled") ? hover(e.target, true) : null;
+                }));
+                document.addEventListener("mouseout", (e => {
+                    e.target.classList.contains("qs-disabled") ? hover(e.target, false) : null;
+                }));
+                function hover(el, isHover) {
+                    if (isHover) el.classList.add("hover"); else el.classList.contains("hover") ? el.classList.remove("hover") : null;
+                    if (el.classList.contains("hover")) {
+                        const span = document.createElement("span");
+                        span.classList.add("hover-span");
+                        span.innerHTML = "К сожалению, в выходные дни курьер не сможет осуществить забор груза, пожалуйста, выберите другую дату";
+                        el.style.position = "relative";
+                        el.insertAdjacentElement("afterbegin", span);
+                    } else if (el.querySelector(".hover-span")) el.querySelector(".hover-span").remove();
+                }
             }
             if (0 != radiobuttons.length) radiobuttons.forEach((radiobutton => {
                 if (radiobutton.checked) {

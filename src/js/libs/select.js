@@ -160,6 +160,19 @@ class SelectConstructor {
 		originalSelect.addEventListener('change', function (e) {
 			_this.selectChange(e);
 		});
+		var mutationObserver = new MutationObserver(function (mutations) {
+			mutations.forEach(function (mutation) {
+				_this.selectChange(originalSelect);
+			});
+		});
+		mutationObserver.observe(originalSelect, {
+			attributes: true,
+			characterData: true,
+			childList: true,
+			subtree: true,
+			attributeOldValue: true,
+			characterDataOldValue: true
+		});
 	}
 	// Конструктор псевдоселекта
 	selectBuild(originalSelect) {
@@ -426,8 +439,8 @@ class SelectConstructor {
 		this.setSelectChange(originalSelect);
 	}
 	// Реакция на измененение оригинального select
-	selectChange(e) {
-		const originalSelect = e.target;
+	selectChange(originalSelect) {
+
 		this.selectBuild(originalSelect);
 		this.setSelectChange(originalSelect);
 	}
